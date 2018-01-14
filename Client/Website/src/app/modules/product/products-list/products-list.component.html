@@ -1,0 +1,54 @@
+<p>
+  products-list works!
+</p>
+
+<div *ngFor="let currProduct of productPaging">
+  <div class="form-group">
+    <label for="nameProductLabel">מזהה מוצר: </label>
+    <label for="nameProductValue">{{currProduct.id}}</label>
+  </div>
+
+  <div class="form-group">
+    <label for="nameProductLabel">שם המוצר: </label>
+    <label for="nameProductValue">{{currProduct.name}}</label>
+  </div>
+
+  <div class="form-group">
+    <label for="priceLabel">מחיר: </label>
+    <label for="priceValue">{{currProduct.price}}</label>
+  </div>
+
+  <div class="form-group">
+    <label for="categoryLabel">קטגוריה: </label>
+    <label for="categoryValue">{{currProduct.category}}</label>
+  </div>
+
+  <div class="form-group">
+    <label for="caloriesLabel">קלוריות: </label>
+    <label for="caloriesValue">{{currProduct.calories}}</label>
+  </div>
+
+  <div class="form-group">
+    <label for="countryLabel">מדינת יצור: </label>
+    <label for="countryValue">{{currProduct.createCountry}}</label>
+  </div>
+
+  <div class="form-group">
+    <label for="companyLabel">יצרן: </label>
+    <label for="companyValue">{{currProduct.company}}</label>
+  </div>
+  ------------------------------------------------------------------------------------
+</div>
+
+
+
+<app-pagination (goPage)="goToPage($event)"
+                (goPrev)="onPrev()"
+                [pagesToShow]="5000"
+                [page]="page"
+                [count]="total"
+                [perPage]="limit"
+                (goNext)="onNext()">
+
+
+</app-pagination>

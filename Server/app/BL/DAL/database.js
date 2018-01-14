@@ -1,0 +1,89 @@
+﻿var http = require('http');
+var express = require('express');
+var mongodb = require('../../../node_modules/mongodb');
+var ObjectID = mongodb.ObjectID;
+var mongoClient = mongodb.MongoClient;
+var bodyParser = require('body-parser');
+var consts = null;
+
+var collections = ['users', 'category','product', 'counters'];
+
+// log on to db
+exports.setupDB = function (dbUrl, con, p_db, callback) {
+    consts = con;
+
+    mongoClient.connect(dbUrl, function (err, client) {
+        if (err) {
+            console.log("Could not  connect to DB");
+            return;
+        }
+
+        var database = client.db('test');
+        console.log('Connect to db');
+
+        for (col = 0; col < collections.length; col++) {
+            database[collections[col]] = database.collection(collections[col]);
+        }
+        
+        db = database;
+        p_db = database;
+
+        callback(p_db);
+    })
+}
+
+exports.getUsers = function (callback) {
+    db.users.find({}).toArray(callback);
+}
+
+exports.login = function (email, password, callback) {
+    db.users.find({ "email": email, "password": password }).toArray(callback);
+}
+
+exports.register = function (data, callback) {
+    db.users.insert(data, callback);
+}
+
+exports.getCategories = function(callback) {
+    db.category.find({}).toArray(callback);
+}
+
+exports.getProductDetails = function (id, callback) {
+    var idToSearch = +id;
+    db.product.find({ "id": idToSearch}).toArray(callback);
+}
+
+exports.getCategoryById = function (id, callback) {
+    var idToSearch = +id;
+    db.category.find({ "id": idToSearch }).toArray(callback);
+}
+
+exports.saveProduct = function (data, callback) {
+    db.product.insert(data, callback);
+}
+
+exports.getNextSequence = function(name,callback) {
+    var filter = { _id: name };
+    var updateQuery = { $inc: { seq: 1 } };
+    var ret = db.counters.findAndModify(
+        { _id: name },
+        [['_id', 'asc']],
+        { $inc: { seq: 1 } },callback);
+}
+
+exports.getCurrentSeq = function (name, callback) {
+    db.counters.find({ "_id": name }).toArray(callback);
+}
+
+exports.getProducts = function (callback) {
+    db.product.find().toArray(callback);
+}
+
+exports.getProductsPaging = function (page, limit, callback) {
+    var perPage = limit;
+    db.product
+        .find()
+        .skip((perPage * page) - perPage)
+        .limit(perPage)
+        .toArray(callback);
+}

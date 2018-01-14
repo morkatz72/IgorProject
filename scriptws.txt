@@ -1,0 +1,134 @@
+
+-- sequences
+db.counters.insert({_id: "productId",seq: 0})	
+
+
+db.category.insert({id:1, name:"כשרות"})
+db.category.insert({id:2, name:"קפואים"})
+db.category.insert({id:3, name:"סגנון בריאות"})
+db.category.insert({id:4, name:"חטיפים"})
+db.category.insert({id:5, name:"דגים"})
+db.category.insert({id:6, name:"בשר"})
+db.category.insert({id:7, name:"שימורים"})
+db.category.insert({id:8, name:"חומרי ניקוי"})
+db.category.insert({id:9, name:"שתייה"})
+db.category.insert({id:10, name:"מוגז"})
+
+
+
+db.product.insert({
+	id: 1,
+	name: 'מילקי',
+	price: 5,
+	category: 1,
+	calories: 200,
+	createCountry : 'ישראל',
+	company: 'שטראוס'
+})
+
+
+db.product.insert({
+	id: 2,
+	name: 'פסטה',
+	price: 50,
+	category: 2,
+	calories: 200,
+	createCountry : 'ישראל',
+	company: 'שטראוס'
+})
+
+
+db.product.insert({
+	id: 3,
+	name: 'ששש',
+	price: 4,
+	category: 4,
+	calories: 4,
+	createCountry : 'ישראל',
+	company: 'שטראוס'
+})
+
+
+db.product.insert({
+	id: 4,
+	name: 'ששש',
+	price: 4,
+	category: 4,
+	calories: 4,
+	createCountry : 'ישראל',
+	company: 'שטראוס'
+})
+
+db.product.insert({
+	id: 5,
+	name: 'ששש',
+	price: 4,
+	category: 4,
+	calories: 4,
+	createCountry : 'ישראל',
+	company: 'שטראוס'
+})
+
+db.product.insert({
+	id: 6,
+	name: 'ששש',
+	price: 4,
+	category: 4,
+	calories: 4,
+	createCountry : 'ישראל',
+	company: 'שטראוס'
+})
+
+db.product.insert({
+	id: 7,
+	name: 'ששש',
+	price: 4,
+	category: 4,
+	calories: 4,
+	createCountry : 'ישראל',
+	company: 'שטראוס'
+})
+
+db.product.insert({
+	id: 8,
+	name: 'ששש',
+	price: 4,
+	category: 4,
+	calories: 4,
+	createCountry : 'ישראל',
+	company: 'שטראוס'
+})
+
+db.product.insert({
+	id: 9,
+	name: 'ששש',
+	price: 4,
+	category: 4,
+	calories: 4,
+	createCountry : 'ישראל',
+	company: 'שטראוס'
+})
+
+db.product.insert({
+	id: 10,
+	name: 'ששש',
+	price: 4,
+	category: 4,
+	calories: 4,
+	createCountry : 'ישראל',
+	company: 'שטראוס'
+})
+
+db.product.insert({
+	id: 11,
+	name: 'ששש',
+	price: 4,
+	category: 4,
+	calories: 4,
+	createCountry : 'ישראל',
+	company: 'שטראוס'
+})
+
+
+
+db.counters.findAndModify({query: { _id: "productId" },update: { $inc: { seq: 1 } },new: true,upsert: true})

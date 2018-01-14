@@ -1,0 +1,57 @@
+
+
+
+<div> <!--*ngIf="!userName()">-->
+  <div class="col-md-3 col-md-offset-1">
+    <h2>הרשמה לאתר</h2>
+    <h3>פרטים בסיסיים</h3>
+    <form name="form" (ngSubmit)="f.form.valid && onSubmit(f,$event)" #f="ngForm" novalidate>
+      <div class="form-group">
+        <label for="firstName">שם פרטי</label>
+        <input type="text" class="form-control" name="firstName" [(ngModel)]="model.firstName" #firstName="ngModel" required />
+      </div>
+      <div class="form-group">
+        <label for="lastName">שם משפחה</label>
+        <input type="text" class="form-control" name="lastName" [(ngModel)]="model.lastName" #lastName="ngModel" required />
+      </div>
+
+
+      <div class="form-group">
+        <label for="gender">מין</label>
+        <select name="gender" [(ngModel)]="model.gender" #gender="ngModel" class="form-control">
+          <option value="1" selected>זכר</option>
+          <option value="2">נקבה</option>
+        </select>
+      </div>
+
+      <h3>התחברות לאתר</h3>
+      <div class="form-group">
+        <label for="username">שם משתמש</label>
+        <input type="text" class="form-control" name="userName" [(ngModel)]="model.userName" #userName="ngModel" required />
+      </div>
+
+      <div class="form-group">
+        <label for="username">אימייל</label>
+        <input type="text" class="form-control" name="email" [(ngModel)]="model.email" #email="ngModel" required />
+      </div>
+
+      <div class="form-group">
+        <label for="password">סיסמא</label>
+        <input type="password" class="form-control" name="password" [(ngModel)]="model.password" #password="ngModel" required />
+      </div>
+
+      <div class="form-group">
+        <label for="repeatPassword">חזור על הסיסמא</label>
+        <input type="password" class="form-control" name="repeatPassword" [(ngModel)]="model.repeatPassword" #repeatPassword="ngModel" required />
+      </div>
+
+      <div *ngIf="model.repeatPassword != model.password">
+        <label>סיסמא לא תואמת</label>
+      </div>
+
+      <button [disabled]="loading" class="btn btn-primary">הירשם לאתר</button>
+
+    </form>
+  </div>
+</div>
+
