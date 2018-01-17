@@ -78,10 +78,18 @@ exports.getProductsPaging = function (req, res) {
 }
 
 exports.updateProduct = function (req, res) {
-    console.log("update part"); 
     var productToUpdate = req.body.data;
     var productId = req.body.data.id;
+    var oldPrice = req.body.data.oldPrice;
     console.log(req.body);
-    dbUtils.updateProduct(productId, productToUpdate, function (err, data){
+    dbUtils.updateProduct(productId, productToUpdate, function (err, data) {
+
+        // the price is changed
+        if (oldPrice != productToUpdate.price) {
+            dbUtils.addOldPriceToArray(productId, oldPrice, function (err, data) {
+                console.log("after 2 updated")
+                res.send(true);
+            })
+        }
     })
 }

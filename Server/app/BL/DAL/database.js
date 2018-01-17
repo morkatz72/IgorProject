@@ -101,12 +101,16 @@ exports.updateProduct = function (idProduct, productToUpdate, callback) {
     var options = {
         upsert: true
     };
-    db.product.update(filterQuery,
-        { $set: updateQuery },
-        options, function (err, result) {
-    })
+    db.product.update(filterQuery,{ $set: updateQuery },options, callback);
 }
 
-/*
-db.collection('user').update({ '_id': ObjectID(req.session.loggedIn) }, { $set: { image: filename } }, { w: 1 }, function (err, result) {
-    console.log(result);*/
+exports.addOldPriceToArray = function (idProduct, oldPrice, callback) {
+    filterQuery = { 'id': idProduct };
+    var newObj = oldPrice;
+    var currentTime = new Date();
+    query = {
+        "oldPriceArray": { "curr": newObj, "createdTime": currentTime }
+    }
+    db.product.update(filterQuery, { $push: query }, callback)
+}
+    
