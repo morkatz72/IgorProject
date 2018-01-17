@@ -104,7 +104,6 @@ exports.updateProduct = function (idProduct, productToUpdate, callback) {
     db.product.update(filterQuery,
         { $set: updateQuery },
         options, function (err, result) {
-            console.log(result)
     })
 }
 

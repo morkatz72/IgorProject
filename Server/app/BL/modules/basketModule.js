@@ -81,7 +81,7 @@ exports.updateProduct = function (req, res) {
     console.log("update part"); 
     var productToUpdate = req.body.data;
     var productId = req.body.data.id;
-
+    console.log(req.body);
     dbUtils.updateProduct(productId, productToUpdate, function (err, data){
     })
 }

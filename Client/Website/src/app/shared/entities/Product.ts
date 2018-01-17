@@ -7,6 +7,7 @@ export class Product {
   createCountry: string;
   company: string;
   categoryValue: string;
+  oldPrice: number;
 
   public static toProduct(data: any) {
     // let jsonData = JSON.parse(data); We don't need to parse this

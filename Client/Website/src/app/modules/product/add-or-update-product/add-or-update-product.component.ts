@@ -65,6 +65,7 @@ export class AddOrUpdateProductComponent implements OnInit {
         this.product = data[0];
         this.getCategoryById(this.product.category);
         console.log(this.product);
+        this.product.oldPrice = this.product.price;
       }
     );
 
@@ -92,8 +93,8 @@ export class AddOrUpdateProductComponent implements OnInit {
   }
 
   updateTheProduct() {
+    console.log(this.product);
     this.productService.updateProduct(this.product).subscribe((results) => {
-
     })
   }
 }
