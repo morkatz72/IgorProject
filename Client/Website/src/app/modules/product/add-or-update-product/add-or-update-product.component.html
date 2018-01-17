@@ -14,10 +14,6 @@
 
     <div class="form-group">
       <label for="categoryLabel">קטגוריה: </label>
-      <!--
-      <input type="text" class="form-control" name="category" [(ngModel)]="product.category" #category="ngModel" required />
-          -->
-
       <div>
         <select (change)="selectItem($event.target.value)" class="form-control">
           <option *ngFor="let currCategory of categories" value={{currCategory.id}}>{{currCategory.name}}</option>

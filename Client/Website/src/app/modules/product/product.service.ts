@@ -38,4 +38,8 @@ export class ProductService {
   updateProduct(data: Product): Observable<Response> {
     return this.httpService.http.post(url + '/updateProdct', { data }, this.httpService.getOptions()).map((data) => data.json());
   }
+
+  deleteProduct(data: Product): Observable<Response> {
+    return this.httpService.http.post(url + '/deleteProduct', { data }, this.httpService.getOptions()).map((data) => data.json());
+  }
 }

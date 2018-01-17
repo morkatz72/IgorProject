@@ -113,4 +113,9 @@ exports.addOldPriceToArray = function (idProduct, oldPrice, callback) {
     }
     db.product.update(filterQuery, { $push: query }, callback)
 }
-    
+
+exports.deleteProduct = function (idProduct, callback) {
+    filterQuery = { 'id': idProduct };
+
+    db.product.remove(filterQuery, callback);
+}

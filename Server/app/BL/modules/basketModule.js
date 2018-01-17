@@ -93,3 +93,12 @@ exports.updateProduct = function (req, res) {
         }
     })
 }
+
+exports.deleteProduct = function (req, res) {
+    var productToUpdate = req.body.data;
+    var productId = req.body.data.id;
+
+    dbUtils.deleteProduct(productId, function (err, data) {
+        res.send(true);
+    })
+}

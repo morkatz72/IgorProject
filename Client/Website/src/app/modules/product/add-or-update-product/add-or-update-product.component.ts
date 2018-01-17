@@ -16,7 +16,10 @@ import { ActivatedRoute } from '@angular/router';
 export class AddOrUpdateProductComponent implements OnInit {
   public product: Product;
   public categories: Category[];
-  public isProductForUpdate: boolean = false;
+  // 1 = add
+  // 2 = update
+  // 3 = delete
+  public actionCode: number = 1;
   select: EventEmitter<string>;
   public CategoryValue: any;
   public buttonText: string = "הוסף מוצר";
@@ -30,9 +33,14 @@ export class AddOrUpdateProductComponent implements OnInit {
     this.route.params.subscribe(params => {
       let id: number = +params['id'];
       if (id) {
-        this.buttonText = "עדכן מוצר";
         this.getProductDetails(id);
-        this.isProductForUpdate = true;
+        this.actionCode = 3;
+        if (this.actionCode == 2) {
+          this.buttonText = "עדכן מוצר";
+        }
+        else if (this.actionCode == 3) {
+          this.buttonText = "מחיקת מוצר";
+        }
       }
     })
   }
@@ -51,11 +59,14 @@ export class AddOrUpdateProductComponent implements OnInit {
   }
 
   onSubmit(f: any, event: Event) {
-    if (!this.isProductForUpdate) {
+    if (this.actionCode == 1) {
       this.saveProduct();
     }
-    else {
+    else if (this.actionCode == 2){
       this.updateTheProduct();
+    }
+    else if (this.actionCode == 3) {
+      this.deleteProduct();
     }
   }
 
@@ -87,7 +98,8 @@ export class AddOrUpdateProductComponent implements OnInit {
       this.product.price = +this.product.price;
       this.productService.saveProduct(this.product).subscribe((results) => {
         this.product.id = +results;
-        this.isProductForUpdate = true;
+        this.actionCode = 2;
+        this.buttonText = "עדכן מוצר";
         this.router.navigate(['/add-or-update-product/' + this.product.id]);
    })
   }
@@ -95,6 +107,11 @@ export class AddOrUpdateProductComponent implements OnInit {
   updateTheProduct() {
     console.log(this.product);
     this.productService.updateProduct(this.product).subscribe((results) => {
+    })
+  }
+
+  deleteProduct() {
+    this.productService.deleteProduct(this.product).subscribe((results) => {
     })
   }
 }

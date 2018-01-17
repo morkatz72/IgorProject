@@ -9,9 +9,11 @@
     app.post('/register', basketModule.register);
     app.post('/saveProduct', basketModule.saveProduct);
     app.post('/updateProdct', basketModule.updateProduct)
+    app.post('/deleteProduct', basketModule.deleteProduct)
     app.get('/getCategories', basketModule.getCategories);
     app.get('/getProductDetails/:id', basketModule.getProductDetails);
     app.get('/getCategory/:id', basketModule.getCategoryById);
     app.get('/getProducts', basketModule.getProducts);
     app.get('/getProductsPaging/:page/:limit', basketModule.getProductsPaging);
+
 }
