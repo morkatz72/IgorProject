@@ -55,7 +55,9 @@ exports.saveProduct = function (req, res) {
     dbUtils.getNextSequence("productId", function (err, nextSeqId) {
         dbUtils.getCurrentSeq("productId", function (err, currSeqId) {
             productDetails.id = currSeqId[0].seq;
-            dbUtils.saveProduct(productDetails, function (err, data) { res.send(true) });
+            dbUtils.saveProduct(productDetails, function (err, data) {
+                res.send(JSON.stringify(productDetails.id));
+            });
         })
     })
 }
