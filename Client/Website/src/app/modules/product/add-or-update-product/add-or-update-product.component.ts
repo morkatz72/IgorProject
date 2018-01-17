@@ -18,6 +18,8 @@ export class AddOrUpdateProductComponent implements OnInit {
   public categories: Category[];
   public isProductForUpdate: boolean = false;
   select: EventEmitter<string>;
+  public CategoryValue: any;
+  public buttonText: string = "הוסף מוצר";
   constructor(private productService: ProductService, private router: Router, private route: ActivatedRoute) { }
 
   ngOnInit() {
@@ -26,7 +28,12 @@ export class AddOrUpdateProductComponent implements OnInit {
     this.select = new EventEmitter();
 
     this.route.params.subscribe(params => {
-      let id : number = +params['id'];
+      let id: number = +params['id'];
+      if (id) {
+        this.buttonText = "עדכן מוצר";
+        this.getProductDetails(id);
+        this.isProductForUpdate = true;
+      }
     })
   }
 
@@ -52,8 +59,26 @@ export class AddOrUpdateProductComponent implements OnInit {
     }
   }
 
-  updateTheProduct() {
+  getProductDetails(productId: number): any {
+    this.productService.getProductDetails(productId).subscribe(
+      (data) => {
+        this.product = data[0];
+        this.getCategoryById(this.product.category);
+        console.log(this.product);
+      }
+    );
 
+    return this.product;
+  }
+
+  getCategoryById(categoryId: number): any {
+    this.productService.getCategory(categoryId).subscribe(
+      (data) => {
+        this.CategoryValue = data[0];
+        this.product.categoryValue = this.CategoryValue.name;
+        console.log(data);
+      }
+    );
   }
 
   saveProduct() {
@@ -64,5 +89,11 @@ export class AddOrUpdateProductComponent implements OnInit {
         this.isProductForUpdate = true;
         this.router.navigate(['/add-or-update-product/' + this.product.id]);
    })
+  }
+
+  updateTheProduct() {
+    this.productService.updateProduct(this.product).subscribe((results) => {
+
+    })
   }
 }

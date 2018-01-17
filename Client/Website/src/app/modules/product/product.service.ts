@@ -34,4 +34,8 @@ export class ProductService {
   getProductsPaging(page, limit): Observable<Response> {
     return this.httpService.http.get(url + '/getProductsPaging/' + page + '/' + limit).map((data) => data.json())
   }
+
+  updateProduct(data: Product): Observable<Response> {
+    return this.httpService.http.post(url + '/updateProdct', { data }, this.httpService.getOptions()).map((data) => data.json());
+  }
 }

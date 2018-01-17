@@ -87,3 +87,27 @@ exports.getProductsPaging = function (page, limit, callback) {
         .limit(perPage)
         .toArray(callback);
 }
+
+exports.updateProduct = function (idProduct, productToUpdate, callback) {
+    filterQuery = { 'id': idProduct }
+    updateQuery = {
+        "name": productToUpdate.name,
+        "price": productToUpdate.price,
+        "category": productToUpdate.category,
+        "calories": productToUpdate.calories,
+        "createCountry": productToUpdate.createCountry,
+        "company": productToUpdate.company
+    };
+    var options = {
+        upsert: true
+    };
+    db.product.update(filterQuery,
+        { $set: updateQuery },
+        options, function (err, result) {
+            console.log(result)
+    })
+}
+
+/*
+db.collection('user').update({ '_id': ObjectID(req.session.loggedIn) }, { $set: { image: filename } }, { w: 1 }, function (err, result) {
+    console.log(result);*/

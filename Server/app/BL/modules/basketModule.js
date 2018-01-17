@@ -76,3 +76,12 @@ exports.getProductsPaging = function (req, res) {
         res.send(data);
     })
 }
+
+exports.updateProduct = function (req, res) {
+    console.log("update part"); 
+    var productToUpdate = req.body.data;
+    var productId = req.body.data.id;
+
+    dbUtils.updateProduct(productId, productToUpdate, function (err, data){
+    })
+}
