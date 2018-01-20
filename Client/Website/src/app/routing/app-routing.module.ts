@@ -9,7 +9,7 @@ import { ProductDetailsComponent } from '../modules/product/product-details/prod
 import { AddOrUpdateProductComponent } from '../modules/product/add-or-update-product/add-or-update-product.component';
 import { DeleteProductComponent } from '../modules/product/delete-product/delete-product.component';
 import { ProductsListComponent } from '../modules/product/products-list/products-list.component';
-
+import { MainPageComponent } from '../components/main-page/main-page.component';
 
 export const routes: Routes = [
 
@@ -19,7 +19,8 @@ export const routes: Routes = [
   { path: 'add-or-update-product', component: AddOrUpdateProductComponent },
   { path: 'add-or-update-product/:id', component: AddOrUpdateProductComponent },
   { path: 'delete-product', component: DeleteProductComponent },
-  { path: 'product-list', component: ProductsListComponent }
+  { path: 'product-list', component: ProductsListComponent },
+  { path: 'main-page', component: MainPageComponent }
 ];
 
 @NgModule({

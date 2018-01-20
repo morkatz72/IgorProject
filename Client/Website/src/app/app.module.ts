@@ -6,10 +6,12 @@ import { AppComponent } from './app.component';
 import { AppRoutingModule } from './routing/app-routing.module'
 import { HttpModule } from '@angular/http';
 import { ProductModule } from './modules/product/product.module';
+import { MainPageComponent } from './components/main-page/main-page.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    MainPageComponent
   ],
   imports: [
     BrowserModule,
@@ -19,6 +21,7 @@ import { ProductModule } from './modules/product/product.module';
     ProductModule
   ],
   providers: [HttpService],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  exports: [MainPageComponent]
 })
 export class AppModule { }
