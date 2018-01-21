@@ -21,7 +21,7 @@
   </div>
 </div>
 
-<div *ngFor="let currProduct of productPaging">
+<div *ngFor="let currProduct of productPaging | category:currCategory">
   <div class="form-group">
     <label for="nameProductLabel">מזהה מוצר: </label>
     <label for="nameProductValue">{{currProduct.id}}</label>
@@ -59,7 +59,7 @@
   ------------------------------------------------------------------------------------
 </div>
 
-
+<!--
 <app-pagination (goPage)="goToPage($event)"
                 (goPrev)="onPrev()"
                 [pagesToShow]="5000"
@@ -69,4 +69,4 @@
                 (goNext)="onNext()">
 
 
-</app-pagination>
+</app-pagination>-->

@@ -5,8 +5,10 @@ import { Pipe, PipeTransform } from '@angular/core';
 })
 export class CategoryPipe implements PipeTransform {
 
-  transform(value: any, args?: any): any {
-    return null;
+  transform(items: any, args?: any): any {
+    if (!args || +args == 0) {
+      return items;
+    }
+    return items.filter(item => item.category == args);
   }
-
 }

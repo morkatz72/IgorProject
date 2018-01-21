@@ -17,9 +17,10 @@ export class ProductsListComponent implements OnInit {
   loading = false;
   total = 0;
   page = 1;
-  limit = 2;
+  limit = 10;
   public products: Product[];
-  public productPaging: Product[]
+  public productPaging: Product[];
+  public currCategory: number;
   public categories: Category[];
   select: EventEmitter<string>;
 
@@ -31,6 +32,7 @@ export class ProductsListComponent implements OnInit {
     this.getProducts();
     this.getProductsPaging();
     this.getCategories();
+    this.select = new EventEmitter();
   }
 
   getProducts(): any {
@@ -54,7 +56,8 @@ export class ProductsListComponent implements OnInit {
 
   selectItem(value) {
     this.select.emit(value);
-    console.log(value);
+    this.currCategory = value;
+    console.log(this.currCategory);
   }
 
   getCategories() {
