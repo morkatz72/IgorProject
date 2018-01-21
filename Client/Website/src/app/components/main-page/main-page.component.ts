@@ -21,7 +21,7 @@ export class MainPageComponent implements OnInit {
     document.getElementById("mySidebar").style.display = "none";
   }
 
-  addProduct() {
+  addProductView() {
     this.router.navigate(['/add-or-update-product']);
   }
   loginView() {
