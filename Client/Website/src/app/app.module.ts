@@ -7,6 +7,7 @@ import { AppRoutingModule } from './routing/app-routing.module'
 import { HttpModule } from '@angular/http';
 import { ProductModule } from './modules/product/product.module';
 import { MainPageComponent } from './components/main-page/main-page.component';
+import {  AdvertisingModule } from './modules/advertising/advertising.module'
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { MainPageComponent } from './components/main-page/main-page.component';
     AppRoutingModule,
     LoginModule,
     HttpModule,
-    ProductModule
+    ProductModule,
+    AdvertisingModule
   ],
   providers: [HttpService],
   bootstrap: [AppComponent],
