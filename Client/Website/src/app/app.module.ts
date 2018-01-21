@@ -8,8 +8,9 @@ import { HttpModule } from '@angular/http';
 import { ProductModule } from './modules/product/product.module';
 import { MainPageComponent } from './components/main-page/main-page.component';
 import { AdvertisingModule } from './modules/advertising/advertising.module';
-import { MainService} from './components/main.service'
- 
+import { MainService } from './components/main.service';
+import { BasketModule} from './modules/basket/basket.module'
+  
 @NgModule({
   declarations: [
     AppComponent,
@@ -21,7 +22,8 @@ import { MainService} from './components/main.service'
     LoginModule,
     HttpModule,
     ProductModule,
-    AdvertisingModule
+    AdvertisingModule,
+    BasketModule
   ],
   providers: [HttpService, MainService],
   bootstrap: [AppComponent],

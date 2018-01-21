@@ -34,7 +34,7 @@ export class AddOrUpdateProductComponent implements OnInit {
       let id: number = +params['id'];
       if (id) {
         this.getProductDetails(id);
-        this.actionCode = 3;
+        this.actionCode = 2;
         if (this.actionCode == 2) {
           this.buttonText = "עדכן מוצר";
         }
