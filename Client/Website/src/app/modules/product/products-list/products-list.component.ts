@@ -1,6 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { ProductService } from '../product.service';
 import { Product } from '../../../shared/entities/Product';
+import { Category } from '../../../shared/entities/Category';
+import { EventEmitter } from '@angular/core';
+import { Pipe, PipeTransform } from '@angular/core';
+
+
 
 @Component({
   selector: 'app-products-list',
@@ -14,6 +19,9 @@ export class ProductsListComponent implements OnInit {
   limit = 2;
   public products: Product[];
   public productPaging: Product[]
+  public categories: Category[];
+  select: EventEmitter<string>;
+
 
 
   constructor(private productService:ProductService) { }
@@ -21,6 +29,7 @@ export class ProductsListComponent implements OnInit {
   ngOnInit() {
     this.getProducts();
     this.getProductsPaging();
+    this.getCategories();
   }
 
   getProducts(): any {
@@ -42,6 +51,17 @@ export class ProductsListComponent implements OnInit {
     });
   }
 
+  selectItem(value) {
+    this.select.emit(value);
+    console.log(value);
+  }
+
+  getCategories() {
+    this.productService.getCategories().subscribe((results) => {
+      this.categories = Category.toCategories(results);
+      console.log(this.categories);
+    })
+  }
 
   goToPage(n: number): void {
     this.page = n;

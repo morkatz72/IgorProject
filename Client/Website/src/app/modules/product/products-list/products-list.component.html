@@ -2,6 +2,25 @@
   products-list works!
 </p>
 
+<div class="col-md-12">
+  <div class="col-md-2">
+    <h3>
+      פלטר לפי:
+    </h3>
+    <div class="form-group">
+      <label for="categoryLabel">קטגוריה: </label>
+      <div>
+        <select (change)="selectItem($event.target.value)" class="form-control">
+          <option *ngFor="let currCategory of categories" value={{currCategory.id}}>{{currCategory.name}}</option>
+        </select>
+      </div>
+    </div>
+    <div>
+      לפי מחיר
+    </div>
+  </div>
+</div>
+
 <div *ngFor="let currProduct of productPaging">
   <div class="form-group">
     <label for="nameProductLabel">מזהה מוצר: </label>

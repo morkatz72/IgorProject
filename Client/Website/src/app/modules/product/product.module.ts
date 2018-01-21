@@ -8,6 +8,8 @@ import { FormsModule } from '@angular/forms';
 import { ProductsListComponent } from './products-list/products-list.component'
 import { PagerService } from './products-list/pager.service';
 import { PaginationComponent } from './pagination/pagination.component';
+import { Pipe, PipeTransform } from '@angular/core'; 
+
 
 
 @NgModule({
