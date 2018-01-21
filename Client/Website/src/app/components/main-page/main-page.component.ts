@@ -20,8 +20,6 @@ export class MainPageComponent implements OnInit {
   w3_close() {
     document.getElementById("mySidebar").style.display = "none";
   }
-  //aaa
-
   addProductView() {
     this.router.navigate(['/add-or-update-product']);
   }
