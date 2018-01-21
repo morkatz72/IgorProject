@@ -29,4 +29,8 @@ export class MainPageComponent implements OnInit {
   registerView() {
     this.router.navigate(['/register'])
   }
+
+  productListView() {
+    this.router.navigate(['/product-list'])
+  }
 }

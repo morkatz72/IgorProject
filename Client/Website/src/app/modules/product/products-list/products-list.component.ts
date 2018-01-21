@@ -11,7 +11,7 @@ export class ProductsListComponent implements OnInit {
   loading = false;
   total = 0;
   page = 1;
-  limit = 5;
+  limit = 2;
   public products: Product[];
   public productPaging: Product[]
 
