@@ -8,7 +8,8 @@ import { FormsModule } from '@angular/forms';
 import { ProductsListComponent } from './products-list/products-list.component'
 import { PagerService } from './products-list/pager.service';
 import { PaginationComponent } from './pagination/pagination.component';
-import { Pipe, PipeTransform } from '@angular/core'; 
+import { Pipe, PipeTransform } from '@angular/core';
+import { CategoryPipe } from './pipes/category-pipe/category.pipe'; 
 
 
 
@@ -18,7 +19,8 @@ import { Pipe, PipeTransform } from '@angular/core';
     AddOrUpdateProductComponent,
     DeleteProductComponent,
     ProductsListComponent,
-    PaginationComponent],
+    PaginationComponent,
+    CategoryPipe],
   imports: [
     CommonModule,
     FormsModule

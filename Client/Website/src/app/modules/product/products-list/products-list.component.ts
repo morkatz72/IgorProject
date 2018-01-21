@@ -4,7 +4,8 @@ import { Product } from '../../../shared/entities/Product';
 import { Category } from '../../../shared/entities/Category';
 import { EventEmitter } from '@angular/core';
 import { Pipe, PipeTransform } from '@angular/core';
-
+import { CategoryPipe} from '../pipes/category-pipe/category.pipe';
+ 
 
 
 @Component({
