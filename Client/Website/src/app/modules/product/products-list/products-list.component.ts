@@ -18,6 +18,7 @@ export class ProductsListComponent implements OnInit {
   total = 0;
   page = 1;
   limit = 10;
+  public name:string;
   public products: Product[];
   public productPaging: Product[];
   public currCategory: number;
@@ -33,6 +34,7 @@ export class ProductsListComponent implements OnInit {
     this.getProductsPaging();
     this.getCategories();
     this.select = new EventEmitter();
+    this.name = "";
   }
 
   getProducts(): any {

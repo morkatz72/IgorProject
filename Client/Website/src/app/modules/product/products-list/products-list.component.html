@@ -15,13 +15,14 @@
         </select>
       </div>
     </div>
-    <div>
-      לפי מחיר
+    <div class="form-group">
+      <label for="priceLabel">שם: </label>
+      <input type="text" class="form-control" name="name" [(ngModel)]="name"/>
     </div>
   </div>
 </div>
 
-<div *ngFor="let currProduct of productPaging | category:currCategory">
+<div *ngFor="let currProduct of productPaging | category:currCategory | name:name">
   <div class="form-group">
     <label for="nameProductLabel">מזהה מוצר: </label>
     <label for="nameProductValue">{{currProduct.id}}</label>
