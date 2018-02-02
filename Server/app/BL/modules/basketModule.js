@@ -107,5 +107,7 @@ exports.addCommentToProduct = function (req, res) {
     var productId = req.body.data.prodctId;
     var comment = req.body.data.comment;
 
-    console.log(productId + " " + comment);
+    dbUtils.addCommentToProduct(productId, comment , function (err, data) {
+        res.send(true);
+    })
 }

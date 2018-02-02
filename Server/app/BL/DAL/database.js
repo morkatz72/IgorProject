@@ -105,7 +105,7 @@ exports.updateProduct = function (idProduct, productToUpdate, callback) {
 }
 
 exports.addOldPriceToArray = function (idProduct, oldPrice, callback) {
-    filterQuery = { 'id': idProduct };
+    var filterQuery = { 'id': idProduct };
     var newObj = oldPrice;
     var currentTime = new Date();
     query = {
@@ -115,7 +115,17 @@ exports.addOldPriceToArray = function (idProduct, oldPrice, callback) {
 }
 
 exports.deleteProduct = function (idProduct, callback) {
-    filterQuery = { 'id': idProduct };
+    var filterQuery = { 'id': idProduct };
 
     db.product.remove(filterQuery, callback);
+}
+
+exports.addCommentToProduct = function (productId, comment, callback) {
+    console.log(productId + comment);
+
+    var filterQuery = { 'id': productId };
+    query = {
+        "comments": comment
+    }
+    db.product.update(filterQuery, { $push: query }, callback);
 }
