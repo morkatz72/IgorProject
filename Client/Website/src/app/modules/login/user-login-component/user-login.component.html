@@ -1,5 +1,5 @@
 
-<div> <!--ngIf="!userName()">-->
+<div *ngIf="!userName()">
   <div class="col-md-3 col-md-offset-1">
     <form (ngSubmit)="onSubmit(f,$event)" #f="ngForm">
       <h1>התחברות לאתר</h1>

@@ -11,6 +11,7 @@ import { DeleteProductComponent } from '../modules/product/delete-product/delete
 import { ProductsListComponent } from '../modules/product/products-list/products-list.component';
 import { MainPageComponent } from '../components/main-page/main-page.component';
 import { AdvertisementComponent} from '../modules/advertising/advertisement/advertisement.component'
+import { AppComponent} from '../app.component'
 
 export const routes: Routes = [
 

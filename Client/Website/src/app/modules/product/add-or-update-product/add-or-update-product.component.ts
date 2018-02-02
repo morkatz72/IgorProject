@@ -114,4 +114,8 @@ export class AddOrUpdateProductComponent implements OnInit {
     this.productService.deleteProduct(this.product).subscribe((results) => {
     })
   }
+
+  userName() {
+    return localStorage.getItem('currentUser');
+  }
 }

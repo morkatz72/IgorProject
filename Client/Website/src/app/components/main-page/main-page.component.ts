@@ -33,4 +33,12 @@ export class MainPageComponent implements OnInit {
   productListView() {
     this.router.navigate(['/product-list'])
   }
+
+  userName() {
+    return localStorage.getItem('currentUser');
+  }
+
+  logOff() {
+    return localStorage.removeItem('currentUser');
+  }
 }

@@ -5,10 +5,14 @@
   <div class="w3-bar-item w3-button" (click)="loginView()">התחברות</div>
   <div class="w3-bar-item w3-button" (click)="registerView()">הרשמה</div>
   <div class="w3-bar-item w3-button" (click)="productListView()">רשימת מוצרים</div>
-  <div class="w3-bar-item w3-button">התנתקות</div>
+  <div class="w3-bar-item w3-button" (click)="logOff()">התנתקות</div>
 </div>
 
 <!-- Page Content -->
 <div class="w3-teal">
   <button class="w3-button w3-teal w3-xlarge" (click)="w3_open()">☰</button>
+</div>
+
+<div *ngIf="userName()">
+  ברוך הבא {{userName()}}
 </div>

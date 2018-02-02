@@ -1,4 +1,5 @@
-<div class="col-md-4 col-md-offset-1">
+
+<div class="col-md-4 col-md-offset-1" *ngIf="userName()">
   <h2>הוספת מוצר חדש</h2>
   <form name="form" (ngSubmit)="f.form.valid && onSubmit(f,$event)" #f="ngForm" novalidate>
     <div class="form-group">

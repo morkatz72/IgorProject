@@ -37,7 +37,8 @@ export class UserLoginComponent implements OnInit {
           this.isCurrentDetails = "התחבר למשתמש";
           this.errorConnecting = false;
           alert('התחברת לאתר בהצלחה');
-          this.router.navigate(['/main-page']);
+          localStorage.setItem('currentUser', this.model.userName);
+          this.router.navigate(['/']);
         }
         else {
           this.isCurrentDetails = "פרטי המשתמש שגויים";
