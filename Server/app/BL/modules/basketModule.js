@@ -102,3 +102,10 @@ exports.deleteProduct = function (req, res) {
         res.send(true);
     })
 }
+
+exports.addCommentToProduct = function (req, res) {
+    var productId = req.body.data.prodctId;
+    var comment = req.body.data.comment;
+
+    console.log(productId + " " + comment);
+}

@@ -5,6 +5,8 @@ import { url } from '../../shared/Constants';
 import { HttpHeaders } from '@angular/common/http';
 import { Headers, Http, Response, RequestOptions, RequestOptionsArgs } from '@angular/http';
 import { Product } from '../../shared/entities/Product';
+import { CommentToProduct } from '../../shared/entities/comment-to-prodct';
+
 
 @Injectable()
 export class ProductService {
@@ -41,5 +43,9 @@ export class ProductService {
 
   deleteProduct(data: Product): Observable<Response> {
     return this.httpService.http.post(url + '/deleteProduct', { data }, this.httpService.getOptions()).map((data) => data.json());
+  }
+
+  addCommentToProduct(data: CommentToProduct): Observable<Response> {
+    return this.httpService.http.post(url + '/addCommentToProduct', { data }, this.httpService.getOptions()).map((data) => data.json());
   }
 }
