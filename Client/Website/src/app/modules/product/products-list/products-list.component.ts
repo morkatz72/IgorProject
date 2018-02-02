@@ -83,4 +83,8 @@ export class ProductsListComponent implements OnInit {
     this.page--;
     this.getProductsPaging();
   }
+
+  userName() {
+    return localStorage.getItem('currentUser');
+  }
 }

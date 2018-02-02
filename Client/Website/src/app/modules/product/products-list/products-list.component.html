@@ -1,7 +1,5 @@
-<p>
-  products-list works!
-</p>
 
+<div *ngIf="userName()">
 <div class="col-md-12">
   <div class="col-md-2">
     <h3>
@@ -59,8 +57,7 @@
   </div>
   ------------------------------------------------------------------------------------
 </div>
-
-<!--
+  <!--
 <app-pagination (goPage)="goToPage($event)"
                 (goPrev)="onPrev()"
                 [pagesToShow]="5000"
@@ -71,3 +68,5 @@
 
 
 </app-pagination>-->
+</div>
+
