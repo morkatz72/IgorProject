@@ -105,7 +105,7 @@ export class AddOrUpdateProductComponent implements OnInit {
   }
 
   updateTheProduct() {
-    console.log(this.product);
+    this.product.price = +this.product.price;
     this.productService.updateProduct(this.product).subscribe((results) => {
     })
   }
