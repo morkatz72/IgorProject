@@ -29,6 +29,14 @@ export class BasketPageComponent implements OnInit {
     return totalPrice;
   }
 
+  removeItem(index: number) {
+    this.basketItems.splice(index, 1);
+  }
+
+  emptyBasket() {
+    this.basketItems = [];
+  }
+
   constructor() { }
 
   ngOnInit() {
