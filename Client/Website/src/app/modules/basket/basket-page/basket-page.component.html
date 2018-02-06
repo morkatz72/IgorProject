@@ -1,3 +1,115 @@
-<p>
-  basket-page works!
-</p>
+<div class="container">
+  <div class="row">
+    <div class="col-md-9">
+      <div class="row">
+        <div class="col-md-2 col-md-offset-2">
+          שם המוצר
+        </div>
+        <div class="col-md-2">
+          מחיר ליחידה
+
+        </div>
+        <div class="col-md-2">
+          כמות
+        </div>
+        <div class="col-md-2">
+          מחיר מלא
+        </div>
+        <div class="col-md-2">
+          מחיקה
+        </div>
+      </div>
+      <div class="row" *ngFor="let basketItem of basketItems">
+        <div class="col-md-2">
+          <img src="{{ basketItem.image }}" width="80" />
+        </div>
+        <div class="col-md-2">
+          {{ basketItem.name }}
+        </div>
+        <div class="col-md-2">
+          {{ basketItem.price | number:'1.2-2' | currency:'ILS':'symbol' }}
+        </div>
+        <div class="col-md-2">
+          <input type="number" name="quantity" min="1" max="5" [(ngModel)]="basketItem.amount">
+        </div>
+        <div class="col-md-2">
+          {{ basketItem.price*basketItem.amount | number:'1.2-2' | currency:'ILS':'symbol' }}
+        </div>
+        <div class="col-md-2">
+          <button type="button" class="btn btn-danger">
+            <i class="fa fa-trash-o"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-3">
+      <div class="final-price">
+        {{ getTotalPrice() | number:'1.2-2' | currency:'ILS':'symbol' }}
+      </div>
+      <div>
+        <img src="https://www.shufersal.co.il/umbracoContent/images/logo_mobile.png" width="200" />
+      </div>
+      <div>
+        גולדה מאיר, תחנה מרכזית חדשה ראשון לציון
+      </div>
+      <div>
+        <div>
+          כתובת: גולדה מאיר 1, ראשון לציון
+        </div>
+        <div>
+          טלפון: 03-952-2940
+        </div>
+        <div>
+          שעות פתיחה:
+          <table>
+            <tr>
+              <td>יום ראשון</td>
+              <td>8:00–22:00</td>
+            </tr>
+            <tr>
+              <td>יום שני</td>
+              <td>8:00–22:00</td>
+            </tr>
+            <tr>
+              <td>יום שלישי</td>
+              <td>8:00–22:00</td>
+            </tr>
+            <tr>
+              <td>יום רביעי</td>
+              <td>8:00–22:00</td>
+            </tr>
+            <tr>
+              <td>יום חמישי</td>
+              <td>8:00–22:00</td>
+            </tr>
+            <tr>
+              <td>יום שישי</td>
+              <td>18:30–22:00</td>
+            </tr>
+            <tr>
+              <td>יום שבת</td>
+              <td>7:00–14:00</td>
+            </tr>
+          </table>
+        </div>
+      </div>
+      <div>
+        <iframe width="250"
+                height="250"
+                frameborder="0" style="border:0"
+                src="https://www.google.com/maps/embed/v1/place?key=AIzaSyAwFHY0_B1pA_GbY6AwXbWADDT1IxGfEzk&q=Space+Needle,Seattle+WA" allowfullscreen></iframe>
+        <div>
+        </div>
+
+        <button type="button" class="btn btn-primary" style="float:left"><i class="fa fa-print"></i></button>
+        <button type="button" class="btn btn-danger" style="float:right">
+          <i class="fa fa-trash-o"></i>
+        </button>
+        <button type="button" class="btn btn-warning" style="float:left">
+          <i class="fa fa-save"></i>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
