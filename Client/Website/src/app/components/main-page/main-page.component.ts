@@ -34,6 +34,10 @@ export class MainPageComponent implements OnInit {
     this.router.navigate(['/product-list'])
   }
 
+  basketView() {
+    this.router.navigate(['/basket'])
+  }
+
   userName() {
     return localStorage.getItem('currentUser');
   }

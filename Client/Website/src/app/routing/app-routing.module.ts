@@ -1,3 +1,5 @@
+/// <reference path="../modules/basket/basket-page/basket-page.component.ts" />
+/// <reference path="../modules/basket/basket-page/basket-page.component.ts" />
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule, Routes } from '@angular/router';
@@ -11,7 +13,8 @@ import { DeleteProductComponent } from '../modules/product/delete-product/delete
 import { ProductsListComponent } from '../modules/product/products-list/products-list.component';
 import { MainPageComponent } from '../components/main-page/main-page.component';
 import { AdvertisementComponent} from '../modules/advertising/advertisement/advertisement.component'
-import { AppComponent} from '../app.component'
+import { AppComponent } from '../app.component'
+import { BasketPageComponent } from '../modules/basket/basket-page/basket-page.component'
 
 export const routes: Routes = [
 
@@ -23,7 +26,8 @@ export const routes: Routes = [
   { path: 'delete-product', component: DeleteProductComponent },
   { path: 'product-list', component: ProductsListComponent },
   { path: 'main-page', component: MainPageComponent },
-  { path: 'advertisement' , component: AdvertisementComponent}
+  { path: 'advertisement', component: AdvertisementComponent },
+  { path: 'basket', component: BasketPageComponent }
 ];
 
 @NgModule({
