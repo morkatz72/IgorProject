@@ -16,5 +16,5 @@
     app.get('/getCategory/:id', basketModule.getCategoryById);
     app.get('/getProducts', basketModule.getProducts);
     app.get('/getProductsPaging/:page/:limit', basketModule.getProductsPaging);
-
+    app.get('/getCheapestProductByCategory/:id', basketModule.getCheapestProductByCategory);
 }
