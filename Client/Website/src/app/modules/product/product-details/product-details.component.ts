@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { ProductService } from '../product.service';
 import { ActivatedRoute } from '@angular/router';
 import { FormGroup } from '@angular/forms';
@@ -20,6 +20,7 @@ export class ProductDetailsComponent implements OnInit {
     public CategoryValue: any;
     public comm: string;
     public commentToSave: CommentToProduct;
+    @Input() productIdToShow: number;
 
     ngOnInit() {
         this.comm = "";
