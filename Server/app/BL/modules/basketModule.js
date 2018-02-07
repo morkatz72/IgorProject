@@ -111,3 +111,11 @@ exports.addCommentToProduct = function (req, res) {
         res.send(true);
     })
 }
+
+
+exports.getCheapestProductByCategory = function (req, res) {
+    var id = req.params.id;
+    dbUtils.getCheapestProductByCategory(id, function(err, data) {
+        res.send(data);
+    })
+}
