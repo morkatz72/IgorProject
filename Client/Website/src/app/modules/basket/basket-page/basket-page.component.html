@@ -27,13 +27,13 @@
           {{ basketItem.name }}
         </div>
         <div class="col-md-2">
-          {{ basketItem.price | number:'1.2-2' | currency:'ILS':'symbol' }}
+          {{ basketItem.price | currency:'ILS':'symbol':'1.2-2' }}
         </div>
         <div class="col-md-2">
-          <input type="number" name="quantity" min="1" max="5" [(ngModel)]="basketItem.amount">
+          <input type="number" name="quantity" min="1" max="5" [(ngModel)]="basketItem.amount" (input)="setItemAmount(basketItem.id, basketItem.amount)">
         </div>
         <div class="col-md-2">
-          {{ basketItem.price*basketItem.amount | number:'1.2-2' | currency:'ILS':'symbol' }}
+          {{ basketItem.price*basketItem.amount | currency:'ILS':'symbol':'1.2-2' }}
         </div>
         <div class="col-md-2">
           <button type="button" class="btn btn-danger" (click)="removeItem(i)">
@@ -45,7 +45,7 @@
 
     <div class="col-md-3">
       <div class="final-price">
-        {{ getTotalPrice() | number:'1.2-2' | currency:'ILS':'symbol' }}
+        {{ getTotalPrice() | currency:'ILS':'symbol':'1.2-2' }}
       </div>
       <div>
         <img src="https://www.shufersal.co.il/umbracoContent/images/logo_mobile.png" width="200" />
