@@ -12,6 +12,7 @@ import { Pipe, PipeTransform } from '@angular/core';
 import { CategoryPipe } from './pipes/category-pipe/category.pipe';
 import { PricePipe } from './pipes/price-pipe/price.pipe';
 import { NamePipe } from './pipes/name-pipe/name.pipe';
+import { CheapestProdctByCategoryComponent } from './cheapest-prodct-by-category/cheapest-prodct-by-category.component';
 
 
 
@@ -24,7 +25,8 @@ import { NamePipe } from './pipes/name-pipe/name.pipe';
     PaginationComponent,
     CategoryPipe,
     PricePipe,
-    NamePipe],
+    NamePipe,
+    CheapestProdctByCategoryComponent],
   imports: [
     CommonModule,
     FormsModule

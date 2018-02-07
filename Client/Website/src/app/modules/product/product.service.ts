@@ -48,4 +48,8 @@ export class ProductService {
   addCommentToProduct(data: CommentToProduct): Observable<Response> {
     return this.httpService.http.post(url + '/addCommentToProduct', { data }, this.httpService.getOptions()).map((data) => data.json());
   }
+
+  getCheapestProductByCategory(data: number): Observable<Response> {
+    return this.httpService.http.get(url + '/getCheapestProductByCategory/' + data).map((data) => data.json());
+  }
 }
