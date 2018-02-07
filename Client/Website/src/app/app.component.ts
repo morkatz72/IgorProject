@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 
 @Component({
   selector: 'app-root',
@@ -8,7 +8,14 @@ import { Component, OnInit } from '@angular/core';
 export class AppComponent implements OnInit {
   title = 'app';
 
+  @ViewChild('myCanvas') myCanvas: ElementRef;
+  public context: CanvasRenderingContext2D;
+
   ngOnInit() {
     localStorage.setItem("basket", "[]");
+  }
+
+  ngAfterViewInit(): void {
+    this.context = (<HTMLCanvasElement>this.myCanvas.nativeElement).getContext('2d');
   }
 }
