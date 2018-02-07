@@ -17,6 +17,7 @@ export class CheapestProdctByCategoryComponent implements OnInit {
   public categories: Category[];
   public category: number;
   select: EventEmitter<string>;
+  public productId : any;
 
   ngOnInit() {
     this.select = new EventEmitter();
@@ -32,13 +33,17 @@ export class CheapestProdctByCategoryComponent implements OnInit {
 
   selectItem(value) {
     this.select.emit(value);
-    console.log(value);
     this.category = +value;
   }
 
   chooseTheCheapestProduct() {
     this.productService.getCheapestProductByCategory(this.category).subscribe(
       (data) => {
+        console.log(data);
+        if (typeof data[0] !== 'undefined' && data[0] !== null) {
+          console.log(data[0]._productId);
+          this.productId = data;
+        }
       }
     );
   }
