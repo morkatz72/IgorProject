@@ -89,8 +89,8 @@ exports.getProductsPaging = function (page, limit, callback) {
 }
 
 exports.updateProduct = function (idProduct, productToUpdate, callback) {
-    filterQuery = { 'id': idProduct }
-    updateQuery = {
+    var filterQuery = { 'id': idProduct }
+    var updateQuery = {
         "name": productToUpdate.name,
         "price": productToUpdate.price,
         "category": productToUpdate.category,
@@ -128,4 +128,38 @@ exports.addCommentToProduct = function (productId, comment, callback) {
         "comments": comment
     }
     db.product.update(filterQuery, { $push: query }, callback);
+}
+
+exports.getCheapestProductByCategory = function(categoryId, callback) {
+
+    db.product.aggregate([
+            { '$sort': { 'price': 1 } },
+            {
+                "$group": {
+                    "_id": "$category",
+                    "value": { $min: "$price" },
+                    "_productId": { $first: '$id' }
+                }
+            },
+            { "$match": { "_id": categoryId } }
+        ]).toArray(callback);
+
+    /*
+     db.product.aggregate([
+            { '$sort': { 'price': 1 } },
+            {
+                "$group": {
+                    "_id": "$category",
+                    "value": { $min: "$price" },
+                    "_productId": { $first: '$id' }
+                }
+            },
+            { "$match": { "_id": categoryId } }
+     ], function (lookupErr, lookupData) {
+        if (lookupErr) {
+            res.send(lookupErr);
+            return;
+        }
+        console.log(lookupData);
+    })*/
 }

@@ -39,6 +39,7 @@ export class CheapestProdctByCategoryComponent implements OnInit {
   chooseTheCheapestProduct() {
     this.productService.getCheapestProductByCategory(this.category).subscribe(
       (data) => {
+        console.log(data);
       }
     );
   }

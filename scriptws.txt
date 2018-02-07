@@ -2,7 +2,7 @@
 -- sequences
 db.counters.insert({_id: "productId",seq: 0})	
 
-
+db.category.insert({id:0, name:"אנא בחר ערך"})
 db.category.insert({id:1, name:"כשרות"})
 db.category.insert({id:2, name:"קפואים"})
 db.category.insert({id:3, name:"סגנון בריאות"})
@@ -15,6 +15,28 @@ db.category.insert({id:9, name:"שתייה"})
 db.category.insert({id:10, name:"מוגז"})
 
 
+
+db.product.aggregate([
+	{ '$sort': { 'price': 1 }},
+	{ "$group" : {
+		"_id" : "$category",
+		"value": { $min: "$price" },
+		"_productId" : { $first: '$id' }
+	}},
+	{ "$match" : { "_id" :1 }}
+])
+
+db.product.aggregate([
+            { '$sort': { 'price': 1 } },
+            {
+                "$group": {
+                    "_id": "$category",
+                    "value": { $min: "$price" },
+                    "_productId": { $first: '$id' }
+                }
+            },
+            { "$match": { "_id": 1 } }
+        ])
 
 db.product.insert({
 	id: 1,
@@ -41,8 +63,8 @@ db.product.insert({
 db.product.insert({
 	id: 3,
 	name: 'ששש',
-	price: 4,
-	category: 4,
+	price: 1,
+	category: 2,
 	calories: 4,
 	createCountry : 'ישראל',
 	company: 'שטראוס'
@@ -52,8 +74,8 @@ db.product.insert({
 db.product.insert({
 	id: 4,
 	name: 'ששש',
-	price: 4,
-	category: 4,
+	price: 10,
+	category: 2,
 	calories: 4,
 	createCountry : 'ישראל',
 	company: 'שטראוס'
@@ -62,7 +84,7 @@ db.product.insert({
 db.product.insert({
 	id: 5,
 	name: 'ששש',
-	price: 4,
+	price: 7,
 	category: 4,
 	calories: 4,
 	createCountry : 'ישראל',
@@ -73,7 +95,7 @@ db.product.insert({
 	id: 6,
 	name: 'ששש',
 	price: 4,
-	category: 4,
+	category: 2,
 	calories: 4,
 	createCountry : 'ישראל',
 	company: 'שטראוס'
@@ -82,7 +104,7 @@ db.product.insert({
 db.product.insert({
 	id: 7,
 	name: 'ששש',
-	price: 4,
+	price: 11,
 	category: 4,
 	calories: 4,
 	createCountry : 'ישראל',
@@ -102,7 +124,7 @@ db.product.insert({
 db.product.insert({
 	id: 9,
 	name: 'ששש',
-	price: 4,
+	price: 3,
 	category: 4,
 	calories: 4,
 	createCountry : 'ישראל',
@@ -112,7 +134,7 @@ db.product.insert({
 db.product.insert({
 	id: 10,
 	name: 'ששש',
-	price: 4,
+	price: 2,
 	category: 4,
 	calories: 4,
 	createCountry : 'ישראל',
@@ -122,7 +144,7 @@ db.product.insert({
 db.product.insert({
 	id: 11,
 	name: 'ששש',
-	price: 4,
+	price: 1,
 	category: 4,
 	calories: 4,
 	createCountry : 'ישראל',
