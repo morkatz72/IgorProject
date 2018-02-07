@@ -116,7 +116,6 @@ exports.addCommentToProduct = function (req, res) {
 exports.getCheapestProductByCategory = function (req, res) {
     var id = req.params.id;
     dbUtils.getCheapestProductByCategory(id, function(err, data) {
-        //res.send(true);
-        console.log(data);
+        res.send(data);
     })
 }

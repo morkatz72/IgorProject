@@ -131,7 +131,7 @@ exports.addCommentToProduct = function (productId, comment, callback) {
 }
 
 exports.getCheapestProductByCategory = function(categoryId, callback) {
-
+    console.log(categoryId);
     db.product.aggregate([
             { '$sort': { 'price': 1 } },
             {
@@ -141,25 +141,6 @@ exports.getCheapestProductByCategory = function(categoryId, callback) {
                     "_productId": { $first: '$id' }
                 }
             },
-            { "$match": { "_id": categoryId } }
+            { "$match": { "_id": +categoryId } }
         ]).toArray(callback);
-
-    /*
-     db.product.aggregate([
-            { '$sort': { 'price': 1 } },
-            {
-                "$group": {
-                    "_id": "$category",
-                    "value": { $min: "$price" },
-                    "_productId": { $first: '$id' }
-                }
-            },
-            { "$match": { "_id": categoryId } }
-     ], function (lookupErr, lookupData) {
-        if (lookupErr) {
-            res.send(lookupErr);
-            return;
-        }
-        console.log(lookupData);
-    })*/
 }
