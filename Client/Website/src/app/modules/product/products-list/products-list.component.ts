@@ -5,14 +5,14 @@ import { Category } from '../../../shared/entities/Category';
 import { EventEmitter } from '@angular/core';
 import { Pipe, PipeTransform } from '@angular/core';
 import { CategoryPipe} from '../pipes/category-pipe/category.pipe';
- 
-
+import { Router } from "@angular/router";
 
 @Component({
   selector: 'app-products-list',
   templateUrl: './products-list.component.html',
   styleUrls: ['./products-list.component.css']
 })
+
 export class ProductsListComponent implements OnInit {
   loading = false;
   total = 0;
@@ -27,7 +27,7 @@ export class ProductsListComponent implements OnInit {
 
 
 
-  constructor(private productService:ProductService) { }
+  constructor(private productService: ProductService, private router: Router) { }
 
   ngOnInit() {
     this.getProducts();
@@ -86,5 +86,9 @@ export class ProductsListComponent implements OnInit {
 
   userName() {
     return localStorage.getItem('currentUser');
+  }
+
+  showDetails(productID: number) {
+      this.router.navigate(['/product-details/' + productID]);
   }
 }
