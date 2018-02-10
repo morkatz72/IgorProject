@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 declare var jQuery: any;
 import { Product } from '../../../shared/entities/Product';
 import { ProductService } from '../product.service';
+import { ActivatedRoute } from '@angular/router';
 
 
 
@@ -19,11 +20,16 @@ export class PriceHistoryChartComponent implements OnInit {
 
   public product: any;
 
-  constructor(private productService: ProductService) {
+  constructor(private productService: ProductService, private route: ActivatedRoute) {
   }
 
   ngOnInit() {
-    this.getProductDetails(1);
+    this.route.params.subscribe(params => {
+      let id: number = +params['id'];
+      if (id) {
+        this.getProductDetails(id);
+      }
+    })
   }
 
   getProductDetails(productId: number): any {

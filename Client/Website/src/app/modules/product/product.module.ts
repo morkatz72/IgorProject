@@ -14,6 +14,7 @@ import { PricePipe } from './pipes/price-pipe/price.pipe';
 import { NamePipe } from './pipes/name-pipe/name.pipe';
 import { CheapestProdctByCategoryComponent } from './cheapest-prodct-by-category/cheapest-prodct-by-category.component';
 import { PriceHistoryChartComponent } from './price-history-chart/price-history-chart.component';
+import { ProductStunningGraphComponent } from './product-stunning-graph/product-stunning-graph.component';
 
 
 
@@ -28,7 +29,8 @@ import { PriceHistoryChartComponent } from './price-history-chart/price-history-
     PricePipe,
     NamePipe,
     CheapestProdctByCategoryComponent,
-    PriceHistoryChartComponent],
+    PriceHistoryChartComponent,
+    ProductStunningGraphComponent],
   imports: [
     CommonModule,
     FormsModule
