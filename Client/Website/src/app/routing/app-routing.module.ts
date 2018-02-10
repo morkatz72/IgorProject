@@ -15,8 +15,9 @@ import { MainPageComponent } from '../components/main-page/main-page.component';
 import { AdvertisementComponent} from '../modules/advertising/advertisement/advertisement.component'
 import { AppComponent } from '../app.component'
 import { BasketPageComponent } from '../modules/basket/basket-page/basket-page.component';
-import { CheapestProdctByCategoryComponent} from '../modules/product/cheapest-prodct-by-category/cheapest-prodct-by-category.component';
- 
+import { CheapestProdctByCategoryComponent } from '../modules/product/cheapest-prodct-by-category/cheapest-prodct-by-category.component';
+import { PriceHistoryChartComponent} from '../modules/product/price-history-chart/price-history-chart.component';
+
 export const routes: Routes = [
 
   { path: 'login', component: UserLoginComponent },
@@ -30,7 +31,8 @@ export const routes: Routes = [
   { path: 'advertisement', component: AdvertisementComponent },
   { path: 'basket', component: BasketPageComponent },
   { path: 'basket/:id', component: BasketPageComponent },
-  { path: 'cheapest-product', component: CheapestProdctByCategoryComponent}
+  { path: 'cheapest-product', component: CheapestProdctByCategoryComponent },
+  { path: 'history-one', component: PriceHistoryChartComponent }
 ];
 
 @NgModule({

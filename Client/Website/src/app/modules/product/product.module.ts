@@ -13,6 +13,7 @@ import { CategoryPipe } from './pipes/category-pipe/category.pipe';
 import { PricePipe } from './pipes/price-pipe/price.pipe';
 import { NamePipe } from './pipes/name-pipe/name.pipe';
 import { CheapestProdctByCategoryComponent } from './cheapest-prodct-by-category/cheapest-prodct-by-category.component';
+import { PriceHistoryChartComponent } from './price-history-chart/price-history-chart.component';
 
 
 
@@ -26,7 +27,8 @@ import { CheapestProdctByCategoryComponent } from './cheapest-prodct-by-category
     CategoryPipe,
     PricePipe,
     NamePipe,
-    CheapestProdctByCategoryComponent],
+    CheapestProdctByCategoryComponent,
+    PriceHistoryChartComponent],
   imports: [
     CommonModule,
     FormsModule
