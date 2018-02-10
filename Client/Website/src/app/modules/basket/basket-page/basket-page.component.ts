@@ -5,7 +5,9 @@ import { BasketItemModule } from '../basket-item.module';
 import { CurrencyPipe } from '@angular/common';
 import { BasketService } from '../../../services/basketService/basket-service.service';
 import { Basket } from '../basket';
-import { BasketHandleService} from '../basket.service';
+import { BasketHandleService } from '../basket.service';
+import { ActivatedRoute } from '@angular/router';
+
 
 @Component({
     selector: 'app-basket-page',
@@ -23,7 +25,10 @@ export class BasketPageComponent implements OnInit {
         return totalPrice;
     }
 
-    constructor(private basketService: BasketService, private basketHandleService: BasketHandleService) { }
+    constructor(private basketService: BasketService,
+      private basketHandleService: BasketHandleService,
+      private router: Router,
+      private route: ActivatedRoute) { }
 
 
     removeItem(index: number) {
@@ -50,6 +55,22 @@ export class BasketPageComponent implements OnInit {
   }
     ngOnInit() {
       this.basket = new Basket();
+
+      this.route.params.subscribe(params => {
+        let id: number = +params['id'];
+        if (id) {
+          this.getBasket(id);
+        }
+      })
     }
 
+
+    getBasket(basketId: number): any {
+      debugger;
+      this.basketHandleService.getBasket(basketId).subscribe(
+        (data) => {
+          this.basket = data[0];
+        }
+      );
+    }
 }

@@ -132,3 +132,10 @@ exports.saveBasket = function (req, res) {
        });
     })
 }
+
+exports.getBasket = function (req, res) {
+    var id = req.params.id;
+    dbUtils.getBasket(id, function (err, data) {
+        res.send(data);
+    })
+}

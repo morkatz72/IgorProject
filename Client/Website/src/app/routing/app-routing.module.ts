@@ -29,6 +29,7 @@ export const routes: Routes = [
   { path: 'main-page', component: MainPageComponent },
   { path: 'advertisement', component: AdvertisementComponent },
   { path: 'basket', component: BasketPageComponent },
+  { path: 'basket/:id', component: BasketPageComponent },
   { path: 'cheapest-product', component: CheapestProdctByCategoryComponent}
 ];
 
