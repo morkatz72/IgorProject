@@ -14,12 +14,12 @@ export class AppComponent implements OnInit {
   ngOnInit() {
     localStorage.setItem("basket", "[]");
     //this.context = (<HTMLCanvasElement>this.myCanvas.nativeElement).getContext('2d');
-
+    /*
     var canvas = this.Snap("#svg");
     canvas.circle(5, 5, 5, 5).attr({ fill: "black" });
     console.log('clicked');
     console.log(this.title);
     console.log(this.title);
-    canvas.circle(5, 5, 5, 5).attr({ fill: "red" });
+    canvas.circle(5, 5, 5, 5).attr({ fill: "red" });*/
   }
 }
