@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { BasketService } from '../../services/basketService/basket-service.service';
 import { BasketPageComponent } from './basket-page/basket-page.component'
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { BasketHandleService} from './basket.service';
 
 @NgModule({
   imports: [
@@ -10,7 +11,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     FormsModule,
     ReactiveFormsModule,
   ],
-  providers: [BasketService],
+  providers: [BasketService, BasketHandleService],
   declarations: [BasketPageComponent]
 })
 export class BasketModule { }
