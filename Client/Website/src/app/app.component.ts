@@ -14,8 +14,8 @@ export class AppComponent implements OnInit {
   ngOnInit() {
     localStorage.setItem("basket", "[]");
   }
-
+  /*
   ngAfterViewInit(): void {
     this.context = (<HTMLCanvasElement>this.myCanvas.nativeElement).getContext('2d');
-  }
+  }*/
 }

@@ -11,6 +11,7 @@
     app.post('/updateProdct', basketModule.updateProduct);
     app.post('/deleteProduct', basketModule.deleteProduct);
     app.post('/addCommentToProduct', basketModule.addCommentToProduct);
+    app.post('/saveBasket', basketModule.saveBasket);
     app.get('/getCategories', basketModule.getCategories);
     app.get('/getProductDetails/:id', basketModule.getProductDetails);
     app.get('/getCategory/:id', basketModule.getCategoryById);

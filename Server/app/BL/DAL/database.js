@@ -6,7 +6,7 @@ var mongoClient = mongodb.MongoClient;
 var bodyParser = require('body-parser');
 var consts = null;
 
-var collections = ['users', 'category','product', 'counters'];
+var collections = ['users', 'category','product', 'counters', 'basket'];
 
 // log on to db
 exports.setupDB = function (dbUrl, con, p_db, callback) {
@@ -143,4 +143,8 @@ exports.getCheapestProductByCategory = function(categoryId, callback) {
             },
             { "$match": { "_id": +categoryId } }
         ]).toArray(callback);
+}
+
+exports.saveBasket = function (data, callback) {
+    db.basket.insert(data, callback);
 }

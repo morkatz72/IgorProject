@@ -119,3 +119,16 @@ exports.getCheapestProductByCategory = function (req, res) {
         res.send(data);
     })
 }
+
+exports.saveBasket = function (req, res) {
+    var details = req.body.data;
+    dbUtils.getNextSequence("basketId", function (err, nextSeqId) {
+        dbUtils.getCurrentSeq("basketId", function (err, currSeqId) {
+            details.id = currSeqId[0].seq;
+
+            dbUtils.saveBasket(details, function (err, data) {
+                res.send(JSON.stringify(details.id));
+            });
+       });
+    })
+}
