@@ -1,4 +1,7 @@
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
+import { Router } from '@angular/router';
+import * as $ from "jquery";
+
 
 @Component({
   selector: 'app-root',
@@ -10,16 +13,18 @@ export class AppComponent implements OnInit {
   Snap: any;
   @ViewChild('myCanvas') myCanvas: ElementRef;
   public context: CanvasRenderingContext2D;
+  constructor(private router: Router) { }
 
   ngOnInit() {
     localStorage.setItem("basket", "[]");
-    //this.context = (<HTMLCanvasElement>this.myCanvas.nativeElement).getContext('2d');
-    /*
-    var canvas = this.Snap("#svg");
-    canvas.circle(5, 5, 5, 5).attr({ fill: "black" });
-    console.log('clicked');
-    console.log(this.title);
-    console.log(this.title);
-    canvas.circle(5, 5, 5, 5).attr({ fill: "red" });*/
+  }
+
+  logonPage() {
+    this.router.navigate(['/login']);
+  }
+
+
+  register() {
+    this.router.navigate(['/register']);
   }
 }
