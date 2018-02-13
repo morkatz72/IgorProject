@@ -95,6 +95,7 @@ export class AddOrUpdateProductComponent implements OnInit {
   getCategoryById(categoryId: number): any {
     this.productService.getCategory(categoryId).subscribe(
       (data) => {
+        debugger;
         this.CategoryValue = data[0];
         this.product.categoryValue = this.CategoryValue.name;
         console.log(data);
