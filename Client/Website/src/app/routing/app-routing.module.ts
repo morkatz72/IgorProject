@@ -17,8 +17,8 @@ import { AppComponent } from '../app.component'
 import { BasketPageComponent } from '../modules/basket/basket-page/basket-page.component';
 import { CheapestProdctByCategoryComponent } from '../modules/product/cheapest-prodct-by-category/cheapest-prodct-by-category.component';
 import { PriceHistoryChartComponent } from '../modules/product/price-history-chart/price-history-chart.component';
-import {  ProductStunningGraphComponent} from '../modules/product/product-stunning-graph/product-stunning-graph.component';
-
+import { ProductStunningGraphComponent } from '../modules/product/product-stunning-graph/product-stunning-graph.component';
+import { ErrorPageComponent} from '../components/error-page/error-page.component'
 
 export const routes: Routes = [
 
@@ -36,7 +36,8 @@ export const routes: Routes = [
   { path: 'cheapest-product', component: CheapestProdctByCategoryComponent },
   { path: 'history-one', component: PriceHistoryChartComponent },
   { path: 'history-one/:id', component: PriceHistoryChartComponent },
-  { path: 'history-two', component: ProductStunningGraphComponent }
+  { path: 'history-two', component: ProductStunningGraphComponent },
+  { path: 'page-404', component: ErrorPageComponent}
 ];
 
 @NgModule({

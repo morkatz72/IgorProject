@@ -27,6 +27,7 @@ export class AddOrUpdateProductComponent implements OnInit {
 
   ngOnInit() {
     this.product = new Product();
+    this.product.id = 0;
     this.getCategories();
     this.select = new EventEmitter();
 
@@ -59,6 +60,7 @@ export class AddOrUpdateProductComponent implements OnInit {
   }
 
   onSubmit(f: any, event: Event) {
+    debugger;
     if (this.actionCode == 1) {
       this.saveProduct();
     }
@@ -73,6 +75,9 @@ export class AddOrUpdateProductComponent implements OnInit {
   getProductDetails(productId: number): any {
     this.productService.getProductDetails(productId).subscribe(
       (data) => {
+        if (!this.product) {
+
+        }
         this.product = data[0];
         this.getCategoryById(this.product.category);
         console.log(this.product);
@@ -82,6 +87,9 @@ export class AddOrUpdateProductComponent implements OnInit {
 
     return this.product;
   }
+
+  actionCodeToUpdate() { this.actionCode = 2 }
+  actionCodeToDelete() { this.actionCode = 3 }
 
   getCategoryById(categoryId: number): any {
     this.productService.getCategory(categoryId).subscribe(

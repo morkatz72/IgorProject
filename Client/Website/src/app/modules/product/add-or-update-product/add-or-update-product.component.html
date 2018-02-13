@@ -40,7 +40,8 @@
           <input type="text" class="form-control" name="company" [(ngModel)]="product.company" #company="ngModel" required />
         </div>
 
-        <button [disabled]="!f.valid" class="btn btn-primary">{{buttonText}}</button>
+        <button [disabled]="!f.valid" class="btn btn-primary" (click)="actionCodeToUpdate()">{{buttonText}}</button>
+        <button  class="btn btn-primary" *ngIf="this.product.id != 0" (click)="actionCodeToDelete()">מחיקת מוצר</button>
       </section>
   </form>
 

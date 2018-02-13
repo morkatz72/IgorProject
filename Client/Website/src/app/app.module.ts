@@ -9,7 +9,8 @@ import { ProductModule } from './modules/product/product.module';
 import { MainPageComponent } from './components/main-page/main-page.component';
 import { AdvertisingModule } from './modules/advertising/advertising.module';
 import { MainService } from './components/main.service';
-import { BasketModule } from './modules/basket/basket.module'
+import { BasketModule } from './modules/basket/basket.module';
+import { ErrorPageComponent } from './components/error-page/error-page.component'
 
 @NgModule({
   imports: [
@@ -23,10 +24,11 @@ import { BasketModule } from './modules/basket/basket.module'
   ],
   declarations: [
     AppComponent,
-    MainPageComponent
+    MainPageComponent,
+    ErrorPageComponent
   ],
   providers: [HttpService, MainService],
   bootstrap: [AppComponent],
-  exports: [MainPageComponent]
+  exports: [MainPageComponent, ErrorPageComponent]
 })
 export class AppModule { }
