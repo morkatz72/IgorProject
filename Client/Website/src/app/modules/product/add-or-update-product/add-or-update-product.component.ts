@@ -16,8 +16,8 @@ import { ActivatedRoute } from '@angular/router';
 export class AddOrUpdateProductComponent implements OnInit {
   public product: Product;
   public categories: Category[];
-  // 1 = add
-  // 2 = update
+  // 1 = addss
+  // 2 = updates
   // 3 = delete
   public actionCode: number = 1;
   select: EventEmitter<string>;
