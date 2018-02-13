@@ -5,6 +5,7 @@ import { Category } from '../../../shared/entities/Category';
 import { EventEmitter } from '@angular/core';
 import { Router } from '@angular/router';
 import { ActivatedRoute } from '@angular/router';
+import { AfterViewInit } from '@angular/core';
 
 
 
@@ -22,6 +23,7 @@ export class AddOrUpdateProductComponent implements OnInit {
   public actionCode: number = 1;
   select: EventEmitter<string>;
   public CategoryValue: any;
+  public isNeedToRouter: boolean = false;;
   public buttonText: string = "הוסף מוצר";
   constructor(private productService: ProductService, private router: Router, private route: ActivatedRoute) { }
 
@@ -36,12 +38,6 @@ export class AddOrUpdateProductComponent implements OnInit {
       if (id) {
         this.getProductDetails(id);
         this.actionCode = 2;
-        if (this.actionCode == 2) {
-          this.buttonText = "עדכן מוצר";
-        }
-        else if (this.actionCode == 3) {
-          this.buttonText = "מחיקת מוצר";
-        }
       }
     })
   }
@@ -75,19 +71,24 @@ export class AddOrUpdateProductComponent implements OnInit {
   getProductDetails(productId: number): any {
     this.productService.getProductDetails(productId).subscribe(
       (data) => {
-        if (!this.product) {
-
+        debugger;
+        if (data[0] != undefined) {
+          this.product = data[0];
+          this.getCategoryById(this.product.category);
+          console.log(this.product);
+          this.product.oldPrice = this.product.price;
         }
-        this.product = data[0];
-        this.getCategoryById(this.product.category);
-        console.log(this.product);
-        this.product.oldPrice = this.product.price;
+        else
+        {
+          this.router.navigateByUrl('/page-404')
+        }
       }
     );
 
     return this.product;
   }
 
+  actionCodeToAdd() { this.actionCode = 1 }
   actionCodeToUpdate() { this.actionCode = 2 }
   actionCodeToDelete() { this.actionCode = 3 }
 
@@ -102,12 +103,13 @@ export class AddOrUpdateProductComponent implements OnInit {
   }
 
   saveProduct() {
+    debugger;
       this.product.calories = +this.product.calories;
       this.product.price = +this.product.price;
       this.productService.saveProduct(this.product).subscribe((results) => {
         this.product.id = +results;
         this.actionCode = 2;
-        this.buttonText = "עדכן מוצר";
+        alert('שמירת המוצר בוצעה בהצלחה, הינך עובר למסך עריכה');
         this.router.navigate(['/add-or-update-product/' + this.product.id]);
    })
   }
@@ -115,11 +117,15 @@ export class AddOrUpdateProductComponent implements OnInit {
   updateTheProduct() {
     this.product.price = +this.product.price;
     this.productService.updateProduct(this.product).subscribe((results) => {
+      alert('עדכון המוצר בוצע בהצלחה, הינך עובר לדף הראשי');
+      this.router.navigate(['/']);
     })
   }
 
   deleteProduct() {
     this.productService.deleteProduct(this.product).subscribe((results) => {
+      alert('מחיקת המוצר בוצעה בהצלחה, הינך עובר לדף הראשי');
+      this.router.navigate(['/']);
     })
   }
 
