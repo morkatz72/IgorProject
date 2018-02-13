@@ -3,6 +3,19 @@ html {
   box-sizing: border-box
 }
 
+
+Transition1{
+  width: 100px;
+  height: 100px;
+  background: red;
+  -webkit-transition: width 2s; /* For Safari 3.1 to 6.0 */
+  transition: width 2s;
+}
+
+  Transition1:hover {
+    width: 300px;
+  }
+
 *, *:before, *:after {
   box-sizing: inherit
 }
@@ -189,7 +202,7 @@ html {
 }
 
 h1 {
-  font-size: 36px
+  font-size: 36px;
 }
 
 h2 {

@@ -1,19 +1,45 @@
-<!-- Sidebar -->
-<div class="w3-sidebar w3-bar-block w3-border-right" style="display:none" id="mySidebar">
-  <button (click)="w3_close()" class="w3-bar-item w3-large">סגור תפריט&times;</button>
-  <div class="w3-bar-item w3-button" (click)="addProductView()">הוספת מוצר</div>
-  <div class="w3-bar-item w3-button" (click)="loginView()">התחברות</div>
-  <div class="w3-bar-item w3-button" (click)="registerView()">הרשמה</div>
-  <div class="w3-bar-item w3-button" (click)="productListView()">רשימת מוצרים</div>
-  <div class="w3-bar-item w3-button" (click)="basketView()">הסל שלי</div>
-  <div class="w3-bar-item w3-button" (click)="logOff()">התנתקות</div>
-</div>
 
-<!-- Page Content -->
-<div class="w3-teal">
-  <button class="w3-button w3-teal w3-xlarge" (click)="w3_open()">☰</button>
-</div>
 
 <div *ngIf="userName()">
-  ברוך הבא {{userName()}}
+  <!-- Sidebar -->
+  <div class="w3-sidebar w3-bar-block w3-border-right" style="display:none" id="mySidebar">
+    <button (click)="w3_close()" class="w3-bar-item w3-large">סגור תפריט&times;</button>
+    <div class="w3-bar-item w3-button" (click)="addProductView()">הוספת מוצר</div>
+    <div class="w3-bar-item w3-button" (click)="productListView()">רשימת מוצרים</div>
+    <div class="w3-bar-item w3-button" (click)="basketView()">הסל שלי</div>
+    <div class="w3-bar-item w3-button" (click)="logOff()">התנתקות</div>
+  </div>
+</div>
+
+
+  <!-- Page Content -->
+  <div class="w3-teal">
+    <button class="w3-button w3-teal w3-xlarge" (click)="w3_open()">☰</button>
+  </div>
+
+  <div *ngIf="!userName()">
+    <nav>
+      <a routerLink="/login" routerLinkActive="active">התחבר</a>
+      <a routerLink="/register" routerLinkActive="active">הירשם</a>
+    </nav>
+  </div>
+
+  <div *ngIf="userName()">
+    ברוך הבא {{userName()}}
+  </div>
+
+
+<div *ngIf="!userName() && router.url === '/'" >
+  <div class="col-md-11 col-md-offset-1 row">
+    <h2 style="text-shadow: 2px 2px #FF0000;">
+      <p>ברוך הבא לאתר המוצרים והסלים </p>
+      <p>באתר הנל תוכל למצוא מגוון מאוד </p>
+      <p>רחב של מוצרים וכמו כן לבנות סל </p>
+      <p> בהתאם לצרכים שלך</p>
+    </h2>
+    </div>
+
+    <div class="">
+
+    </div>
 </div>

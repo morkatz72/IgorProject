@@ -43,6 +43,7 @@ export class MainPageComponent implements OnInit {
   }
 
   logOff() {
-    return localStorage.removeItem('currentUser');
+    localStorage.removeItem('currentUser');
+    this.router.navigate(['/'])
   }
 }
