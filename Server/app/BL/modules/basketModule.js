@@ -91,6 +91,8 @@ exports.updateProduct = function (req, res) {
                 res.send(true);
             })
         }
+
+        res.send(true);
     })
 }
 

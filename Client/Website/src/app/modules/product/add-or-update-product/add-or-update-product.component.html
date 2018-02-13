@@ -20,7 +20,7 @@
           <label for="categoryLabel">קטגוריה: </label>
           <div>
             <select (change)="selectItem($event.target.value)" class="form-control">
-              <option *ngFor="let currCategory of categories" value={{currCategory.id}}>{{currCategory.name}}</option>
+              <option *ngFor="let currCategory of categories" [selected]="currCategory.id == currentCategory" value={{currCategory.id}}>{{currCategory.name}}</option>
             </select>
           </div>
         </div>

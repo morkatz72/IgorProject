@@ -17,6 +17,7 @@ import { AfterViewInit } from '@angular/core';
 export class AddOrUpdateProductComponent implements OnInit {
   public product: Product;
   public categories: Category[];
+  public currentCategory: number = 1;
   // 1 = addss
   // 2 = updates
   // 3 = delete
@@ -74,6 +75,7 @@ export class AddOrUpdateProductComponent implements OnInit {
         debugger;
         if (data[0] != undefined) {
           this.product = data[0];
+          this.currentCategory = this.product.category;
           this.getCategoryById(this.product.category);
           console.log(this.product);
           this.product.oldPrice = this.product.price;
