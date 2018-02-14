@@ -1,5 +1,7 @@
 
 
+
+
 <div *ngIf="userName()">
   <!-- Sidebar -->
   <div class="w3-sidebar w3-bar-block w3-border-right" style="display:none" id="mySidebar">
@@ -24,8 +26,8 @@
     </nav>
   </div>
 
-  <div *ngIf="userName()">
-    ברוך הבא {{userName()}}
+  <div *ngIf="userName()" style="text-shadow: 2px 2px #c73514;">
+    <h3> ברוך הבא {{userName()}} </h3>  
   </div>
 
 
@@ -42,4 +44,26 @@
       </p>
     </h2>
     </div>
+  <div *ngIf="!userName()">
+  <div class="col-md-2 col-md-offset-1 row">
+    <div (click)="loginView()" class="box"><h2>התחבר לאתר</h2>   </div>
+  </div>
+  <div class="col-md-2">
+    <div (click)="registerView()" class="box"><h2>הירשם לאתר</h2>   </div>
+  </div>
+  </div>
+
+  <div *ngIf="userName()">
+    <div class="col-md-2 col-md-offset-1 row">
+      <div (click)="addProductView()" class="box"><h2>הוספת מוצר</h2>   </div>
+    </div>
+    <div class="col-md-2">
+      <div (click)="productListView()" class="box"><h2>רשימת מוצרים</h2>   </div>
+    </div>
+
+    <div class="col-md-2">
+      <div (click)="basketView()" class="box"><h2>הסל שלי</h2>   </div>
+    </div>
+  </div>
 </div>
+
