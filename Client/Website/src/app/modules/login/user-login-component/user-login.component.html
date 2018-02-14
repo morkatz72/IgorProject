@@ -1,21 +1,39 @@
-
-<div *ngIf="!userName()">
-  <div class="col-md-3 col-md-offset-1">
-    <form (ngSubmit)="onSubmit(f,$event)" #f="ngForm">
-      <h1>התחברות לאתר</h1>
-      <div>
-        <div class="form-group">
-          <input type="email" class="form-control" placeholder="משתמש:" name="userName" [(ngModel)]="model.userName" #userName="ngModel" />
-        </div>
-        <div class="form-group">
-          <input type="password" class="form-control" placeholder="ססמא:" name="password" [(ngModel)]="model.password" #password="ngModel" />
-        </div>
-      </div>
-      <div>
-        <button type="submit" ngSu class="btn btn-primary">היכנס</button>
-      </div>
-      <div [hidden]="!errorConnecting">שם משתמש או ססמא לא נכונים !</div>
-      <div>{{isCurrentDetails}}</div>
+<div *ngIf="!userName()" class="container">
+  <form id="contact" name="form" (ngSubmit)="f.form.valid && onSubmit(f,$event)" #f="ngForm" novalidate>
+    <h3>התחברות לאתר</h3>
+    <h4>הכנס את פרטיך</h4>
+    <fieldset>
+      <input placeholder="משתמש..." type="text" tabindex="1" required autofocus name="userName" [(ngModel)]="model.userName" #userName="ngModel">
+    </fieldset>
+    <fieldset>
+      <input placeholder="סיסמא..." type="password" tabindex="2" required name="password" [(ngModel)]="model.password" #password="ngModel">
+    </fieldset>
+    <fieldset>
+      <button name="submit" type="submit" id="contact-submit" data-submit="...Sending">התחבר לאתר</button>
+    </fieldset>
     </form>
-  </div>
 </div>
+
+
+  <!--
+  <div *ngIf="!userName()">
+    <div class="col-md-3 col-md-offset-1">
+      <form (ngSubmit)="onSubmit(f,$event)" #f="ngForm">
+        <h1>התחברות לאתר</h1>
+        <div>
+          <div class="form-group">
+            <input type="email" class="form-control" placeholder="משתמש:" name="userName" [(ngModel)]="model.userName" #userName="ngModel" />
+          </div>
+          <div class="form-group">
+            <input type="password" class="form-control" placeholder="ססמא:" name="password" [(ngModel)]="model.password" #password="ngModel" />
+          </div>
+        </div>
+        <div>
+          <button type="submit" ngSu class="btn btn-primary">היכנס</button>
+        </div>
+        <div [hidden]="!errorConnecting">שם משתמש או ססמא לא נכונים !</div>
+        <div>{{isCurrentDetails}}</div>
+      </form>
+    </div>
+  </div>
+  -->
