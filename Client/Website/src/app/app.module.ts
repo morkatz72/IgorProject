@@ -11,6 +11,8 @@ import { AdvertisingModule } from './modules/advertising/advertising.module';
 import { MainService } from './components/main.service';
 import { BasketModule } from './modules/basket/basket.module';
 import { ErrorPageComponent } from './components/error-page/error-page.component'
+import { FormsModule } from '@angular/forms'
+
 
 @NgModule({
   imports: [
@@ -20,7 +22,8 @@ import { ErrorPageComponent } from './components/error-page/error-page.component
     HttpModule,
     ProductModule,
     AdvertisingModule,
-    BasketModule
+    BasketModule,
+    FormsModule
   ],
   declarations: [
     AppComponent,

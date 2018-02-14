@@ -9,6 +9,8 @@ import { Router } from '@angular/router';
 })
 export class MainPageComponent implements OnInit {
 
+  public productId: string;
+
   constructor(private router: Router) { }
 
   ngOnInit() {
@@ -45,5 +47,9 @@ export class MainPageComponent implements OnInit {
   logOff() {
     localStorage.removeItem('currentUser');
     this.router.navigate(['/'])
+  }
+
+  HistoryOneView() {
+    this.router.navigate(['/history-one/' + this.productId])
   }
 }
