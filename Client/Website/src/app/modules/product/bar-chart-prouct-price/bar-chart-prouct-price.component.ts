@@ -7,7 +7,7 @@ import * as d3 from 'd3-selection';
 import * as d3Scale from 'd3-scale';
 import * as d3Array from 'd3-array';
 import * as d3Axis from 'd3-axis';
-import { STATISTICS } from './data'
+//import { STATISTICS } from './data'
 
 
 @Component({
@@ -44,10 +44,8 @@ export class BarChartProuctPriceComponent implements OnInit {
         console.log(this.products);
 
         for (var i = 0; i < this.products.length; i++) {
-          this.data.push({ "name": this.products[i].name, "price": this.products[i].price })
+          this.data.push({ "letter": this.products[i].name, "frequency": this.products[i].price })
         }
-
-        debugger;
 
         this.initSvg();
         this.initAxis();
@@ -68,8 +66,8 @@ export class BarChartProuctPriceComponent implements OnInit {
   private initAxis() {
     this.x = d3Scale.scaleBand().rangeRound([0, this.width]).padding(0.1);
     this.y = d3Scale.scaleLinear().rangeRound([this.height, 0]);
-    this.x.domain(STATISTICS.map((d) => d.letter));
-    this.y.domain([0, d3Array.max(STATISTICS, (d) => d.frequency)]);
+    this.x.domain(this.data.map((d) => d.letter));
+    this.y.domain([0, d3Array.max(this.data, (d) => d.frequency)]);
   }
 
   private drawAxis() {
@@ -91,7 +89,7 @@ export class BarChartProuctPriceComponent implements OnInit {
 
   private drawBars() {
     this.g.selectAll(".bar")
-      .data(STATISTICS)
+      .data(this.data)
       .enter().append("rect")
       .attr("class", "bar")
       .attr("x", (d) => this.x(d.letter))

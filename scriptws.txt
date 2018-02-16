@@ -63,7 +63,7 @@ db.product.insert({
 
 db.product.insert({
 	id: 3,
-	name: 'ששש',
+	name: '9',
 	price: 1,
 	category: 2,
 	calories: 4,
@@ -74,7 +74,7 @@ db.product.insert({
 
 db.product.insert({
 	id: 4,
-	name: 'ששש',
+	name: '8',
 	price: 10,
 	category: 2,
 	calories: 4,
@@ -84,7 +84,7 @@ db.product.insert({
 
 db.product.insert({
 	id: 5,
-	name: 'ששש',
+	name: '7',
 	price: 7,
 	category: 4,
 	calories: 4,
@@ -94,7 +94,7 @@ db.product.insert({
 
 db.product.insert({
 	id: 6,
-	name: 'ששש',
+	name: '6',
 	price: 4,
 	category: 2,
 	calories: 4,
@@ -104,7 +104,7 @@ db.product.insert({
 
 db.product.insert({
 	id: 7,
-	name: 'ששש',
+	name: '5',
 	price: 11,
 	category: 4,
 	calories: 4,
@@ -114,7 +114,7 @@ db.product.insert({
 
 db.product.insert({
 	id: 8,
-	name: 'ששש',
+	name: '4',
 	price: 4,
 	category: 4,
 	calories: 4,
@@ -124,7 +124,7 @@ db.product.insert({
 
 db.product.insert({
 	id: 9,
-	name: 'ששש',
+	name: '3',
 	price: 3,
 	category: 4,
 	calories: 4,
@@ -134,7 +134,7 @@ db.product.insert({
 
 db.product.insert({
 	id: 10,
-	name: 'ששש',
+	name: '2',
 	price: 2,
 	category: 4,
 	calories: 4,
@@ -144,7 +144,7 @@ db.product.insert({
 
 db.product.insert({
 	id: 11,
-	name: 'ששש',
+	name: '1',
 	price: 1,
 	category: 4,
 	calories: 4,
