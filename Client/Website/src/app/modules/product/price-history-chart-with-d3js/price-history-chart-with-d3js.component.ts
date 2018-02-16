@@ -93,7 +93,10 @@ export class PriceHistoryChartWithD3jsComponent implements OnInit {
       for (var i = 0; i < pricesArray.length; i++) {
         this.data.push({ "date": i + 1, "value": pricesArray[i].curr })
       }
+
+      this.data.push({ "date": i + 1, "value": this.product.price })
     }
+
     //arrayPrices.push(this.product.price);
     //this.data[0].data = arrayPrices;
   }

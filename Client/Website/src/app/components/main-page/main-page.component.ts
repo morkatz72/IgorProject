@@ -50,6 +50,6 @@ export class MainPageComponent implements OnInit {
   }
 
   HistoryOneView() {
-    this.router.navigate(['/history-one/' + this.productId])
+    this.router.navigate(['/history-one-d3js/' + this.productId])
   }
 }
