@@ -39,7 +39,7 @@ export const routes: Routes = [
   { path: 'history-one/:id', component: PriceHistoryChartComponent },
   { path: 'history-two', component: ProductStunningGraphComponent },
   { path: 'page-404', component: ErrorPageComponent },
-  { path: 'history-one-d3js', component: PriceHistoryChartWithD3jsComponent }
+  { path: 'history-one-d3js/:id', component: PriceHistoryChartWithD3jsComponent }
 ];
 
 @NgModule({

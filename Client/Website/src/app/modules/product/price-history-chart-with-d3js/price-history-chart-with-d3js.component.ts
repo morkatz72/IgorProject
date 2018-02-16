@@ -11,7 +11,7 @@ declare var jQuery: any;
 import { Product } from '../../../shared/entities/Product';
 import { ProductService } from '../product.service';
 import { ActivatedRoute } from '@angular/router';
-import { Stocks} from './data';
+//import { Stocks} from './data';
 
 
 @Component({
@@ -31,13 +31,15 @@ export class PriceHistoryChartWithD3jsComponent implements OnInit {
   private x: any;
   private y: any;
   private svg: any;
-  private line: d3Shape.Line<[number, number]>;
-
+  private line: d3Shape.Line<[any, any]>;
+  /*
   private data = [
     {
       name: 'מוצר ',
       data: []
-    }];
+    }];*/
+
+  private data = [];
 
   constructor(private productService: ProductService, private route: ActivatedRoute) {
     this.width = 900 - this.margin.left - this.margin.right;
@@ -46,16 +48,10 @@ export class PriceHistoryChartWithD3jsComponent implements OnInit {
 
   ngOnInit() {
 
-    this.route.params.subscribe(params => {
+    this.route.params.subscribe(params => { 
       let id: number = +params['id'];
       if (id) {
         this.getProductDetails(id);
-
-
-        this.initSvg();
-        this.initAxis();
-        this.drawAxis();
-        this.drawLine();
       }
     })
   }
@@ -65,6 +61,13 @@ export class PriceHistoryChartWithD3jsComponent implements OnInit {
       (data) => {
         this.product = data[0];
         this.setChartData();
+
+
+        this.initSvg();
+        this.initAxis();
+        debugger;
+        this.drawAxis();
+        this.drawLine();
       }
     );
 
@@ -72,7 +75,6 @@ export class PriceHistoryChartWithD3jsComponent implements OnInit {
   }
 
   setChartData() {
-    debugger;
     let pricesArray = this.product.oldPriceArray;
     let arrayPrices = [];
 
@@ -87,14 +89,13 @@ export class PriceHistoryChartWithD3jsComponent implements OnInit {
           }
         }
       }
-
       // setting the data
       for (var i = 0; i < pricesArray.length; i++) {
-        arrayPrices.push(pricesArray[i].curr);
+        this.data.push({ "date": i + 1, "value": pricesArray[i].curr })
       }
     }
-    arrayPrices.push(this.product.price);
-    this.data[0].data = arrayPrices;
+    //arrayPrices.push(this.product.price);
+    //this.data[0].data = arrayPrices;
   }
 
   private initSvg() {
@@ -106,10 +107,10 @@ export class PriceHistoryChartWithD3jsComponent implements OnInit {
   private initAxis() {
     this.x = d3Scale.scaleTime().range([0, this.width]);
     this.y = d3Scale.scaleLinear().range([this.height, 0]);
-    this.x.domain(d3Array.extent(Stocks, (d) => d.date));
-    this.y.domain(d3Array.extent(Stocks, (d) => d.value));
+    this.x.domain(d3Array.extent(this.data, (d) => d.date));
+    this.y.domain(d3Array.extent(this.data, (d) => d.value));
   }
-
+  
   private drawAxis() {
 
     this.svg.append("g")
@@ -135,7 +136,7 @@ export class PriceHistoryChartWithD3jsComponent implements OnInit {
       .y((d: any) => this.y(d.value));
 
     this.svg.append("path")
-      .datum(Stocks)
+      .datum(this.data)
       .attr("class", "line")
       .attr("d", this.line);
   }
