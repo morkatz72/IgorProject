@@ -88,7 +88,7 @@ exports.updateProduct = function (req, res) {
         if (oldPrice != productToUpdate.price) {
             dbUtils.addOldPriceToArray(productId, oldPrice, function (err, data) {
                 console.log("after 2 updated")
-                res.send(true);
+                //res.send(true);
             })
         }
 
