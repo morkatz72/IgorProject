@@ -24,6 +24,8 @@ export class BarChartProuctPriceComponent implements OnInit {
   private height: number;
   private margin = { top: 20, right: 20, bottom: 30, left: 40 };
   private data = [];
+  private maxPrice: number;
+  private minPrice: number;
 
   private x: any;
   private y: any;
@@ -43,9 +45,26 @@ export class BarChartProuctPriceComponent implements OnInit {
         this.products = Product.toProduct(data);
         console.log(this.products);
 
+        this.minPrice = this.products[0].price;
+        this.maxPrice = this.products[0].price;
+
+
         for (var i = 0; i < this.products.length; i++) {
-          this.data.push({ "letter": this.products[i].name, "frequency": this.products[i].price })
+          this.data.push({ "name": this.products[i].name, "price": this.products[i].price })
+
+          if (this.maxPrice < this.products[i].price) { this.maxPrice = this.products[i].price }
+          if (this.minPrice > this.products[i].price) { this.minPrice = this.products[i].price }
         }
+
+
+        for (var i = 0; i < this.data.length; i++) {
+
+          let firstParams = (this.data[i].price - this.minPrice) / (this.maxPrice - this.minPrice)
+          let secondParams = (100 - 0) + 0;
+          this.data[i]["normalizePrice"] = (firstParams * secondParams) * 0.01;
+        }
+
+        debugger;
 
         this.initSvg();
         this.initAxis();
@@ -66,8 +85,8 @@ export class BarChartProuctPriceComponent implements OnInit {
   private initAxis() {
     this.x = d3Scale.scaleBand().rangeRound([0, this.width]).padding(0.1);
     this.y = d3Scale.scaleLinear().rangeRound([this.height, 0]);
-    this.x.domain(this.data.map((d) => d.letter));
-    this.y.domain([0, d3Array.max(this.data, (d) => d.frequency)]);
+    this.x.domain(this.data.map((d) => d.name));
+    this.y.domain([0, d3Array.max(this.data, (d) => d.normalizePrice)]);
   }
 
   private drawAxis() {
@@ -84,7 +103,7 @@ export class BarChartProuctPriceComponent implements OnInit {
       .attr("y", 6)
       .attr("dy", "0.71em")
       .attr("text-anchor", "end")
-      .text("Frequency");
+      .text("price");
   }
 
   private drawBars() {
@@ -92,9 +111,9 @@ export class BarChartProuctPriceComponent implements OnInit {
       .data(this.data)
       .enter().append("rect")
       .attr("class", "bar")
-      .attr("x", (d) => this.x(d.letter))
-      .attr("y", (d) => this.y(d.frequency))
+      .attr("x", (d) => this.x(d.name))
+      .attr("y", (d) => this.y(d.normalizePrice))
       .attr("width", this.x.bandwidth())
-      .attr("height", (d) => this.height - this.y(d.frequency));
+      .attr("height", (d) => this.height - this.y(d.normalizePrice));
   }
 }
