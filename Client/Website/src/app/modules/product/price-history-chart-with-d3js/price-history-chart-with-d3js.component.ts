@@ -7,6 +7,10 @@ import * as d3Shape from 'd3-shape';
 import * as d3Array from 'd3-array';
 import * as d3Axis from 'd3-axis';
 
+declare var jQuery: any;
+import { Product } from '../../../shared/entities/Product';
+import { ProductService } from '../product.service';
+import { ActivatedRoute } from '@angular/router';
 import { Stocks} from './data';
 
 
@@ -20,6 +24,7 @@ export class PriceHistoryChartWithD3jsComponent implements OnInit {
   title: string = 'D3.js with Angular 2!';
   subtitle: string = 'Line Chart';
 
+  public product: any;
   private margin = { top: 20, right: 20, bottom: 30, left: 50 };
   private width: number;
   private height: number;
@@ -28,16 +33,68 @@ export class PriceHistoryChartWithD3jsComponent implements OnInit {
   private svg: any;
   private line: d3Shape.Line<[number, number]>;
 
-  constructor() {
+  private data = [
+    {
+      name: 'מוצר ',
+      data: []
+    }];
+
+  constructor(private productService: ProductService, private route: ActivatedRoute) {
     this.width = 900 - this.margin.left - this.margin.right;
     this.height = 500 - this.margin.top - this.margin.bottom;
   }
 
   ngOnInit() {
-    this.initSvg();
-    this.initAxis();
-    this.drawAxis();
-    this.drawLine();
+
+    this.route.params.subscribe(params => {
+      let id: number = +params['id'];
+      if (id) {
+        this.getProductDetails(id);
+
+
+        this.initSvg();
+        this.initAxis();
+        this.drawAxis();
+        this.drawLine();
+      }
+    })
+  }
+
+  getProductDetails(productId: number): any {
+    this.productService.getProductDetails(productId).subscribe(
+      (data) => {
+        this.product = data[0];
+        this.setChartData();
+      }
+    );
+
+    return this.product;
+  }
+
+  setChartData() {
+    debugger;
+    let pricesArray = this.product.oldPriceArray;
+    let arrayPrices = [];
+
+    if (pricesArray) {
+      // sort the data by the datetime
+      for (var i = 0; i < pricesArray.length - 1; i++) {
+        for (var x = 0; x < pricesArray.length - 1; x++) {
+          if (pricesArray[x].createdTime > pricesArray[x + 1].createdTime) {
+            var theGreater = pricesArray[x];
+            pricesArray[x] = pricesArray[x + 1];
+            pricesArray[x + 1] = theGreater;
+          }
+        }
+      }
+
+      // setting the data
+      for (var i = 0; i < pricesArray.length; i++) {
+        arrayPrices.push(pricesArray[i].curr);
+      }
+    }
+    arrayPrices.push(this.product.price);
+    this.data[0].data = arrayPrices;
   }
 
   private initSvg() {
@@ -82,6 +139,4 @@ export class PriceHistoryChartWithD3jsComponent implements OnInit {
       .attr("class", "line")
       .attr("d", this.line);
   }
-
-
 }
