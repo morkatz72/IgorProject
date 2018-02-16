@@ -52,4 +52,8 @@ export class MainPageComponent implements OnInit {
   HistoryOneView() {
     this.router.navigate(['/history-one-d3js/' + this.productId])
   }
+
+  barChart() {
+    this.router.navigate(['/history-two-chart-bar'])
+  }
 }
