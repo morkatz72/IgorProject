@@ -25,6 +25,7 @@
         "styles.css"
       ],
       "scripts": [
+        "app/modules/product/price-history-chart-with-d3js/chart.js"
       ],
       "environmentSource": "environments/environment.ts",
       "environments": {
