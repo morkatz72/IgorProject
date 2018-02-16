@@ -19,7 +19,8 @@ import { CheapestProdctByCategoryComponent } from '../modules/product/cheapest-p
 import { PriceHistoryChartComponent } from '../modules/product/price-history-chart/price-history-chart.component';
 import { ProductStunningGraphComponent } from '../modules/product/product-stunning-graph/product-stunning-graph.component';
 import { ErrorPageComponent } from '../components/error-page/error-page.component'
-import { PriceHistoryChartWithD3jsComponent} from '../modules/product/price-history-chart-with-d3js/price-history-chart-with-d3js.component';
+import { PriceHistoryChartWithD3jsComponent } from '../modules/product/price-history-chart-with-d3js/price-history-chart-with-d3js.component';
+import { BarChartProuctPriceComponent} from '../modules/product/bar-chart-prouct-price/bar-chart-prouct-price.component';
 
 export const routes: Routes = [
 
@@ -39,7 +40,8 @@ export const routes: Routes = [
   { path: 'history-one/:id', component: PriceHistoryChartComponent },
   { path: 'history-two', component: ProductStunningGraphComponent },
   { path: 'page-404', component: ErrorPageComponent },
-  { path: 'history-one-d3js/:id', component: PriceHistoryChartWithD3jsComponent }
+  { path: 'history-one-d3js/:id', component: PriceHistoryChartWithD3jsComponent },
+  { path: 'history-two-chart-bar', component: BarChartProuctPriceComponent }
 ];
 
 @NgModule({

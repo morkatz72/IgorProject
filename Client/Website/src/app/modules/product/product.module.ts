@@ -16,6 +16,7 @@ import { CheapestProdctByCategoryComponent } from './cheapest-prodct-by-category
 import { PriceHistoryChartComponent } from './price-history-chart/price-history-chart.component';
 import { ProductStunningGraphComponent } from './product-stunning-graph/product-stunning-graph.component';
 import { PriceHistoryChartWithD3jsComponent } from './price-history-chart-with-d3js/price-history-chart-with-d3js.component';
+import { BarChartProuctPriceComponent } from './bar-chart-prouct-price/bar-chart-prouct-price.component';
 
 
 
@@ -32,7 +33,8 @@ import { PriceHistoryChartWithD3jsComponent } from './price-history-chart-with-d
     CheapestProdctByCategoryComponent,
     PriceHistoryChartComponent,
     ProductStunningGraphComponent,
-    PriceHistoryChartWithD3jsComponent],
+    PriceHistoryChartWithD3jsComponent,
+    BarChartProuctPriceComponent],
   imports: [
     CommonModule,
     FormsModule
