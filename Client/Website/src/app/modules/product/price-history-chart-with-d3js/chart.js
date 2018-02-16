@@ -1,5 +1,5 @@
 // Set the dimensions of the canvas / graph
-
+/*
 dataReal = [
   { date: '1-May-12', close: '58.13' },
 
@@ -103,3 +103,4 @@ d3.csv("data.csv", function (error, data) {
     .call(yAxis);
 
 });
+*/

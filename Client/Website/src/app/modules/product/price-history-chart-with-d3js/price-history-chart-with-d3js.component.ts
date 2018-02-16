@@ -1,5 +1,13 @@
 import { Component, OnInit } from '@angular/core';
+//import * as d3scale from "d3-scale";
+import * as d3 from 'd3-selection';
 
+import * as d3Scale from 'd3-scale';
+import * as d3Shape from 'd3-shape';
+import * as d3Array from 'd3-array';
+import * as d3Axis from 'd3-axis';
+
+import { Stocks} from './data';
 
 
 @Component({
@@ -9,41 +17,71 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PriceHistoryChartWithD3jsComponent implements OnInit {
 
-  loadAPI: Promise<any>;
+  title: string = 'D3.js with Angular 2!';
+  subtitle: string = 'Line Chart';
 
+  private margin = { top: 20, right: 20, bottom: 30, left: 50 };
+  private width: number;
+  private height: number;
+  private x: any;
+  private y: any;
+  private svg: any;
+  private line: d3Shape.Line<[number, number]>;
 
   constructor() {
-    this.loadAPI = new Promise((resolve) => {
-      this.loadScript();
-      resolve(true);
-    });
-  }
-
-  public loadScript() {
-    var isFound = false;
-    var scripts = document.getElementsByTagName("script")
-    for (var i = 0; i < scripts.length; ++i) {
-      if (scripts[i].getAttribute('src') != null && scripts[i].getAttribute('src').includes("loader")) {
-        isFound = true;
-      }
-    }
-
-    if (!isFound) {
-      var dynamicScripts = ["chart.js"];
-
-      for (var i = 0; i < dynamicScripts.length; i++) {
-        let node = document.createElement('script');
-        node.src = dynamicScripts[i];
-        node.type = 'text/javascript';
-        node.async = false;
-        node.charset = 'utf-8';
-        document.getElementsByTagName('head')[0].appendChild(node);
-      }
-
-    }
+    this.width = 900 - this.margin.left - this.margin.right;
+    this.height = 500 - this.margin.top - this.margin.bottom;
   }
 
   ngOnInit() {
+    this.initSvg();
+    this.initAxis();
+    this.drawAxis();
+    this.drawLine();
   }
+
+  private initSvg() {
+    this.svg = d3.select("svg")
+      .append("g")
+      .attr("transform", "translate(" + this.margin.left + "," + this.margin.top + ")");
+  }
+
+  private initAxis() {
+    this.x = d3Scale.scaleTime().range([0, this.width]);
+    this.y = d3Scale.scaleLinear().range([this.height, 0]);
+    this.x.domain(d3Array.extent(Stocks, (d) => d.date));
+    this.y.domain(d3Array.extent(Stocks, (d) => d.value));
+  }
+
+  private drawAxis() {
+
+    this.svg.append("g")
+      .attr("class", "axis axis--x")
+      .attr("transform", "translate(0," + this.height + ")")
+      .call(d3Axis.axisBottom(this.x));
+
+    this.svg.append("g")
+      .attr("class", "axis axis--y")
+      .call(d3Axis.axisLeft(this.y))
+      .append("text")
+      .attr("class", "axis-title")
+      .attr("transform", "rotate(-90)")
+      .attr("y", 6)
+      .attr("dy", ".71em")
+      .style("text-anchor", "end")
+      .text("Price ($)");
+  }
+
+  private drawLine() {
+    this.line = d3Shape.line()
+      .x((d: any) => this.x(d.date))
+      .y((d: any) => this.y(d.value));
+
+    this.svg.append("path")
+      .datum(Stocks)
+      .attr("class", "line")
+      .attr("d", this.line);
+  }
+
 
 }

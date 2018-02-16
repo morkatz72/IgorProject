@@ -11,7 +11,7 @@ import { AdvertisingModule } from './modules/advertising/advertising.module';
 import { MainService } from './components/main.service';
 import { BasketModule } from './modules/basket/basket.module';
 import { ErrorPageComponent } from './components/error-page/error-page.component'
-import { FormsModule } from '@angular/forms'
+import { FormsModule } from '@angular/forms';
 
 
 @NgModule({
