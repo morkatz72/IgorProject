@@ -143,8 +143,6 @@ exports.getBasket = function (req, res) {
 }
 
 exports.getUserByUserName = function (req, res) {
-
-
     var userName = req.params.userName;
     console.log(userName);
     dbUtils.getUserByUserName(userName, function (err, data) {
