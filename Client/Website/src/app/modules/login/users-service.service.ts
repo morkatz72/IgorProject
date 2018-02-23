@@ -32,4 +32,8 @@ export class UsersServiceService {
   getUserTypeByUserName(data: any): Observable<Response> {
     return this.httpService.http.get(url + '/getUserByUserName/' + data).map((data) => data.json());
   }
+
+  getAllUsers(): Observable<Response> {
+    return this.httpService.http.get(url + '/getUsers').map((data) => data.json());
+  }
 }

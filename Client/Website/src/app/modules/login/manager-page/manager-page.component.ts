@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { UsersServiceService } from '../users-service.service';
+import { User } from '../../../shared/entities/User';
+
 
 @Component({
   selector: 'app-manager-page',
@@ -7,9 +10,25 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ManagerPageComponent implements OnInit {
 
-  constructor() { }
+  constructor(private userService: UsersServiceService) { }
+
+  public users: User[];
+
 
   ngOnInit() {
+    this.getUsers();
   }
 
+  userName() {
+    return localStorage.getItem('currentUser');
+  }
+
+  getUsers(): any {
+    this.userService.getAllUsers().subscribe(
+      (data) => {
+        this.users = User.toUser(data);
+        console.log(this.users);
+      }
+    );
+  }
 }
