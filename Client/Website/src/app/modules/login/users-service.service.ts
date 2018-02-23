@@ -42,6 +42,6 @@ export class UsersServiceService {
   }
 
   changeUserTypeStatus(userName: string, statusToChange : number): Observable<Response> {
-    return this.http.post(url + '/removeUser', { userName, statusToChange }, this.httpService.getOptions()).map((data) => data.json());
+    return this.http.post(url + '/changeUserTypeStatus', { userName, statusToChange }, this.httpService.getOptions()).map((data) => data.json());
   }
 }

@@ -43,7 +43,11 @@ export class ManagerPageComponent implements OnInit {
 
   isChangeAdmin(e: any, data: string) {
     debugger;
-    if (e.target.checked) {
-    }
+    let statusValue = (e.target.checked == true ? 2 : 1);
+    this.userService.changeUserTypeStatus(data, statusValue).subscribe(
+      (data) => {
+
+      }
+    )
   }
 }

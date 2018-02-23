@@ -164,3 +164,15 @@ exports.removeUser = function (data, callback) {
     db.users.remove({ "userName": data }, callback);
 
 }
+
+exports.changeUserTypeStatus = function (userName, statusToChange, callback) {
+    var filterQuery = { 'userName': userName }
+    var updateQuery = {
+        "statusToChange": statusToChange
+    };
+    var options = {
+        upsert: true
+    };
+    console.log("after update");
+    db.product.update(filterQuery, { $set: updateQuery }, options, callback);
+}

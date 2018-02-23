@@ -9,7 +9,6 @@ exports.setup = function (db) {
 
 exports.getUsers = function (req, res) {
     dbUtils.getUsers(function (err, results) {
-        console.log(results);
         res.send(results);
     })
 }
@@ -154,6 +153,16 @@ exports.removeUser = function(req, res) {
     var data = req.body.data;
 
     dbUtils.removeUser(data, function (err, data) {
+        res.send(true);
+    })
+}
+
+exports.changeUserTypeStatus = function (req, res) {
+    var userName = req.body.userName;
+    var statusToChange = req.body.statusToChange;
+    console.log("user = " + userName + " and status =" + statusToChange)
+
+    dbUtils.changeUserTypeStatus(userName, statusToChange, function (err, data) {
         res.send(true);
     })
 }
