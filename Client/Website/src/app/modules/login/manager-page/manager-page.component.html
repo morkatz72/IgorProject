@@ -22,7 +22,7 @@
     <td class="title-right">{{currUser.genderValue}}</td>
     <td class="title-right">{{currUser.userTypeValue}}</td>
     <td class="title-right"><button class="btn btn-primary" (click)="isDeleteUser(currUser.userName)">מחק משתמש</button></td>
-    <td class="title-right"><label><input type="checkbox" value="" (click)="isChangeAdmin(currUser.userName)">מנהל/ לא מנהל</label></td>
+    <td class="title-right"><label><input type="checkbox" value="" (change)="isChangeAdmin($event, 'color')">מנהל/ לא מנהל</label></td>
     <td class="title-right"><button class="btn btn-primary" (click)="isResetPassword(currUser.userName)">אפס סיסמא</button></td>
 
   </tr>

@@ -40,4 +40,8 @@ export class UsersServiceService {
   removeUser(data: any): Observable<Response> {
     return this.http.post(url + '/removeUser', { data }, this.httpService.getOptions()).map((data) => data.json());
   }
+
+  changeUserTypeStatus(userName: string, statusToChange : number): Observable<Response> {
+    return this.http.post(url + '/removeUser', { userName, statusToChange }, this.httpService.getOptions()).map((data) => data.json());
+  }
 }

@@ -17,7 +17,6 @@ export class ManagerPageComponent implements OnInit {
 
   ngOnInit() {
     this.getUsers();
-    debugger;
   }
 
   userName() {
@@ -38,8 +37,11 @@ export class ManagerPageComponent implements OnInit {
       (data) => {
         this.users = User.toUser(data);
         console.log(this.users);
-        this.getUsers();
       }
     );
+  }
+
+  isChangeAdmin(data: string) {
+    debugger;
   }
 }
