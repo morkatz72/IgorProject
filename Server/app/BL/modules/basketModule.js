@@ -87,7 +87,7 @@ exports.updateProduct = function (req, res) {
         // the price is changed
         if (oldPrice != productToUpdate.price) {
             dbUtils.addOldPriceToArray(productId, oldPrice, function (err, data) {
-                console.log("after 2 updated")
+                console.log("after 2 updated");
                 //res.send(true);
             })
         }
@@ -141,3 +141,7 @@ exports.getBasket = function (req, res) {
         res.send(data);
     })
 }
+
+exports.getUserTypeByUserName = function(req,res){
+    var userName = req.params.userName; 
+} 
