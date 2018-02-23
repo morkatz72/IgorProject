@@ -43,6 +43,8 @@ export class RegisterUserComponent implements OnInit {
       this.user.gender = +this.model.gender;
       this.user.password = this.model.password;
       this.user.userName = this.model.userName;
+      this.user.userType = "regularUser";
+      debugger;
       this.userService.register(this.user).subscribe(
         (results) =>
         {

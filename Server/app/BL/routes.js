@@ -19,5 +19,5 @@
     app.get('/getProductsPaging/:page/:limit', basketModule.getProductsPaging);
     app.get('/getCheapestProductByCategory/:id', basketModule.getCheapestProductByCategory);
     app.get('/getBasket/:id', basketModule.getBasket);
-    app.get('/getUserTypeByUserName', basketModule.getUserTypeByUserName); 
+    app.get('/getUserByUserName/:userName', basketModule.getUserByUserName); 
 }

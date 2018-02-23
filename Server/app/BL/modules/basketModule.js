@@ -142,6 +142,12 @@ exports.getBasket = function (req, res) {
     })
 }
 
-exports.getUserTypeByUserName = function(req,res){
-    var userName = req.params.userName; 
+exports.getUserByUserName = function (req, res) {
+
+
+    var userName = req.params.userName;
+    console.log(userName);
+    dbUtils.getUserByUserName(userName, function (err, data) {
+        res.send(data);
+    })
 } 

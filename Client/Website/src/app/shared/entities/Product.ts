@@ -8,6 +8,7 @@ export class Product {
   company: string;
   categoryValue: string;
   oldPrice: number;
+  image: any;
 
   public static toProduct(data: any) {
     // let jsonData = JSON.parse(data); We don't need to parse this
@@ -24,6 +25,10 @@ export class Product {
       product.id = +element.id;
       product.name = element.name;
       product.price = +element.price;
+
+      if (element.image) {
+        product.image = element.image;
+      }
 
       products.push(product);
     });
