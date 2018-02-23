@@ -13,7 +13,7 @@ export class UserLoginComponent implements OnInit {
   errorConnecting:boolean;
   model: any = {};
   isCurrentDetails: string;
-
+  ss
   constructor(private userService: UsersServiceService, private router: Router) {
     this.errorConnecting = false; 
   }
