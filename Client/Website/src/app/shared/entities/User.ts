@@ -6,4 +6,9 @@ export class User {
   email: string;
   password: string;
   gender: number;
+
+  // define user type
+  // 1 - for regular user
+  // 2 - for manager user
+  userType: string;
 }

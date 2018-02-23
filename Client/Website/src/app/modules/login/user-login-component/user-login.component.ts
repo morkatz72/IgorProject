@@ -38,7 +38,18 @@ export class UserLoginComponent implements OnInit {
           this.errorConnecting = false;
           alert('התחברת לאתר בהצלחה');
           localStorage.setItem('currentUser', this.model.userName);
-          this.router.navigate(['/']);
+          debugger;
+
+          this.userService.getUserTypeByUserName(this.model.userName).subscribe(
+            (userData) => {
+              if (userData != null) {
+                if (userData[0].userType)
+                localStorage.setItem('userType', userData[0].userType.toString());
+                this.router.navigate(['/']);
+              }
+            }
+          )
+
         }
         else {
           this.isCurrentDetails = "פרטי המשתמש שגויים";

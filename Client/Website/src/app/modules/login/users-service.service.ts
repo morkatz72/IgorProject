@@ -28,4 +28,8 @@ export class UsersServiceService {
   register(data: any): Observable<Response> {
     return this.http.post(url + '/register',{ data }, this.httpService.getOptions()).map((data) => data.json());
   }
+
+  getUserTypeByUserName(data: any): Observable<Response> {
+    return this.httpService.http.get(url + '/getUserByUserName/' + data).map((data) => data.json());
+  }
 }

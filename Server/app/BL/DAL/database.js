@@ -26,6 +26,7 @@ exports.setupDB = function (dbUrl, con, p_db, callback) {
         }
         
         db = database;
+
         p_db = database;
 
         callback(p_db);
@@ -151,4 +152,8 @@ exports.saveBasket = function (data, callback) {
 
 exports.getBasket = function (id, callback) {
     db.basket.find({ "id": +id }).toArray(callback);
+}
+
+exports.getUserByUserName = function (userName, callback) {
+    db.users.find({ "userName": userName }).toArray(callback);
 }

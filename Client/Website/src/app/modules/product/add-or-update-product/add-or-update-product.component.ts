@@ -24,7 +24,7 @@ export class AddOrUpdateProductComponent implements OnInit {
   public actionCode: number = 1;
   select: EventEmitter<string>;
   public CategoryValue: any;
-  public isNeedToRouter: boolean = false;;
+  public isNeedToRouter: boolean = false;
   public buttonText: string = "הוסף מוצר";
   constructor(private productService: ProductService, private router: Router, private route: ActivatedRoute) { }
 
@@ -80,9 +80,8 @@ export class AddOrUpdateProductComponent implements OnInit {
           console.log(this.product);
           this.product.oldPrice = this.product.price;
         }
-        else
-        {
-          this.router.navigateByUrl('/page-404')
+        else {
+          this.router.navigateByUrl('/page-404');
         }
       }
     );
