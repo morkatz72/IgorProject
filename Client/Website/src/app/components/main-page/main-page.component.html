@@ -7,7 +7,10 @@
   <div class="w3-sidebar w3-bar-block w3-border-right" style="display:none" id="mySidebar">
     <button (click)="w3_close()" class="w3-bar-item w3-large">סגור תפריט&times;</button>
     <div class="w3-bar-item w3-button" (click)="setMainPage()">דף ראשי</div>
-    <div class="w3-bar-item w3-button" (click)="addProductView()">הוספת מוצר</div>
+    <div *ngIf="getUserStatus() == 2">
+      <div class="w3-bar-item w3-button" (click)="addProductView()">הוספת מוצר</div>
+      <div class="w3-bar-item w3-button" (click)="managerView()">ממשק מנהל</div>
+    </div>
     <div class="w3-bar-item w3-button" (click)="productListView()">רשימת מוצרים</div>
     <div class="w3-bar-item w3-button" (click)="basketView()">הסל שלי</div>
     <div class="w3-bar-item w3-button" (click)="logOff()">התנתקות</div>

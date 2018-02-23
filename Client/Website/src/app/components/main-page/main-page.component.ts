@@ -44,6 +44,14 @@ export class MainPageComponent implements OnInit {
     return localStorage.getItem('currentUser');
   }
 
+  getUserStatus() {
+    return localStorage.getItem('userType');
+  }
+
+  managerView() {
+    this.router.navigate(['/manager-page'])
+  }
+
   logOff() {
     localStorage.removeItem('currentUser');
     this.router.navigate(['/'])
