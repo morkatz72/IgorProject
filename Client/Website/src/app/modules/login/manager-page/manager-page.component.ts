@@ -35,12 +35,15 @@ export class ManagerPageComponent implements OnInit {
   isDeleteUser(data: string) {
     this.userService.removeUser(data).subscribe(
       (data) => {
-        this.users = User.toUser(data);
-        console.log(this.users);
+        debugger;
+        this.getUsers();
       }
     );
   }
 
-  isChangeAdmin(data: string) {
+  isChangeAdmin(e: any, data: string) {
+    debugger;
+    if (e.target.checked) {
+    }
   }
 }
