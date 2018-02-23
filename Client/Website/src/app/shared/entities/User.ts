@@ -10,7 +10,8 @@ export class User {
   password: string;
   gender: number;
   genderValue: string;
-  userTypeValue:string;
+  userTypeValue: string;
+  isManagerChecked: boolean;
 
   // define user type
   // 1 - for regular user
