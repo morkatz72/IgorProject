@@ -36,4 +36,8 @@ export class UsersServiceService {
   getAllUsers(): Observable<Response> {
     return this.httpService.http.get(url + '/getUsers').map((data) => data.json());
   }
+
+  removeUser(data: any): Observable<Response> {
+    return this.http.post(url + '/removeUser', { data }, this.httpService.getOptions()).map((data) => data.json());
+  }
 }

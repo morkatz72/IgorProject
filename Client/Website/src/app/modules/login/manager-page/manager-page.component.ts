@@ -17,6 +17,7 @@ export class ManagerPageComponent implements OnInit {
 
   ngOnInit() {
     this.getUsers();
+    debugger;
   }
 
   userName() {
@@ -28,6 +29,16 @@ export class ManagerPageComponent implements OnInit {
       (data) => {
         this.users = User.toUser(data);
         console.log(this.users);
+      }
+    );
+  }
+
+  isDeleteUser(data: string) {
+    this.userService.removeUser(data).subscribe(
+      (data) => {
+        this.users = User.toUser(data);
+        console.log(this.users);
+        this.getUsers();
       }
     );
   }

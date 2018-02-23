@@ -149,3 +149,11 @@ exports.getUserByUserName = function (req, res) {
         res.send(data);
     })
 } 
+
+exports.removeUser = function(req, res) {
+    var data = req.body.data;
+
+    dbUtils.removeUser(data, function (err, data) {
+        res.send(true);
+    })
+}

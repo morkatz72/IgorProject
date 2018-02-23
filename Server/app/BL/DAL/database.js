@@ -157,3 +157,13 @@ exports.getBasket = function (id, callback) {
 exports.getUserByUserName = function (userName, callback) {
     db.users.find({ "userName": userName }).toArray(callback);
 }
+
+
+exports.removeUser = function (data, callback) {
+    console.log(data);
+
+    //db.users.find({ "userName": userName }).toArray(callback);
+
+    db.users.remove({ "userName": data }).toArray(callback);
+
+}
