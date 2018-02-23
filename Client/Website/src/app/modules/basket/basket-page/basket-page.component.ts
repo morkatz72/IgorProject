@@ -32,6 +32,7 @@ export class BasketPageComponent implements OnInit {
 
 
     removeItem(index: number) {
+      debugger;
         this.basketService.removeItemIndex(index);
         this.basketItems = this.basketService.getBasket()
     }
@@ -48,9 +49,14 @@ export class BasketPageComponent implements OnInit {
   saveBasket() {
     this.basket.basketItems = this.basketItems;
     this.basket.totalPrice = this.getTotalPrice();
-    this.basket.basketId = 0;
+    if (this.basket.id) {
+      this.basket.basketId = 0;
+    }
 
     this.basketHandleService.saveBasket(this.basket).subscribe((results) => {
+      debugger;
+      alert('הסל נשמר בהצלחה');
+      this.basket.basketId = 6;
     })
   }
     ngOnInit() {
@@ -60,6 +66,7 @@ export class BasketPageComponent implements OnInit {
         let id: number = +params['id'];
         if (id) {
           this.getBasket(id);
+
         }
       })
     }
@@ -70,6 +77,14 @@ export class BasketPageComponent implements OnInit {
       this.basketHandleService.getBasket(basketId).subscribe(
         (data) => {
           this.basket = data[0];
+          if (this.basket) {
+            this.basketItems = this.basket.basketItems;
+            localStorage.setItem("basket", JSON.stringify(this.basketItems));
+
+          } else
+          {
+            this.router.navigateByUrl('/page-404');
+          }
         }
       );
     }

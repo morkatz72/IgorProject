@@ -5,4 +5,5 @@ export class Basket {
   basketItems: BasketItemModule[];
   basketId: number;
   totalPrice: number;
+  id: number;
 }
