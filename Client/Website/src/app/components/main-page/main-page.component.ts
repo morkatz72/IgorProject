@@ -68,4 +68,8 @@ export class MainPageComponent implements OnInit {
   setMainPage() {
     this.router.navigate(['/'])
   }
+
+  cheapestProduct() {
+    this.router.navigate(['/cheapest-product'])
+  }
 }

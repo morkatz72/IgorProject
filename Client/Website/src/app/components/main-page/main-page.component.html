@@ -12,6 +12,7 @@
         <div class="w3-bar-item w3-button" (click)="managerView()">ממשק מנהל</div>
       </div>
       <div class="w3-bar-item w3-button" (click)="productListView()">רשימת מוצרים</div>
+      <div class="w3-bar-item w3-button" (click)="cheapestProduct()">המוצר הזול</div>
       <div class="w3-bar-item w3-button" (click)="basketView()">הסל שלי</div>
       <div class="w3-bar-item w3-button" (click)="logOff()">התנתקות</div>
   </div>
@@ -96,6 +97,9 @@
 
     <div class="col-md-2">
       <div (click)="barChart()" class="box"><h2>הצגת גרף מחירים ומוצרים</h2>   </div>
+    </div>
+    <div class="col-md-2">
+      <div (click)="cheapestProduct()" class="box"><h2>המוצר הזול לפי קטגוריה</h2>   </div>
     </div>
   </div>
 </div>

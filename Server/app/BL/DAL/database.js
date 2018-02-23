@@ -184,7 +184,7 @@ exports.updateBasket = function (data, callback) {
     var options = {
         upsert: true
     };
-    db.product.update(filterQuery, { $set: updateQuery }, options, callback);
+    db.basket.update(filterQuery, { $set: updateQuery }, options, callback);
     
     console.log(data.id);
 }
