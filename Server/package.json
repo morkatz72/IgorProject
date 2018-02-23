@@ -10,5 +10,9 @@
   },
   "author": {
     "name": "liorstrongxd"
+  },
+  "dependencies": {
+    "cors": "^2.8.4",
+    "mongodb": "^3.0.2"
   }
 }
