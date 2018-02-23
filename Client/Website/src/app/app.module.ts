@@ -12,6 +12,7 @@ import { MainService } from './components/main.service';
 import { BasketModule } from './modules/basket/basket.module';
 import { ErrorPageComponent } from './components/error-page/error-page.component'
 import { FormsModule } from '@angular/forms';
+import { FacebookApiComponent } from './components/facebook-api/facebook-api.component';
 
 
 @NgModule({
@@ -28,10 +29,11 @@ import { FormsModule } from '@angular/forms';
   declarations: [
     AppComponent,
     MainPageComponent,
-    ErrorPageComponent
+    ErrorPageComponent,
+    FacebookApiComponent
   ],
   providers: [HttpService, MainService],
   bootstrap: [AppComponent],
-  exports: [MainPageComponent, ErrorPageComponent]
+  exports: [MainPageComponent, ErrorPageComponent, FacebookApiComponent]
 })
 export class AppModule { }

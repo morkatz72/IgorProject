@@ -1,5 +1,4 @@
-/// <reference path="../modules/basket/basket-page/basket-page.component.ts" />
-/// <reference path="../modules/basket/basket-page/basket-page.component.ts" />
+
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule, Routes } from '@angular/router';
@@ -23,6 +22,8 @@ import { ProductStunningGraphComponent } from '../modules/product/product-stunni
 import { ErrorPageComponent } from '../components/error-page/error-page.component'
 import { PriceHistoryChartWithD3jsComponent } from '../modules/product/price-history-chart-with-d3js/price-history-chart-with-d3js.component';
 import { BarChartProuctPriceComponent} from '../modules/product/bar-chart-prouct-price/bar-chart-prouct-price.component';
+import { FacebookApiComponent } from '../components/facebook-api/facebook-api.component'
+
 
 export const routes: Routes = [
 
@@ -44,7 +45,8 @@ export const routes: Routes = [
   { path: 'page-404', component: ErrorPageComponent },
   { path: 'history-one-d3js/:id', component: PriceHistoryChartWithD3jsComponent },
   { path: 'history-two-chart-bar', component: BarChartProuctPriceComponent },
-  { path: 'manager-page', component: ManagerPageComponent }
+  { path: 'manager-page', component: ManagerPageComponent },
+  { path: 'facebook-api', component: FacebookApiComponent }
 ];
 
 @NgModule({
