@@ -17,6 +17,10 @@ export class BasketHandleService {
     return this.httpService.http.post(url + '/saveBasket', { data }, this.httpService.getOptions()).map((data) => data.json());
   }
 
+  updateBasket(data: Basket): Observable<Response> {
+    return this.httpService.http.post(url + '/updateBasket', { data }, this.httpService.getOptions()).map((data) => data.json());
+  }
+
   getBasket(id: number): Observable<Response> {
     return this.httpService.http.get(url + '/getBasket/' + id).map((data) => data.json());
   }

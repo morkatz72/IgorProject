@@ -12,6 +12,7 @@
     app.post('/deleteProduct', basketModule.deleteProduct);
     app.post('/addCommentToProduct', basketModule.addCommentToProduct);
     app.post('/saveBasket', basketModule.saveBasket);
+    app.post('/updateBasket', basketModule.updateBasket);
     app.post('/removeUser', basketModule.removeUser); 
     app.post('/changeUserTypeStatus', basketModule.changeUserTypeStatus); 
     app.post('/resetPassword', basketModule.resetPassword); 

@@ -49,15 +49,21 @@ export class BasketPageComponent implements OnInit {
   saveBasket() {
     this.basket.basketItems = this.basketItems;
     this.basket.totalPrice = this.getTotalPrice();
-    if (this.basket.id) {
-      this.basket.basketId = 0;
+    if (!this.basket.id) {
+      this.basket.id = 0;
     }
-
-    this.basketHandleService.saveBasket(this.basket).subscribe((results) => {
-      debugger;
-      alert('הסל נשמר בהצלחה');
-      this.basket.basketId = 6;
-    })
+    if (this.basket.id == 0) {
+      this.basketHandleService.saveBasket(this.basket).subscribe((results) => {
+        debugger;
+        alert('הסל נשמר בהצלחה');
+        this.basket.basketId = 6;
+      })
+    }
+    else {
+      alert("עלייך לעדכן את הסל")
+      this.basketHandleService.updateBasket(this.basket).subscribe((results) => {
+      })
+    }
   }
     ngOnInit() {
       this.basket = new Basket();

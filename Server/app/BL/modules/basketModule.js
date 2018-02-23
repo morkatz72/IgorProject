@@ -175,3 +175,11 @@ exports.resetPassword = function (req, res) {
         res.send(true);
     })
 }
+
+exports.updateBasket = function (req, res) {
+    var data = req.body.data;
+    console.log("data = " + data)
+
+    dbUtils.updateBasket(data, function (err, data) {
+    });
+}

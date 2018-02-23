@@ -173,3 +173,18 @@ exports.changeUserTypeStatus = function (userName, statusToChange, callback) {
 exports.resetPassword = function (userName, callback) {
     db.users.update({ 'userName': userName }, { $set: { "password": "123456" } }, callback);
 }
+
+exports.updateBasket = function (data, callback) {
+    
+    var filterQuery = { 'id': data.id }
+    var updateQuery = {
+        "basketItems": data.basketItems,
+        "totalPrice": data.totalPrice
+    };
+    var options = {
+        upsert: true
+    };
+    db.product.update(filterQuery, { $set: updateQuery }, options, callback);
+    
+    console.log(data.id);
+}
