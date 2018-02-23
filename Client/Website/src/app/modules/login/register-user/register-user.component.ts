@@ -3,7 +3,7 @@ import { Router } from '@angular/router';
 import { UsersServiceService } from '../users-service.service';
 import { FormGroup } from '@angular/forms';
 import { User } from '../../../shared/entities/User';
-
+import { EeUserType} from '../../../shared/enums/eUserType'
 
 
 @Component({
@@ -43,7 +43,7 @@ export class RegisterUserComponent implements OnInit {
       this.user.gender = +this.model.gender;
       this.user.password = this.model.password;
       this.user.userName = this.model.userName;
-      this.user.userType = "regularUser";
+      this.user.userType = EeUserType.Regular;
       debugger;
       this.userService.register(this.user).subscribe(
         (results) =>

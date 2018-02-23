@@ -10,5 +10,5 @@ export class User {
   // define user type
   // 1 - for regular user
   // 2 - for manager user
-  userType: string;
+  userType: number;
 }
