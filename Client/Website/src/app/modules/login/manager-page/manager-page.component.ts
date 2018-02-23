@@ -42,6 +42,5 @@ export class ManagerPageComponent implements OnInit {
   }
 
   isChangeAdmin(data: string) {
-    debugger;
   }
 }
