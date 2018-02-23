@@ -6,6 +6,8 @@ import { EventEmitter } from '@angular/core';
 import { Pipe, PipeTransform } from '@angular/core';
 import { CategoryPipe} from '../pipes/category-pipe/category.pipe';
 import { Router } from "@angular/router";
+import { BasketItemModule } from "../../basket/basket-item.module";
+
 
 @Component({
   selector: 'app-products-list',
@@ -90,5 +92,18 @@ export class ProductsListComponent implements OnInit {
 
   showDetails(productID: number) {
       this.router.navigate(['/product-details/' + productID]);
+  }
+
+  addToBasket(product: Product) {
+    //this.module.addToBaket(product);
+    debugger;
+    let tmpBasket: BasketItemModule[] = JSON.parse(localStorage.getItem("basket"));
+    let index = tmpBasket.map((i) => i.id).indexOf(product.id)
+    if (index != -1)
+      tmpBasket[index].amount += 1;
+    else
+      tmpBasket.push(new BasketItemModule(product.id, product.name, "", product.price, 1));
+
+    localStorage.setItem("basket", JSON.stringify(tmpBasket));
   }
 }

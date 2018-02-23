@@ -1,6 +1,6 @@
 import { Component, OnInit, AfterViewInit } from '@angular/core';
-import { FacebookService, InitParams, UIResponse } from 'ngx-facebook';
-import { FBVideoComponent } from 'ngx-facebook';
+//import { FacebookService, InitParams, UIResponse } from 'ngx-facebook';
+//import { FBVideoComponent } from 'ngx-facebook';
 import { ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { Headers, Http, Response, RequestOptions, RequestOptionsArgs } from '@angular/http';
@@ -15,13 +15,13 @@ import * as $ from 'jquery';
   styleUrls: ['./facebook-api.component.css']
 })
 export class FacebookApiComponent {
-
+  /*
   @ViewChild(FBVideoComponent) video: FBVideoComponent;
   public FB: any;
   public window: any;
+  */
 
-
-  constructor(private router: Router, private http: Http, private fb: FacebookService) {
+  constructor(/*private router: Router, private http: Http, private fb: FacebookService*/) {
     /*
     this.fb.init({
       appId: '1234566778',
@@ -33,7 +33,7 @@ export class FacebookApiComponent {
   ngOnInit() {
     
   }
-
+  /*
   ngAfterViewInit() {
 
     (function (d, s, id) {
@@ -49,5 +49,5 @@ export class FacebookApiComponent {
       this.video.pause();
       this.video.getVolume();
     }
-  }
+  }*/
 }
