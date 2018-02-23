@@ -6,6 +6,8 @@ import { RouterModule, Routes } from '@angular/router';
 
 import { UserLoginComponent } from '../modules/login/user-login-component/user-login.component';
 import { RegisterUserComponent } from '../modules/login/register-user/register-user.component';
+import { ManagerPageComponent } from '../modules/login/manager-page/manager-page.component';
+
 
 import { ProductDetailsComponent } from '../modules/product/product-details/product-details.component';
 import { AddOrUpdateProductComponent } from '../modules/product/add-or-update-product/add-or-update-product.component';
@@ -41,7 +43,8 @@ export const routes: Routes = [
   { path: 'history-two', component: ProductStunningGraphComponent },
   { path: 'page-404', component: ErrorPageComponent },
   { path: 'history-one-d3js/:id', component: PriceHistoryChartWithD3jsComponent },
-  { path: 'history-two-chart-bar', component: BarChartProuctPriceComponent }
+  { path: 'history-two-chart-bar', component: BarChartProuctPriceComponent },
+  { path: 'manager-page', component: ManagerPageComponent }
 ];
 
 @NgModule({
