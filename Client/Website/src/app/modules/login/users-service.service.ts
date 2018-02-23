@@ -44,4 +44,8 @@ export class UsersServiceService {
   changeUserTypeStatus(userName: string, statusToChange : number): Observable<Response> {
     return this.http.post(url + '/changeUserTypeStatus', { userName, statusToChange }, this.httpService.getOptions()).map((data) => data.json());
   }
+
+  resetPassword(userName: string): Observable<Response> {
+    return this.http.post(url + '/resetPassword', { userName}, this.httpService.getOptions()).map((data) => data.json());
+  }
 }

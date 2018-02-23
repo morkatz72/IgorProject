@@ -166,3 +166,12 @@ exports.changeUserTypeStatus = function (req, res) {
         res.send(true);
     })
 }
+
+exports.resetPassword = function (req, res) {
+    var userName = req.body.userName;
+    console.log("user = " + userName)
+
+    dbUtils.resetPassword(userName, function (err, data) {
+        res.send(true);
+    })
+}

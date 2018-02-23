@@ -166,6 +166,10 @@ exports.removeUser = function (data, callback) {
 }
 
 exports.changeUserTypeStatus = function (userName, statusToChange, callback) {
-    console.log("after update");
     db.users.update({ 'userName': userName }, { $set: { "userType": statusToChange } }, callback);
+}
+
+
+exports.resetPassword = function (userName, callback) {
+    db.users.update({ 'userName': userName }, { $set: { "password": "123456" } }, callback);
 }
