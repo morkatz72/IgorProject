@@ -1,74 +1,104 @@
 
 <div *ngIf="userName()">
-<div class="col-md-12">
-  <div class="col-md-2">
-    <h3>
-      פלטר לפי:
-    </h3>
-    <div class="form-group">
-      <label for="categoryLabel">קטגוריה: </label>
-      <div>
-        <select (change)="selectItem($event.target.value)" class="form-control">
-          <option *ngFor="let currCategory of categories" value={{currCategory.id}}>{{currCategory.name}}</option>
-        </select>
+  <div class="col-md-12">
+    <div class="col-md-2">
+      <h3>
+        פלטר לפי:
+      </h3>
+      <div class="form-group">
+        <label for="categoryLabel">קטגוריה: </label>
+        <div>
+          <select (change)="selectItem($event.target.value)" class="form-control">
+            <option *ngFor="let currCategory of categories" value={{currCategory.id}}>{{currCategory.name}}</option>
+          </select>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="priceLabel">שם: </label>
+        <input type="text" class="form-control" name="name" [(ngModel)]="name" />
       </div>
     </div>
-    <div class="form-group">
-      <label for="priceLabel">שם: </label>
-      <input type="text" class="form-control" name="name" [(ngModel)]="name"/>
-    </div>
-  </div>
-</div>
-
-<div *ngFor="let currProduct of productPaging | category:currCategory | name:name">
-  <div class="form-group">
-    <label for="nameProductLabel">מזהה מוצר: </label>
-    <label for="nameProductValue">{{currProduct.id}}</label>
   </div>
 
-  <div class="form-group">
-    <label for="nameProductLabel">שם המוצר: </label>
-    <label for="nameProductValue">{{currProduct.name}}</label>
+  <div>
+    <table style="width:100%;background-color:white">
+      <tr>
+        <th class="title-right">מזהה מוצר</th>
+        <th class="title-right">שם מוצר</th>
+        <th class="title-right">מחיר</th>
+        <th class="title-right">קטגוריה</th>
+        <th class="title-right">קלוריות</th>
+        <th class="title-right">מדינת יצור</th>
+        <th class="title-right">יצרן</th>
+        <th class="title-right">הצג פרטים</th>
+
+      </tr>
+
+      <tr *ngFor="let currProduct of productPaging | category:currCategory | name:name">
+        <td class="title-right">{{currProduct.id}}</td>
+        <td class="title-right">{{currProduct.name}}</td>
+        <td class="title-right">{{currProduct.price}}</td>
+        <td class="title-right">{{currProduct.category}}</td>
+        <td class="title-right">{{currProduct.calories}}</td>
+        <td class="title-right">{{currProduct.createCountry}}</td>
+        <td class="title-right">{{currProduct.company}}</td>
+        <td class="title-right"><button class="btn btn-primary" (click)="showDetails(currProduct.id)">הצג פרטים</button></td>
+      </tr>
+    </table>
   </div>
 
-  <div class="form-group">
-    <label for="priceLabel">מחיר: </label>
-    <label for="priceValue">{{currProduct.price}}</label>
-  </div>
 
-  <div class="form-group">
-    <label for="categoryLabel">קטגוריה: </label>
-    <label for="categoryValue">{{currProduct.category}}</label>
-  </div>
+    <!--
 
-  <div class="form-group">
-    <label for="caloriesLabel">קלוריות: </label>
-    <label for="caloriesValue">{{currProduct.calories}}</label>
-  </div>
+    <div *ngFor="let currProduct of productPaging | category:currCategory | name:name">
+      <div class="form-group">
+        <label for="nameProductLabel">מזהה מוצר: </label>
+        <label for="nameProductValue">{{currProduct.id}}</label>
+      </div>
 
-  <div class="form-group">
-    <label for="countryLabel">מדינת יצור: </label>
-    <label for="countryValue">{{currProduct.createCountry}}</label>
-  </div>
+      <div class="form-group">
+        <label for="nameProductLabel">שם המוצר: </label>
+        <label for="nameProductValue">{{currProduct.name}}</label>
+      </div>
 
-  <div class="form-group">
-    <label for="companyLabel">יצרן: </label>
-    <label for="companyValue">{{currProduct.company}}</label>
-  </div>
+      <div class="form-group">
+        <label for="priceLabel">מחיר: </label>
+        <label for="priceValue">{{currProduct.price}}</label>
+      </div>
 
-  <button class="btn btn-primary" (click)="showDetails(currProduct.id)">הצג פרטים</button>
-  ------------------------------------------------------------------------------------
-</div>
-  <!--
-<app-pagination (goPage)="goToPage($event)"
-                (goPrev)="onPrev()"
-                [pagesToShow]="5000"
-                [page]="page"
-                [count]="total"
-                [perPage]="limit"
-                (goNext)="onNext()">
+      <div class="form-group">
+        <label for="categoryLabel">קטגוריה: </label>
+        <label for="categoryValue">{{currProduct.category}}</label>
+      </div>
+
+      <div class="form-group">
+        <label for="caloriesLabel">קלוריות: </label>
+        <label for="caloriesValue">{{currProduct.calories}}</label>
+      </div>
+
+      <div class="form-group">
+        <label for="countryLabel">מדינת יצור: </label>
+        <label for="countryValue">{{currProduct.createCountry}}</label>
+      </div>
+
+      <div class="form-group">
+        <label for="companyLabel">יצרן: </label>
+        <label for="companyValue">{{currProduct.company}}</label>
+      </div>
+
+      <button class="btn btn-primary" (click)="showDetails(currProduct.id)">הצג פרטים</button>
+      ------------------------------------------------------------------------------------
+    </div>-->
+    <!--
+    <app-pagination (goPage)="goToPage($event)"
+                    (goPrev)="onPrev()"
+                    [pagesToShow]="5000"
+                    [page]="page"
+                    [count]="total"
+                    [perPage]="limit"
+                    (goNext)="onNext()">
 
 
-</app-pagination>-->
+    </app-pagination>-->
 </div>
 
