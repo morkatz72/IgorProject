@@ -1,3 +1,30 @@
-<p>
-  manager-page works!
-</p>
+<div style="background-color:white">
+<table style="width:100%">
+  <tr>
+    <th class="title-right">שם משתמש</th>
+    <th class="title-right">שם משפחה</th>
+    <th class="title-right">שם פרטי</th>
+    <th class="title-right">אימייל</th>
+    <th class="title-right">מין</th>
+    <th class="title-right">סוג משתמש</th>
+    <th class="title-right">האם למחוק משתמש</th>
+    <th class="title-right">האם להפוך למנהל</th>
+    <th class="title-right">איפוס סיסמא</th>
+
+  </tr>
+
+
+  <tr *ngFor="let currUser of users">
+    <td class="title-right">{{currUser.userName}}</td>
+    <td class="title-right">{{currUser.firstName}}</td>
+    <td class="title-right">{{currUser.lastName}}</td>
+    <td class="title-right">{{currUser.email}}</td>
+    <td class="title-right">{{currUser.genderValue}}</td>
+    <td class="title-right">{{currUser.userTypeValue}}</td>
+    <td class="title-right"><button class="btn btn-primary" (click)="isDeleteUser(currUser.userName)">מחק משתמש</button></td>
+    <td class="title-right"><label><input type="checkbox" value="">מנהל/ לא מנהל</label></td>
+    <td class="title-right"><button class="btn btn-primary" (click)="actionCodeToDelete(currUser.userName)">אפס סיסמא</button></td>
+
+  </tr>
+</table>
+</div>

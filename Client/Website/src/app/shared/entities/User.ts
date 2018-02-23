@@ -1,3 +1,6 @@
+
+import { EeUserType}from '../enums/eusertype';
+
 export class User {
   id: number;
   firstName: string;
@@ -6,6 +9,8 @@ export class User {
   email: string;
   password: string;
   gender: number;
+  genderValue: string;
+  userTypeValue:string;
 
   // define user type
   // 1 - for regular user
@@ -27,6 +32,18 @@ export class User {
       product.email = element.email;
       product.userType = element.userType;
 
+      if (+element.userType === EeUserType.Regular) {
+        product.userTypeValue = "משתמש רגיל";
+      }
+      if (+element.userType === EeUserType.Manager) {
+        product.userTypeValue = "מנהל";
+      }
+      if (element.gender === 1) {
+        product.genderValue = "זכר";
+      }
+      if (element.gender === 2) {
+        product.genderValue = "נקבה";
+      }
 
       users.push(product);
     });
