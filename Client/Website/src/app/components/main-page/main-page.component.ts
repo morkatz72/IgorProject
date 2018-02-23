@@ -56,4 +56,8 @@ export class MainPageComponent implements OnInit {
   barChart() {
     this.router.navigate(['/history-two-chart-bar'])
   }
+
+  setMainPage() {
+    this.router.navigate(['/'])
+  }
 }

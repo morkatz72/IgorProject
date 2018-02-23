@@ -1,6 +1,6 @@
 
 -- sequences
-db.counters.insert({_id: "productId",seq: 0})	
+db.counters.insert({_id: "productId",seq: 11})	
 db.counters.insert({_id: "basketId",seq: 0})	
 
 db.category.insert({id:0, name:"אנא בחר ערך"})
