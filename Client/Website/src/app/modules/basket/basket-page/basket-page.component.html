@@ -95,10 +95,9 @@
         </div>
       </div>
       <div>
-        <iframe width="250"
-                height="250"
-                frameborder="0" style="border:0"
-                src="https://www.google.com/maps/embed/v1/place?key=AIzaSyAwFHY0_B1pA_GbY6AwXbWADDT1IxGfEzk&q=Space+Needle,Seattle+WA" allowfullscreen></iframe>
+        <agm-map [latitude]="lat" [longitude]="lng">
+          <agm-marker [latitude]="lat" [longitude]="lng"></agm-marker>
+        </agm-map>
         <div>
         </div>
 
@@ -110,6 +109,8 @@
           <i class="fa fa-save"></i>
         </button>
       </div>
+
+
     </div>
   </div>
 </div>

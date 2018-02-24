@@ -15,7 +15,12 @@ import { ActivatedRoute } from '@angular/router';
     styleUrls: ['./basket-page.component.css']
 })
 export class BasketPageComponent implements OnInit {
-    basketItems: BasketItemModule[] = this.basketService.getBasket();
+  basketItems: BasketItemModule[] = this.basketService.getBasket();
+
+  title: string = 'My first AGM project';
+  lat: number = 32.678418;
+  lng: number = 35.409007;
+
     basket: Basket;
     getTotalPrice() {
         var totalPrice: number = 0;
