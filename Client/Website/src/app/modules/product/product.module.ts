@@ -18,6 +18,7 @@ import { ProductStunningGraphComponent } from './product-stunning-graph/product-
 import { PriceHistoryChartWithD3jsComponent } from './price-history-chart-with-d3js/price-history-chart-with-d3js.component';
 import { BarChartProuctPriceComponent } from './bar-chart-prouct-price/bar-chart-prouct-price.component';
 import { PreferredProductComponent } from './preferred-product/preferred-product.component';
+import { ProductDetailsPreviewComponent } from './product-details-preview/product-details-preview.component';
 
 
 
@@ -36,7 +37,8 @@ import { PreferredProductComponent } from './preferred-product/preferred-product
     ProductStunningGraphComponent,
     PriceHistoryChartWithD3jsComponent,
     BarChartProuctPriceComponent,
-    PreferredProductComponent],
+    PreferredProductComponent,
+    ProductDetailsPreviewComponent],
   imports: [
     CommonModule,
     FormsModule

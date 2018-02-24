@@ -25,8 +25,8 @@ export class CheapestProdctByCategoryComponent implements OnInit {
 
   ngOnInit() {
     this.select = new EventEmitter();
+    this.productIdToShow = 0;
     this.getCategories();
-    this.productDetails = new Product();
   }
 
   getCategories() {
@@ -49,8 +49,8 @@ export class CheapestProdctByCategoryComponent implements OnInit {
         {
           console.log(data[0]._productId);
           this.productIdToShow = +data[0]._productId;
-          this.getProductDetails(this.productIdToShow);
           this.boolIsShow = true;
+
         }
         else
         {
@@ -60,18 +60,6 @@ export class CheapestProdctByCategoryComponent implements OnInit {
         }
       }
     );
-  }
-
-  getProductDetails(productId: number): any {
-    this.productService.getProductDetails(productId).subscribe(
-      (data) => {
-        this.productDetails = data[0];
-        this.getCategoryById(this.productDetails.category);
-        console.log(this.productDetails);
-      }
-    );
-
-    return this.productDetails;
   }
 
   getCategoryById(categoryId: number): any {
