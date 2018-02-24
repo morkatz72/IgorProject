@@ -23,7 +23,7 @@ import { ErrorPageComponent } from '../components/error-page/error-page.componen
 import { PriceHistoryChartWithD3jsComponent } from '../modules/product/price-history-chart-with-d3js/price-history-chart-with-d3js.component';
 import { BarChartProuctPriceComponent} from '../modules/product/bar-chart-prouct-price/bar-chart-prouct-price.component';
 import { FacebookApiComponent } from '../components/facebook-api/facebook-api.component'
-
+import { PreferredProductComponent } from '../modules/product/preferred-product/preferred-product.component';
 
 export const routes: Routes = [
 
@@ -46,7 +46,8 @@ export const routes: Routes = [
   { path: 'history-one-d3js/:id', component: PriceHistoryChartWithD3jsComponent },
   { path: 'history-two-chart-bar', component: BarChartProuctPriceComponent },
   { path: 'manager-page', component: ManagerPageComponent },
-  { path: 'facebook-api', component: FacebookApiComponent }
+  { path: 'facebook-api', component: FacebookApiComponent },
+  { path: 'preferred-product', component: PreferredProductComponent }
 ];
 
 @NgModule({

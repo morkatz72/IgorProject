@@ -72,4 +72,8 @@ export class MainPageComponent implements OnInit {
   cheapestProduct() {
     this.router.navigate(['/cheapest-product'])
   }
+
+  preferredProduct() {
+    this.router.navigate(['/preferred-product'])
+  }
 }

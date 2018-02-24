@@ -20,7 +20,7 @@ html {
   .box:hover {
     background-color: #009688;
     width: 200px;
-    height: 240px;
+    height: 200px;
     -webkit-transform: rotate(360deg);
     transform: rotate(360deg);
   }
