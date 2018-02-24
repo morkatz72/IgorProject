@@ -99,6 +99,13 @@
           <agm-marker [latitude]="lat" [longitude]="lng"></agm-marker>
         </agm-map>
         <div>
+          <div>רשימת חנויות</div>
+          <div>
+            <!--[selected]="currCategory.id == currentCategory-->
+            <select (change)="selectItem($event.target.value)" class="form-control">
+              <option *ngFor="let currStore of stores"  value={{currStore}}>{{currStore.Storename}}</option>
+            </select>
+          </div>
         </div>
 
         <button type="button" class="btn btn-primary" style="float:left"><i class="fa fa-print"></i></button>

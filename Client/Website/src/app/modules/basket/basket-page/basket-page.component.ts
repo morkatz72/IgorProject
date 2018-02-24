@@ -7,6 +7,8 @@ import { BasketService } from '../../../services/basketService/basket-service.se
 import { Basket } from '../basket';
 import { BasketHandleService } from '../basket.service';
 import { ActivatedRoute } from '@angular/router';
+import { EventEmitter } from '@angular/core';
+import { Store } from '../../../shared/entities/store';
 
 
 @Component({
@@ -20,6 +22,10 @@ export class BasketPageComponent implements OnInit {
   title: string = 'My first AGM project';
   lat: number = 32.678418;
   lng: number = 35.409007;
+  public currStore: any;
+  select: EventEmitter<string>;
+  stores: Store[];
+
 
     basket: Basket;
     getTotalPrice() {
@@ -37,7 +43,6 @@ export class BasketPageComponent implements OnInit {
 
 
     removeItem(index: number) {
-      debugger;
         this.basketService.removeItemIndex(index);
         this.basketItems = this.basketService.getBasket()
     }
@@ -45,6 +50,13 @@ export class BasketPageComponent implements OnInit {
     emptyBasket() {
         this.basketService.setBasket([]);
         this.basketItems = this.basketService.getBasket()
+    }
+
+    selectItem(value) {
+      debugger;
+      this.select.emit(value);
+      console.log(value);
+      this.currStore = value;
     }
 
     setItemAmount(productId: number, amount: number) {
@@ -73,6 +85,7 @@ export class BasketPageComponent implements OnInit {
     ngOnInit() {
       this.basket = new Basket();
       this.getAllStores();
+      this.select = new EventEmitter();
 
       this.route.params.subscribe(params => {
         let id: number = +params['id'];
@@ -83,17 +96,14 @@ export class BasketPageComponent implements OnInit {
     }
 
     getAllStores() {
-      debugger;
       this.basketHandleService.getAllStores().subscribe(
         (data) => {
-          debugger;
-          let dataa = data;
+          this.stores = Store.toStore(data)
         }
       )
     }
     
     getBasket(basketId: number): any {
-      debugger;
       this.basketHandleService.getBasket(basketId).subscribe(
         (data) => {
           this.basket = data[0];
