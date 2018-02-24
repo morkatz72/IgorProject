@@ -3,17 +3,17 @@
 db.counters.insert({_id: "productId",seq: 11})	
 db.counters.insert({_id: "basketId",seq: 0})	
 
-db.category.insert({id:0, name:"אנא בחר ערך"})
-db.category.insert({id:1, name:"כשרות"})
-db.category.insert({id:2, name:"קפואים"})
-db.category.insert({id:3, name:"סגנון בריאות"})
-db.category.insert({id:4, name:"חטיפים"})
-db.category.insert({id:5, name:"דגים"})
-db.category.insert({id:6, name:"בשר"})
-db.category.insert({id:7, name:"שימורים"})
-db.category.insert({id:8, name:"חומרי ניקוי"})
-db.category.insert({id:9, name:"שתייה"})
-db.category.insert({id:10, name:"מוגז"})
+db.category.insert({_id:0,id:0, name:"אנא בחר ערך"})
+db.category.insert({_id:1,id:1, name:"כשרות"})
+db.category.insert({_id:2,id:2, name:"קפואים"})
+db.category.insert({_id:3,id:3, name:"סגנון בריאות"})
+db.category.insert({_id:4,id:4, name:"חטיפים"})
+db.category.insert({_id:5,id:5, name:"דגים"})
+db.category.insert({_id:6,id:6, name:"בשר"})
+db.category.insert({_id:7,id:7, name:"שימורים"})
+db.category.insert({_id:8,id:8, name:"חומרי ניקוי"})
+db.category.insert({_id:9,id:9, name:"שתייה"})
+db.category.insert({_id:10,id:10, name:"מוגז"})
 
 
 
