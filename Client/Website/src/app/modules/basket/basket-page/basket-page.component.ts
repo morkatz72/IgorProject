@@ -10,6 +10,7 @@ import { ActivatedRoute } from '@angular/router';
 import { EventEmitter } from '@angular/core';
 import { Store } from '../../../shared/entities/store';
 import { Observable } from 'rxjs/Observable';
+import { Marker } from './Market';
 
 declare var google;
 
@@ -24,6 +25,7 @@ export class BasketPageComponent implements OnInit {
   title: string = 'My first AGM project';
   lat: number = 32.678418;
   lng: number = 35.409007;
+  public markers: Marker
   public currStore: Store;
   select: EventEmitter<string>;
   stores: Store[];
@@ -36,6 +38,18 @@ export class BasketPageComponent implements OnInit {
             totalPrice += this.basketItems[i].price * this.basketItems[i].amount;
         }
         return totalPrice;
+    }
+
+    mapClicked($event: any) {
+      debugger;
+      this.changeMarker($event.coords.lat, $event.coords.lng);
+    }
+
+    changeMarker(lat, lng) {
+      this.markers = {
+        lat: lat,
+        lng: lng
+      }
     }
 
     constructor(private basketService: BasketService,
@@ -52,13 +66,18 @@ export class BasketPageComponent implements OnInit {
     getGeoLocation(address: string) {
       let geocoder = new google.maps.Geocoder();
       debugger;
+
       geocoder.geocode({ 'address': address }, function (results, status) {
         if (status == google.maps.GeocoderStatus.OK) {
           //var latlng = google.maps.location.LatLng();
 
           this.lng = results[0].geometry.location.lng()
           this.lat = results[0].geometry.location.lat()
-        } else {
+
+          this.changeMarker(this.lat, this.lng);
+        }
+        else
+        {
           alert('Geocode was not successful for the following reason: ' + status);
         }
       });
@@ -100,7 +119,10 @@ export class BasketPageComponent implements OnInit {
       })
     }
   }
-    ngOnInit() {
+  ngOnInit() {
+    this.markers = new Marker();
+    this.markers.lat = this.lat;
+    this.markers.lng = this.lng;
       this.basket = new Basket();
       this.getAllStores();
       this.select = new EventEmitter();

@@ -95,9 +95,10 @@
         </div>
       </div>
       <div>
-        <agm-map [latitude]="lat" [longitude]="lng">
-          <agm-marker [latitude]="lat" [longitude]="lng"></agm-marker>
+        <agm-map [latitude]="lat" [longitude]="lng" (mapClick)="mapClicked($event)">
+          <agm-marker [latitude]="markers.lat" [longitude]="markers.lng"></agm-marker>
         </agm-map>
+        {{markers.lat }} {{markers.lng}}
         <div>
           <div>רשימת חנויות</div>
           <div>
