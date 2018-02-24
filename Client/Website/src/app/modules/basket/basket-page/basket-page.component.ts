@@ -9,7 +9,9 @@ import { BasketHandleService } from '../basket.service';
 import { ActivatedRoute } from '@angular/router';
 import { EventEmitter } from '@angular/core';
 import { Store } from '../../../shared/entities/store';
+import { Observable } from 'rxjs/Observable';
 
+declare var google;
 
 @Component({
     selector: 'app-basket-page',
@@ -22,7 +24,7 @@ export class BasketPageComponent implements OnInit {
   title: string = 'My first AGM project';
   lat: number = 32.678418;
   lng: number = 35.409007;
-  public currStore: any;
+  public currStore: Store;
   select: EventEmitter<string>;
   stores: Store[];
 
@@ -47,6 +49,21 @@ export class BasketPageComponent implements OnInit {
         this.basketItems = this.basketService.getBasket()
     }
 
+    getGeoLocation(address: string) {
+      let geocoder = new google.maps.Geocoder();
+      debugger;
+      geocoder.geocode({ 'address': address }, function (results, status) {
+        if (status == google.maps.GeocoderStatus.OK) {
+          //var latlng = google.maps.location.LatLng();
+
+          this.lng = results[0].geometry.location.lng()
+          this.lat = results[0].geometry.location.lat()
+        } else {
+          alert('Geocode was not successful for the following reason: ' + status);
+        }
+      });
+    }
+
     emptyBasket() {
         this.basketService.setBasket([]);
         this.basketItems = this.basketService.getBasket()
@@ -56,7 +73,8 @@ export class BasketPageComponent implements OnInit {
       debugger;
       this.select.emit(value);
       console.log(value);
-      this.currStore = value;
+      //this.currStore = value;
+      this.getGeoLocation(value);
     }
 
     setItemAmount(productId: number, amount: number) {
