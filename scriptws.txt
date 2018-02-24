@@ -54,7 +54,7 @@ db.product.insert({
 	id: 2,
 	name: 'פסטה',
 	price: 6,
-	category: 2,
+	category: 3,
 	calories: 200,
 	createCountry : 'ישראל',
 	company: 'שטראוס'
@@ -65,7 +65,7 @@ db.product.insert({
 	id: 3,
 	name: 'מקרוני',
 	price: 1,
-	category: 2,
+	category: 3,
 	calories: 4,
 	createCountry : 'ישראל',
 	company: 'שטראוס'
@@ -86,7 +86,7 @@ db.product.insert({
 	id: 5,
 	name: 'דני',
 	price: 7,
-	category: 4,
+	category: 2,
 	calories: 4,
 	createCountry : 'ישראל',
 	company: 'שטראוס'
@@ -106,7 +106,7 @@ db.product.insert({
 	id: 7,
 	name: 'שוקו',
 	price: 11,
-	category: 4,
+	category: 2,
 	calories: 4,
 	createCountry : 'ישראל',
 	company: 'שטראוס'
@@ -116,7 +116,7 @@ db.product.insert({
 	id: 8,
 	name: 'דימה',
 	price: 4,
-	category: 4,
+	category: 1,
 	calories: 4,
 	createCountry : 'ישראל',
 	company: 'שטראוס'
@@ -126,7 +126,7 @@ db.product.insert({
 	id: 9,
 	name: 'קוסקוס',
 	price: 3,
-	category: 4,
+	category: 1,
 	calories: 4,
 	createCountry : 'ישראל',
 	company: 'שטראוס'
@@ -136,7 +136,7 @@ db.product.insert({
 	id: 10,
 	name: 'מוצר חדש',
 	price: 2,
-	category: 4,
+	category: 1,
 	calories: 4,
 	createCountry : 'ישראל',
 	company: 'שטראוס'
@@ -146,7 +146,7 @@ db.product.insert({
 	id: 11,
 	name: '22',
 	price: 1,
-	category: 4,
+	category: 1,
 	calories: 4,
 	createCountry : 'ישראל',
 	company: 'שטראוס'

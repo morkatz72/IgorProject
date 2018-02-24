@@ -19,7 +19,7 @@ export class ProductsListComponent implements OnInit {
   loading = false;
   total = 0;
   page = 1;
-  limit = 10;
+  limit = 50;
   public name:string;
   public products: Product[];
   public productPaging: Product[];
@@ -42,6 +42,8 @@ export class ProductsListComponent implements OnInit {
   getProducts(): any {
     this.productService.getProducts().subscribe(
       (data) => {
+
+        debugger;
         this.products = Product.toProduct(data);
         console.log(this.products);
       }
