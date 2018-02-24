@@ -39,7 +39,7 @@
       <label>הצגת רשימת תגובות על מוצר:</label>
       <ul> 
         <li *ngFor="let currComment of productDetails.comments"> 
-          {{ currComment }} 
+          תגובה: {{ currComment.comment }} עם ציון {{ currComment.grade}}
         </li>
       </ul>
     </div>
@@ -47,6 +47,15 @@
     <div class="form-group">
       <label>תגובה על מוצר:</label>
       <textarea class="form-control"  name="comment" [(ngModel)]="comm" #comment="ngModel"></textarea>
+    </div>
+
+    <div class="form-group">
+      <label for="categoryLabel">ציון </label>
+      <div>
+        <select (change)="SelectedGrade($event.target.value)" class="form-control">
+          <option *ngFor="let currGrade of grades" value={{currGrade}}>{{currGrade}}</option>
+        </select>
+      </div>
     </div>
 
     <button class="btn btn-primary" (click)="addComment()">הוסף תגובה</button>

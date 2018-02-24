@@ -107,8 +107,9 @@ exports.deleteProduct = function (req, res) {
 exports.addCommentToProduct = function (req, res) {
     var productId = req.body.data.prodctId;
     var comment = req.body.data.comment;
-
-    dbUtils.addCommentToProduct(productId, comment , function (err, data) {
+    var grade = req.body.data.grade;
+    debugger;
+    dbUtils.addCommentToProduct(productId, comment, grade , function (err, data) {
         res.send(true);
     })
 }

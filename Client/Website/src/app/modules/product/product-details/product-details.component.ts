@@ -5,6 +5,8 @@ import { FormGroup } from '@angular/forms';
 import { Product } from '../../../shared/entities/Product';
 import { CommentToProduct } from '../../../shared/entities/comment-to-prodct';
 import { BasketItemModule } from "../../basket/basket-item.module";
+import { EventEmitter } from '@angular/core';
+
 
 @Component({
     selector: 'app-product-details',
@@ -19,10 +21,14 @@ export class ProductDetailsComponent implements OnInit {
     private id: number;
     public CategoryValue: any;
     public comm: string;
+    select: EventEmitter<number>;
+    public currGrade: number = 1;
     public commentToSave: CommentToProduct;
     @Input() productIdToShow: number;
+    public grades = [1,2,3,4,5]
 
     ngOnInit() {
+        this.select = new EventEmitter();
         this.comm = "";
         this.commentToSave = new CommentToProduct();
         this.sub = this.route.params.subscribe(params => {
@@ -55,13 +61,20 @@ export class ProductDetailsComponent implements OnInit {
         return this.productDetails;
     }
 
+    SelectedGrade(value) {
+      this.currGrade = +value;
+      this.select.emit(value);
+      console.log(value);
+    }
+
     onSubmit(f: any, event: Event) {
     }
 
     addComment() {
         this.commentToSave.prodctId = this.productDetails.id;
         this.commentToSave.comment = this.comm;
-
+        this.commentToSave.grade = this.currGrade;
+        debugger;
         this.productService.addCommentToProduct(this.commentToSave).subscribe(
             (data) => {
             }

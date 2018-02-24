@@ -121,12 +121,14 @@ exports.deleteProduct = function (idProduct, callback) {
     db.product.remove(filterQuery, callback);
 }
 
-exports.addCommentToProduct = function (productId, comment, callback) {
-    console.log(productId + comment);
+exports.addCommentToProduct = function (productId, comment, grade ,callback) {
 
     var filterQuery = { 'id': productId };
     query = {
-        "comments": comment
+        "comments": {
+            "comment": comment,
+            "grade": grade
+        }
     }
     db.product.update(filterQuery, { $push: query }, callback);
 }
