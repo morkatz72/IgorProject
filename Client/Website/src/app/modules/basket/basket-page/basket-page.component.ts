@@ -72,17 +72,26 @@ export class BasketPageComponent implements OnInit {
   }
     ngOnInit() {
       this.basket = new Basket();
+      this.getAllStores();
 
       this.route.params.subscribe(params => {
         let id: number = +params['id'];
         if (id) {
           this.getBasket(id);
-
         }
       })
     }
 
-
+    getAllStores() {
+      debugger;
+      this.basketHandleService.getAllStores().subscribe(
+        (data) => {
+          debugger;
+          let dataa = data;
+        }
+      )
+    }
+    
     getBasket(basketId: number): any {
       debugger;
       this.basketHandleService.getBasket(basketId).subscribe(

@@ -6,7 +6,7 @@ var mongoClient = mongodb.MongoClient;
 var bodyParser = require('body-parser');
 var consts = null;
 
-var collections = ['users', 'category','product', 'counters', 'basket'];
+var collections = ['users', 'category','product', 'counters', 'basket', 'store'];
 
 // log on to db
 exports.setupDB = function (dbUrl, con, p_db, callback) {
@@ -189,4 +189,8 @@ exports.updateBasket = function (data, callback) {
     db.basket.update(filterQuery, { $set: updateQuery }, options, callback);
     
     console.log(data.id);
+}
+
+exports.getAllStores = function (callback) {
+    db.store.find({}).toArray(callback);
 }

@@ -24,5 +24,9 @@ export class BasketHandleService {
   getBasket(id: number): Observable<Response> {
     return this.httpService.http.get(url + '/getBasket/' + id).map((data) => data.json());
   }
+
+  getAllStores(): Observable<Response> {
+    return this.httpService.http.get(url + '/getAllStores').map((data) => data.json());
+  }
 }
 

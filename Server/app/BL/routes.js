@@ -24,4 +24,5 @@
     app.get('/getCheapestProductByCategory/:id', basketModule.getCheapestProductByCategory);
     app.get('/getBasket/:id', basketModule.getBasket);
     app.get('/getUserByUserName/:userName', basketModule.getUserByUserName); 
+    app.get('/getAllStores', basketModule.getAllStores);
 }
