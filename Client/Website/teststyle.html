@@ -1,248 +1,299 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html dir="rtl">
 <head>
   <meta charset="utf-8" />
   <title></title>
-  <!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">-->
-  <!--<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>-->
+  <!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">-->
   <!-- Latest compiled and minified CSS -->
   <link rel="stylesheet"
         href="https://cdn.rtlcss.com/bootstrap/v4.0.0/css/bootstrap.min.css"
         integrity="sha384-P4uhUIGk/q1gaD/NdgkBIl3a6QywJjlsFJFk7SPRdruoGddvRVSwv5qFnvZ73cpz"
         crossorigin="anonymous">
 
-  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+  <script src="https://code.jquery.com/jquery-3.3.1.js"
+          integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
+          crossorigin="anonymous"></script>
 
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+  <!--<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>-->
   <!-- Latest compiled and minified JavaScript -->
   <script src="https://cdn.rtlcss.com/bootstrap/v4.0.0/js/bootstrap.min.js"
           integrity="sha384-54+cucJ4QbVb99v8dcttx/0JRx4FHMmhOWi4W+xrXpKcsKQodCBwAvu3xxkZAwsH"
           crossorigin="anonymous"></script>
-
-  <style>
-    body {
-      background: url("https://thenypost.files.wordpress.com/2018/01/grocery-store.jpg") no-repeat center center fixed;
-      -webkit-background-size: cover;
-      -moz-background-size: cover;
-      -o-background-size: cover;
-      background-size: cover;
-    }
-
-    .category-navigation {
-      padding: 0px;
-    }
-
-    .subcategory-cards {
-      column-count: 2;
-    }
-
-      .subcategory-cards > .card {
-        border: unset;
-      }
-
-    .category-navigation .nav-item:nth-child(n) {
-      font-weight: bold;
-      border-left: 0.1px solid;
-      background-color: white;
-      border-color: lightgray;
-    }
-
-    .category-navigation .nav-item:last-child {
-      border-left: 0;
-    }
-
-    .navbar-nav {
-      border: 0.1px solid;
-      border-color: lightgray;
-    }
-
-    /*.category-navigation .nav-item:nth-child(2) {
-        border-color: #ec7523;
-      }*/
-
-    .category-navigation .nav-item:nth-child(2) a {
-      color: #ec7523;
-    }
-
-    /*.category-navigation .nav-item:nth-child(3) {
-        border-color: #ffed1b;
-      }*/
-
-    .category-navigation .nav-item:nth-child(3) a {
-      color: #ffed1b;
-    }
-
-
-    /*.category-navigation .nav-item:nth-child(4) {
-        border-color: #c9db53;
-      }*/
-
-    .category-navigation .nav-item:nth-child(4) a {
-      color: #c9db53;
-    }
-
-    .category-navigation .nav-item:nth-child(5) a {
-      color: #8fc23f;
-    }
-
-    .category-navigation .nav-item:nth-child(6) a {
-      color: #1f8b95;
-    }
-
-    .category-navigation .nav-item:nth-child(8) a {
-      color: #dc1c4b;
-    }
-
-    .category-navigation .nav-item:nth-child(9) a {
-      color: #6f1e49;
-    }
-
-    .category-navigation .nav-item:nth-child(10) a {
-      color: #66342d;
-    }
-
-    .category-navigation .nav-item:nth-child(11) a {
-      color: #133340;
-    }
-
-    .category-navigation .nav-item:nth-child(12) a {
-      color: #ea676c;
-    }
-
-    .category-navigation .nav-item:nth-child(13 ) a {
-      color: #d0ad9a;
-    }
-
-    .category-navigation .nav-item:nth-child(7) a {
-      color: #ea676c;
-    }
-
-    /*.category-navigation .nav-item:nth-child(5) {
-        border-color: #8fc23f;
-      }*/
-
-    /*.category-navigation .nav-item:first-child {
-        border-color: #e3482c;
-      }*/
-
-    .category-navigation .nav-item:first-child a {
-      color: #e3482c;
-    }
-  </style>
+  <link href="StyleSheet.css" rel="stylesheet" />
 
   <script>
+
     $(document).ready(function () {
       //var referenceElement = $(".dropdown");
       //var onLeftPopper = $(".category-navigation .dropdown-menu");
       var referenceElement = $(".button-popper");
       var onLeftPopper = $(".dropdown-hidden");
+      var arrow = $(".popper-arrow");
       var popper = new Popper(referenceElement, onLeftPopper, {
-        placement: 'bottom'
+        placement: 'bottom',
+        onCreate: (data) => {
+          // data is an object containing all the informations computed
+          // by Popper.js and used to style the popper and its arrow
+          // The complete description is available in Popper.js documentation
+        }
+        //arrowElement: arrow
       });
-    })
+
+      function attachPopper(evt) {
+        position = evt.target.value;
+
+        //Position of the popper
+        $('#example10code').html(code.replace('position', position));
+        $('.currentPosition').text(position);
+
+        popper && popper.destroy();
+        popper = new Popper(example10reference1, example10popper1, {
+          placement: position,
+          boundariesElement: example10reference1.parentNode
+        });
+
+
+      }
+
+      $('body').on('mouseenter mouseleave', '.dropdown', function (e) {
+        var _d = $(e.target).closest('.dropdown'); _d.addClass('show');
+        setTimeout(function () {
+          _d[_d.is(':hover') ? 'addClass' : 'removeClass']('show');
+        }, 300);
+      });
+
+      /*
+* Replace all SVG images with inline SVG
+*/
+      $('i.icon').each(function () {
+        var $img = jQuery(this);
+        var imgID = $img.attr('id');
+        var imgClass = $img.attr('class');
+        var imgURL = $img.css('background-image').replace('url(', '').replace(')', '').replace(/\"/gi, "");;
+
+        $.get(imgURL, function (data) {
+          // Get the SVG tag, ignore the rest
+          var $svg = jQuery(data).find('svg');
+
+          // Add replaced image's ID to the new SVG
+          if (typeof imgID !== 'undefined') {
+            $svg = $svg.attr('id', imgID);
+          }
+          // Add replaced image's classes to the new SVG
+          if (typeof imgClass !== 'undefined') {
+            $svg = $svg.attr('class', imgClass + ' replaced-svg');
+          }
+
+          // Remove any invalid XML tags as per http://validator.w3.org
+          $svg = $svg.removeAttr('xmlns:a');
+
+          // Check if the viewport is set, if the viewport is not set the SVG wont't scale.
+          if (!$svg.attr('viewBox') && $svg.attr('height') && $svg.attr('width')) {
+            $svg.attr('viewBox', '0 0 ' + $svg.attr('height') + ' ' + $svg.attr('width'))
+          }
+
+          $svg.attr('height', $img.css('padding-top'));
+          $svg.attr('float', $img.css('float'));
+
+          // Replace image with new SVG
+          $img.replaceWith($svg);
+
+        }, 'xml');
+
+      });
+    });
+                          // popper.options.modifiers.arrow.element = arrow;
   </script>
 </head>
 <body>
-  <div class="container">
-    <nav class="navbar navbar-expand category-navigation">
-      <a class="navbar-brand" href="#">Navbar</a>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse">
-        <ul class="navbar-nav">
-          <li class="nav-item active">
-            <a class="nav-link" href="#">חלב וביצים</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">דברי מאפה</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">פירות וירקות</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">בשר ודגים</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">חטיפים וממתקים</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">דגנים וקטניות</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">מעדניה וקפואים</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">שימורים, בישול ואפיה</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">נייר וניקיון</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">בית ובעלי חיים</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">בריאות ואורגני</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">טיפוח ותינוקות</a>
-          </li>
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              Dropdown link
-            </a>
-            <!--<div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+  <nav class="navbar navbar-expand category-navigation">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavDropdown">
+      <ul class="navbar-nav">
+
+        <li class="nav-item active">
+          <a class="nav-link" href="#">
+            <div class="nav-text-container">
+              <span>
+                <i class="icon milk"></i>
+              </span>
+              <!--<img src="https://image.freepik.com/free-icon/small-truck_318-73242.jpg" style="float:right" />-->
+              <!--<span style="float:right">sdasd</span>-->
+              <span>
+                חלב וביצים
+              </span>
+            </div>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">
+            <div class="nav-text-container">
+              <span><i class="icon bread"></i></span>
+              <span> דברי מאפה</span>
+            </div>
+          </a>
+        </li>
+        <li class="nav-item">
+
+          <a class="nav-link" href="#">
+            <div class="nav-text-container">
+              <span> <i class="icon tomato"></i></span>
+              <span>  פירות וירקות</span>
+            </div>
+          </a>
+        </li>
+        <li class="nav-item">
+
+          <a class="nav-link" href="#">
+            <div class="nav-text-container">
+              <span>  <i class="icon fish"></i></span>
+              <span>  בשר ודגים</span>
+            </div>
+          </a>
+
+        </li>
+        <li class="nav-item">
+
+          <a class="nav-link" href="#">
+            <div class="nav-text-container">
+              <span>   <i class="icon candy"></i></span>
+              <span>  חטיפים וממתקים</span>
+            </div>
+          </a>
+
+        </li>
+        <li class="nav-item">
+
+          <a class="nav-link" href="#">
+            <div class="nav-text-container">
+              <span><i class="icon wheat"></i></span>
+              <span>דגנים וקטניות</span>
+            </div>
+          </a>
+
+        </li>
+        <li class="nav-item">
+
+          <a class="nav-link" href="#">
+            <div class="nav-text-container">
+              <span>  <i class="icon cheese"></i></span>
+              <span>  מעדניה וקפואים</span>
+            </div>
+          </a>
+
+        </li>
+        <li class="nav-item">
+
+          <a class="nav-link" href="#">
+            <div class="nav-text-container">
+              <span>  <i class="icon can"></i></span>
+              <span>  שימורים, בישול ואפיה</span>
+            </div>
+          </a>
+
+        </li>
+        <li class="nav-item">
+
+          <a class="nav-link" href="#">
+            <div class="nav-text-container">
+              <span>  <i class="icon toilet-paper"></i></span>
+              <span>  נייר וניקיון</span>
+            </div>
+          </a>
+
+        </li>
+        <li class="nav-item">
+
+          <a class="nav-link" href="#">
+            <div class="nav-text-container">
+              <span>  <i class="icon house"></i></span>
+              <span>  בית ובעלי חיים</span>
+            </div>
+          </a>
+
+        </li>
+        <li class="nav-item">
+
+          <a class="nav-link" href="#">
+            <div class="nav-text-container">
+              <span>  <i class="icon leaf"></i></span>
+              <span>  בריאות ואורגני</span>
+            </div>
+          </a>
+
+        </li>
+        <li class="nav-item">
+
+          <a class="nav-link" href="#">
+            <div class="nav-text-container">
+              <span>   <i class="icon baby-bottle"></i></span>
+              <span>   טיפוח ותינוקות</span>
+            </div>
+          </a>
+
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Dropdown link
+          </a>
+          <!--<div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
             <a class="dropdown-item" href="#">Action</a>
             <a class="dropdown-item" href="#">Another action</a>
             <a class="dropdown-item" href="#">Something else here</a>
           </div>-->
-            <div class="dropdown-menu dropdown-menu-right">
-              <div class="card-columns subcategory-cards">
-                <div class="card">
-                  <div class="card-body">
-                    <h6 class="card-title">sdasdsadasda</h6>
-                    <p class="card-text">sdasdsadasda</p>
-                  </div>
+          <div class="dropdown-menu dropdown-menu-right">
+            <!--<span x-arrow>arrow</span>-->
+            <div class="card-columns subcategory-cards">
+              <div class="card">
+                <div class="card-body">
+                  <h6 class="card-title">sdasdsadasda</h6>
+                  <p class="card-text">sdasdsadasda</p>
                 </div>
-                <div class="card">
-                  <div class="card-body">
-                    <h6 class="card-title">sdasdsadasda</h6>
-                    <p class="card-text">sdasdsadasda</p>
-                  </div>
+              </div>
+              <div class="card">
+                <div class="card-body">
+                  <h6 class="card-title">sdasdsadasda</h6>
+                  <p class="card-text">sdasdsadasda</p>
                 </div>
-                <div class="card">
-                  <div class="card-body">
-                    <h6 class="card-title">sdasdsadasda</h6>
-                    <p class="card-text">sdasdsadasda</p>
-                  </div>
+              </div>
+              <div class="card">
+                <div class="card-body">
+                  <h6 class="card-title">sdasdsadasda</h6>
+                  <p class="card-text">sdasdsadasda</p>
                 </div>
-                <div class="card">
-                  <div class="card-body">
-                    <h6 class="card-title">sdasdsadasda</h6>
-                    <p class="card-text">sdasdsadasda</p>
-                    <p class="card-text">sdasdsadasda</p>
-                    <p class="card-text">sdasdsadasda</p>
+              </div>
+              <div class="card">
+                <div class="card-body">
+                  <h6 class="card-title">sdasdsadasda</h6>
+                  <p class="card-text">sdasdsadasda</p>
+                  <p class="card-text">sdasdsadasda</p>
+                  <p class="card-text">sdasdsadasda</p>
 
-                  </div>
                 </div>
-                <div class="card">
-                  <div class="card-body">
-                    <h6 class="card-title">sdasdsadasda</h6>
-                    <p class="card-text">sdasdsadasda</p>
-                  </div>
+              </div>
+              <div class="card">
+                <div class="card-body">
+                  <h6 class="card-title">sdasdsadasda</h6>
+                  <p class="card-text">sdasdsadasda</p>
                 </div>
-                <div class="card">
-                  <div class="card-body">
-                    <h6 class="card-title">sdasdsadasda</h6>
-                    <p class="card-text">sdasdsadasda</p>
-                  </div>
+              </div>
+              <div class="card">
+                <div class="card-body">
+                  <h6 class="card-title">sdasdsadasda</h6>
+                  <p class="card-text">sdasdsadasda</p>
                 </div>
               </div>
             </div>
-          </li>
-        </ul>
-      </div>
-    </nav>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </nav>
+  <div class="container">
+
 
     <div class="card-columns">
       <div class="card">
@@ -323,13 +374,14 @@
       </div>
     </div>
 
-    <div class="button-popper">
-      asdas
-    </div>
+    <span class="button-popper">
+      button
+    </span>
 
-    <div class="dropdown-hidden">
-      dsgddfg
-    </div>
+    <span class="dropdown-hidden">
+      content
+      <span x-arrow>arrow</span>
+    </span>
   </div>
 
 </body>
