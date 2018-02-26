@@ -95,11 +95,18 @@
         </div>
       </div>
       <div>
-        <iframe width="250"
-                height="250"
-                frameborder="0" style="border:0"
-                src="https://www.google.com/maps/embed/v1/place?key=AIzaSyAwFHY0_B1pA_GbY6AwXbWADDT1IxGfEzk&q=Space+Needle,Seattle+WA" allowfullscreen></iframe>
+        <agm-map [latitude]="lat" [longitude]="lng" (mapClick)="mapClicked($event)">
+          <agm-marker [latitude]="markers.lat" [longitude]="markers.lng"></agm-marker>
+        </agm-map>
+        {{markers.lat }} {{markers.lng}}
         <div>
+          <div>רשימת חנויות</div>
+          <div>
+            <!--[selected]="currCategory.id == currentCategory-->
+            <select (change)="selectItem($event.target.value)" class="form-control">
+              <option *ngFor="let currStore of stores"  value={{currStore.Address}}>{{currStore.Storename}}</option>
+            </select>
+          </div>
         </div>
 
         <button type="button" class="btn btn-primary" style="float:left"><i class="fa fa-print"></i></button>
@@ -110,6 +117,8 @@
           <i class="fa fa-save"></i>
         </button>
       </div>
+
+
     </div>
   </div>
 </div>

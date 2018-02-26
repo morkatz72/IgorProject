@@ -7,7 +7,12 @@ import { BasketService } from '../../../services/basketService/basket-service.se
 import { Basket } from '../basket';
 import { BasketHandleService } from '../basket.service';
 import { ActivatedRoute } from '@angular/router';
+import { EventEmitter } from '@angular/core';
+import { Store } from '../../../shared/entities/store';
+import { Observable } from 'rxjs/Observable';
+import { Marker } from './Market';
 
+declare var google;
 
 @Component({
     selector: 'app-basket-page',
@@ -15,7 +20,17 @@ import { ActivatedRoute } from '@angular/router';
     styleUrls: ['./basket-page.component.css']
 })
 export class BasketPageComponent implements OnInit {
-    basketItems: BasketItemModule[] = this.basketService.getBasket();
+  basketItems: BasketItemModule[] = this.basketService.getBasket();
+
+  title: string = 'My first AGM project';
+  lat: number = 32.678418;
+  lng: number = 35.409007;
+  public markers: Marker
+  public currStore: Store;
+  select: EventEmitter<string>;
+  stores: Store[];
+
+
     basket: Basket;
     getTotalPrice() {
         var totalPrice: number = 0;
@@ -25,6 +40,18 @@ export class BasketPageComponent implements OnInit {
         return totalPrice;
     }
 
+    mapClicked($event: any) {
+      debugger;
+      this.changeMarker($event.coords.lat, $event.coords.lng);
+    }
+
+    changeMarker(lat, lng) {
+      this.markers = {
+        lat: lat,
+        lng: lng
+      }
+    }
+
     constructor(private basketService: BasketService,
       private basketHandleService: BasketHandleService,
       private router: Router,
@@ -32,14 +59,41 @@ export class BasketPageComponent implements OnInit {
 
 
     removeItem(index: number) {
-      debugger;
         this.basketService.removeItemIndex(index);
         this.basketItems = this.basketService.getBasket()
+    }
+
+    getGeoLocation(address: string) {
+      let geocoder = new google.maps.Geocoder();
+      debugger;
+
+      geocoder.geocode({ 'address': address }, function (results, status) {
+        if (status == google.maps.GeocoderStatus.OK) {
+          //var latlng = google.maps.location.LatLng();
+
+          this.lng = results[0].geometry.location.lng()
+          this.lat = results[0].geometry.location.lat()
+
+          this.changeMarker(this.lat, this.lng);
+        }
+        else
+        {
+          alert('Geocode was not successful for the following reason: ' + status);
+        }
+      });
     }
 
     emptyBasket() {
         this.basketService.setBasket([]);
         this.basketItems = this.basketService.getBasket()
+    }
+
+    selectItem(value) {
+      debugger;
+      this.select.emit(value);
+      console.log(value);
+      //this.currStore = value;
+      this.getGeoLocation(value);
     }
 
     setItemAmount(productId: number, amount: number) {
@@ -65,21 +119,31 @@ export class BasketPageComponent implements OnInit {
       })
     }
   }
-    ngOnInit() {
+  ngOnInit() {
+    this.markers = new Marker();
+    this.markers.lat = this.lat;
+    this.markers.lng = this.lng;
       this.basket = new Basket();
+      this.getAllStores();
+      this.select = new EventEmitter();
 
       this.route.params.subscribe(params => {
         let id: number = +params['id'];
         if (id) {
           this.getBasket(id);
-
         }
       })
     }
 
-
+    getAllStores() {
+      this.basketHandleService.getAllStores().subscribe(
+        (data) => {
+          this.stores = Store.toStore(data)
+        }
+      )
+    }
+    
     getBasket(basketId: number): any {
-      debugger;
       this.basketHandleService.getBasket(basketId).subscribe(
         (data) => {
           this.basket = data[0];

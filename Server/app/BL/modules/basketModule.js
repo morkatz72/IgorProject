@@ -184,3 +184,12 @@ exports.updateBasket = function (req, res) {
     dbUtils.updateBasket(data, function (err, data) {
     });
 }
+
+exports.getAllStores = function (req, res) {
+    console.log("before update")
+    dbUtils.getAllStores(function (err, data) {
+        console.log("after update")
+
+        res.send(data);
+    });
+}

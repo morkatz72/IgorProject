@@ -153,5 +153,4 @@ db.product.insert({
 })
 
 
-
 db.counters.findAndModify({query: { _id: "productId" },update: { $inc: { seq: 1 } },new: true,upsert: true})

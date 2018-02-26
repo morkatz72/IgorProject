@@ -3,13 +3,17 @@ import { CommonModule } from '@angular/common';
 import { BasketService } from '../../services/basketService/basket-service.service';
 import { BasketPageComponent } from './basket-page/basket-page.component'
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { BasketHandleService} from './basket.service';
+import { BasketHandleService } from './basket.service';
+import { AgmCoreModule } from '@agm/core';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     ReactiveFormsModule,
+    AgmCoreModule.forRoot({
+      apiKey: 'AIzaSyDPI978VLaGKj-QjmS894TuR1qhBBavZhE'
+    })
   ],
   providers: [BasketService, BasketHandleService],
   declarations: [BasketPageComponent]
