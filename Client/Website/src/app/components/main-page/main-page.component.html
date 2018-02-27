@@ -4,6 +4,7 @@
   <a href="javascript:void(0)" class="closebtn" (click)="closeNav()">&times;</a>
   <div *ngIf="userName()">
     <div *ngIf="getUserStatus() == 2">
+      <div class="w3-button" (click)="setMainPage()">דף ראשי</div>
       <div class="w3-button" (click)="addProductView()">הוספת מוצר</div>
       <div class="w3-button" (click)="managerView()">ממשק מנהל</div>
     </div>
@@ -35,7 +36,6 @@
     </div>
   </div>
       -->
-
   <div *ngIf="!userName()">
     <nav>
       <a routerLink="/login" routerLinkActive="active">התחבר</a>

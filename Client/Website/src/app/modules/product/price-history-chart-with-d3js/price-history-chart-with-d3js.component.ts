@@ -10,7 +10,7 @@ import * as d3Axis from 'd3-axis';
 declare var jQuery: any;
 import { Product } from '../../../shared/entities/Product';
 import { ProductService } from '../product.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 //import { Stocks} from './data';
 
 
@@ -41,7 +41,7 @@ export class PriceHistoryChartWithD3jsComponent implements OnInit {
 
   private data = [];
 
-  constructor(private productService: ProductService, private route: ActivatedRoute) {
+  constructor(private productService: ProductService, private route: ActivatedRoute, private router: Router) {
     this.width = 900 - this.margin.left - this.margin.right;
     this.height = 500 - this.margin.top - this.margin.bottom;
   }
@@ -59,15 +59,19 @@ export class PriceHistoryChartWithD3jsComponent implements OnInit {
   getProductDetails(productId: number): any {
     this.productService.getProductDetails(productId).subscribe(
       (data) => {
-        this.product = data[0];
-        this.setChartData();
+        if (data[0] != undefined) {
+          this.product = data[0];
+          this.setChartData();
 
 
-        this.initSvg();
-        this.initAxis();
-        debugger;
-        this.drawAxis();
-        this.drawLine();
+          this.initSvg();
+          this.initAxis();
+          this.drawAxis();
+          this.drawLine();
+        }
+        else {
+          this.router.navigateByUrl('/page-404');
+        }
       }
     );
 
@@ -77,6 +81,10 @@ export class PriceHistoryChartWithD3jsComponent implements OnInit {
   setChartData() {
     let pricesArray = this.product.oldPriceArray;
     let arrayPrices = [];
+
+    let nIndex = 0;
+
+    this.data.push({ "date": 0, "value": 0 });
 
     if (pricesArray) {
       // sort the data by the datetime
@@ -89,16 +97,14 @@ export class PriceHistoryChartWithD3jsComponent implements OnInit {
           }
         }
       }
-      // setting the data
-      for (var i = 0; i < pricesArray.length; i++) {
-        this.data.push({ "date": i + 1, "value": pricesArray[i].curr })
-      }
 
-      this.data.push({ "date": i + 1, "value": this.product.price })
+      // setting the data
+      for (; nIndex < pricesArray.length; nIndex++) {
+        this.data.push({ "date": nIndex + 1, "value": pricesArray[i].curr })
+      }
     }
 
-    //arrayPrices.push(this.product.price);
-    //this.data[0].data = arrayPrices;
+    this.data.push({ "date": nIndex + 1, "value": this.product.price })
   }
 
   private initSvg() {
