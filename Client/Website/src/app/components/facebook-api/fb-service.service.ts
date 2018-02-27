@@ -15,4 +15,34 @@ export class FbServiceService {
     });
   }
 
+
+  getLatestEvents(name: string) {
+    return this.fb.api(graphUrl + name + '/events/?limit=20&' + authToken);
+  }
+
+  getPicture(id: string) {
+    return this.fb.api(graphUrl + id + '/picture/?' + authToken);
+  }
+
+  getAllEvents(name: string) {
+    return this.fb.api(graphUrl + name + '/events/?' + authToken);
+  }
+
+  getNextEvents(url: string, allEvents: Event[], callback) {
+    return this.fb.api(url).then(result => {
+      callback(result.data, allEvents, this);
+      if (result.paging.next != undefined) {
+        this.getNextEvents(result.paging.next, allEvents, callback);
+      }
+    });
+  }
+
+  getEventAttendees(id: string) {
+    return this.fb.api(graphUrl + id + '/attending/?limit=9999&' + authToken);
+  }
+
+  private handleError(error: any): Promise<any> {
+    console.error('An error occurred', error);
+    return Promise.reject(error.message || error);
+  }
 }

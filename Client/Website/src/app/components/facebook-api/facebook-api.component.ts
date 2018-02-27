@@ -5,6 +5,11 @@ import { ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { Headers, Http, Response, RequestOptions, RequestOptionsArgs } from '@angular/http';
 import * as $ from 'jquery';
+import { FormControl } from '@angular/forms';
+
+import { Event, User } from './data-model';
+//import { EventsComponent } from './events.component';
+//import { FBService } from './fb.service';
 
 
 
@@ -50,4 +55,6 @@ export class FacebookApiComponent {
       this.video.getVolume();
     }
   }
+
+
 }
