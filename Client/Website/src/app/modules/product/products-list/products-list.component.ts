@@ -96,6 +96,10 @@ export class ProductsListComponent implements OnInit {
       this.router.navigate(['/product-details/' + productID]);
   }
 
+  updateOrDelete(productID: number) {
+    this.router.navigate(['/add-or-update-product/' + productID]);
+  }
+
   addToBasket(product: Product) {
     //this.module.addToBaket(product);
     debugger;

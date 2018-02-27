@@ -87,6 +87,11 @@ export class MainPageComponent implements OnInit {
     this.router.navigate(['/'])
   }
 
+  facebookView() {
+    this.closeNav();
+    this.router.navigate(['/facebook-api'])
+  }
+
   cheapestProduct() {
     this.closeNav();
     this.router.navigate(['/cheapest-product'])
