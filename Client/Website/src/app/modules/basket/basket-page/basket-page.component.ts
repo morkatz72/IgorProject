@@ -32,6 +32,7 @@ export class BasketPageComponent implements OnInit {
   public currStore: Store;
   select: EventEmitter<string>;
   stores: Store[];
+  public bAfterBasketLoaded = false;
 
 
   basket: Basket;
@@ -95,6 +96,11 @@ export class BasketPageComponent implements OnInit {
     // here $event will be of type google.maps.Map 
     // and you can put your logic here to get lat lng for marker. I have just put a sample code. You can refactor it the way you want.
     this.map = $event;
+
+    if (this.bAfterBasketLoaded) {
+      this.getGeoLocation(this.currentStreetName);
+    }
+
   }
 
   getGeoLocation(address: string) {
@@ -105,24 +111,6 @@ export class BasketPageComponent implements OnInit {
     };
 
     service.textSearch(request, this.callback.bind(this));
-
-
-    //let geocoder = new google.maps.Geocoder();
-    //debugger;
-
-    //geocoder.geocode({ 'address': address }, function (results, status) {
-    //  if (status == google.maps.GeocoderStatus.OK) {
-    //    //var latlng = google.maps.location.LatLng();
-
-    //    this.lng = results[0].geometry.location.lng()
-    //    this.lat = results[0].geometry.location.lat()
-
-    //    this.changeMarker(this.lat, this.lng);
-    //  }
-    //  else {
-    //    alert('Geocode was not successful for the following reason: ' + status);
-    //  }
-    //});
   }
 
   private setCurrentPosition() {
@@ -141,10 +129,8 @@ export class BasketPageComponent implements OnInit {
   }
 
   selectItem(value) {
-    debugger;
     this.select.emit(value);
-    console.log(value);
-    //this.currStore = value;
+    console.log(value); 
     this.getGeoLocation(value);
     this.currentStreetName = value;
   }
@@ -163,7 +149,6 @@ export class BasketPageComponent implements OnInit {
     }
     if (this.basket.id == 0) {
       this.basketHandleService.saveBasket(this.basket).subscribe((results) => {
-        debugger;
         alert('סל מספר ' + results + ' נשמר בהצלחה');
       })
     }
@@ -203,12 +188,11 @@ export class BasketPageComponent implements OnInit {
       (data) => {
         this.basket = data[0];
         if (this.basket) {
-          debugger;
           this.basketItems = this.basket.basketItems;
           this.currentStreetName = this.basket.streetName
           localStorage.setItem("basket", JSON.stringify(this.basketItems));
-          debugger;
-          this.getGeoLocation(this.currentStreetName);
+
+          this.bAfterBasketLoaded = true;
 
         } else {
           this.router.navigateByUrl('/page-404');

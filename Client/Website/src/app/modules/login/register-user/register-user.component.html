@@ -4,7 +4,7 @@
     <h3>הרשמה לאתר</h3>
     <h4>פרטים בסיסיים</h4>
     <fieldset>
-      <input placeholder="שם פרטי" type="text" tabindex="1" required autofocus name="firstName" [(ngModel)]="model.firstName" #firstName="ngModel">
+      <input placeholder="שם פרטי" type="text" tabindex="1" required autofocus name="firstName" [(ngModel)]="model.firstName" #firstName="ngModel" required>
     </fieldset>
     <fieldset>
       <input placeholder="שם משפחה" type="text" name="lastName" [(ngModel)]="model.lastName" #lastName="ngModel" tabindex="2" required>
@@ -28,10 +28,8 @@
       <input placeholder="חזור על הסיסמא" type="password" name="repeatPassword" [(ngModel)]="model.repeatPassword" #repeatPassword="ngModel" tabindex="6" required>
     </fieldset>
     <fieldset>
-      <textarea placeholder="Type your message here...." tabindex="7" required></textarea>
-    </fieldset>
-    <fieldset>
-      <button name="submit" type="submit" id="contact-submit" data-submit="...Sending">שלח :)</button>
+      <button class="button-style" [disabled]="!f.valid" type="submit">שלח :)</button>
+
     </fieldset>
   </form>
 </div>
