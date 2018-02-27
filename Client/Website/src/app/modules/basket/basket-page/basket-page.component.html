@@ -1,8 +1,8 @@
 <div class="container">
   <div class="row">
-    <div class="col-md-9" style="background-color:lightcoral">
+    <div class="col-md-9" style="background-color:lightcoral;margin-top:100px">
       <div class="row">
-        <div class="col-md-2 col-md-offset-2">
+        <div class="col-md-2 col-md-offset-0">
           שם המוצר
         </div>
         <div class="col-md-2">
@@ -19,7 +19,7 @@
         </div>
       </div>
       <div class="row" *ngFor="let basketItem of basketItems; let i = index">
-        <div class="col-md-2">
+        <div class="col-md-0">
           <img src="{{ basketItem.image }}" width="80" />
         </div>
         <div class="col-md-2">
@@ -40,12 +40,12 @@
           </button>
         </div>
       </div>
+      <div class="final-price">
+        סך הכל:  {{ getTotalPrice() | currency:'ILS':'symbol':'1.2-2' }}
+      </div>
     </div>
 
     <div class="col-md-3">
-      <div class="final-price">
-        {{ getTotalPrice() | currency:'ILS':'symbol':'1.2-2' }}
-      </div>
       <div>
         <img src="https://www.shufersal.co.il/umbracoContent/images/logo_mobile.png" width="200" />
       </div>
