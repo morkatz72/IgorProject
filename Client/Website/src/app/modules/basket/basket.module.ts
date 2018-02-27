@@ -12,7 +12,8 @@ import { AgmCoreModule } from '@agm/core';
     FormsModule,
     ReactiveFormsModule,
     AgmCoreModule.forRoot({
-      apiKey: 'AIzaSyDPI978VLaGKj-QjmS894TuR1qhBBavZhE'
+      apiKey: 'AIzaSyDPI978VLaGKj-QjmS894TuR1qhBBavZhE',
+      libraries: ["places"]
     })
   ],
   providers: [BasketService, BasketHandleService],

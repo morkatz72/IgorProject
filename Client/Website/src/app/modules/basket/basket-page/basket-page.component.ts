@@ -7,17 +7,18 @@ import { BasketService } from '../../../services/basketService/basket-service.se
 import { Basket } from '../basket';
 import { BasketHandleService } from '../basket.service';
 import { ActivatedRoute } from '@angular/router';
-import { EventEmitter } from '@angular/core';
+import { EventEmitter, NgZone } from '@angular/core';
 import { Store } from '../../../shared/entities/store';
 import { Observable } from 'rxjs/Observable';
 import { Marker } from './Market';
+import { } from 'googlemaps';
 
-declare var google;
+//declare var google;
 
 @Component({
-    selector: 'app-basket-page',
-    templateUrl: './basket-page.component.html',
-    styleUrls: ['./basket-page.component.css']
+  selector: 'app-basket-page',
+  templateUrl: './basket-page.component.html',
+  styleUrls: ['./basket-page.component.css']
 })
 export class BasketPageComponent implements OnInit {
   basketItems: BasketItemModule[] = this.basketService.getBasket();
@@ -25,80 +26,131 @@ export class BasketPageComponent implements OnInit {
   title: string = 'My first AGM project';
   lat: number = 32.678418;
   lng: number = 35.409007;
+  zoom: number = 4;
+
   public markers: Marker
   public currStore: Store;
   select: EventEmitter<string>;
   stores: Store[];
 
 
-    basket: Basket;
-    getTotalPrice() {
-        var totalPrice: number = 0;
-        for (var i = 0; i < this.basketItems.length; i++) {
-            totalPrice += this.basketItems[i].price * this.basketItems[i].amount;
+  basket: Basket;
+  getTotalPrice() {
+    var totalPrice: number = 0;
+    for (var i = 0; i < this.basketItems.length; i++) {
+      totalPrice += this.basketItems[i].price * this.basketItems[i].amount;
+    }
+    return totalPrice;
+  }
+
+  mapClicked($event: any) {
+    debugger;
+    this.changeMarker($event.coords.lat, $event.coords.lng);
+  }
+
+  changeMarker(lat, lng) {
+    this.markers = {
+      lat: lat,
+      lng: lng
+    }
+  }
+
+  constructor(private basketService: BasketService,
+    private basketHandleService: BasketHandleService,
+    private router: Router,
+    private route: ActivatedRoute,
+    private ngZone: NgZone) { }
+
+
+  removeItem(index: number) {
+    this.basketService.removeItemIndex(index);
+    this.basketItems = this.basketService.getBasket()
+  }
+
+  callback(results, status) {
+    this.ngZone.run(() => {
+      let place: google.maps.places.PlaceResult;
+
+      if (status == google.maps.places.PlacesServiceStatus.OK) {
+        for (var i = 0; i < results.length; i++) {
+          place = results[i];
+          //createMarker(results[i]);
         }
-        return totalPrice;
-    }
-
-    mapClicked($event: any) {
-      debugger;
-      this.changeMarker($event.coords.lat, $event.coords.lng);
-    }
-
-    changeMarker(lat, lng) {
-      this.markers = {
-        lat: lat,
-        lng: lng
       }
-    }
 
-    constructor(private basketService: BasketService,
-      private basketHandleService: BasketHandleService,
-      private router: Router,
-      private route: ActivatedRoute) { }
+      //verify result
+      if (place.geometry === undefined || place.geometry === null) {
+        return;
+      }
+
+      //set latitude, longitude and zoom
+      this.lat = place.geometry.location.lat();
+      this.lng = place.geometry.location.lng();
+      this.zoom = 12;
+    });
+  }
+
+  map: any;
+  mapReady($event: any) {
+    // here $event will be of type google.maps.Map 
+    // and you can put your logic here to get lat lng for marker. I have just put a sample code. You can refactor it the way you want.
+    this.map = $event;
+  }
+
+  getGeoLocation(address: string) {
+    var service = new google.maps.places.PlacesService(this.map);
+
+    var request = {
+      query: address
+    };
+
+    service.textSearch(request, this.callback.bind(this));
 
 
-    removeItem(index: number) {
-        this.basketService.removeItemIndex(index);
-        this.basketItems = this.basketService.getBasket()
-    }
+    //let geocoder = new google.maps.Geocoder();
+    //debugger;
 
-    getGeoLocation(address: string) {
-      let geocoder = new google.maps.Geocoder();
-      debugger;
+    //geocoder.geocode({ 'address': address }, function (results, status) {
+    //  if (status == google.maps.GeocoderStatus.OK) {
+    //    //var latlng = google.maps.location.LatLng();
 
-      geocoder.geocode({ 'address': address }, function (results, status) {
-        if (status == google.maps.GeocoderStatus.OK) {
-          //var latlng = google.maps.location.LatLng();
+    //    this.lng = results[0].geometry.location.lng()
+    //    this.lat = results[0].geometry.location.lat()
 
-          this.lng = results[0].geometry.location.lng()
-          this.lat = results[0].geometry.location.lat()
+    //    this.changeMarker(this.lat, this.lng);
+    //  }
+    //  else {
+    //    alert('Geocode was not successful for the following reason: ' + status);
+    //  }
+    //});
+  }
 
-          this.changeMarker(this.lat, this.lng);
-        }
-        else
-        {
-          alert('Geocode was not successful for the following reason: ' + status);
-        }
+  private setCurrentPosition() {
+    if ("geolocation" in navigator) {
+      navigator.geolocation.getCurrentPosition((position) => {
+        this.lat = position.coords.latitude;
+        this.lng = position.coords.longitude;
+        this.zoom = 12;
       });
     }
+  }
 
-    emptyBasket() {
-        this.basketService.setBasket([]);
-        this.basketItems = this.basketService.getBasket()
-    }
+  emptyBasket() {
+    this.basketService.setBasket([]);
+    this.basketItems = this.basketService.getBasket()
+  }
 
-    selectItem(value) {
-      debugger;
-      this.select.emit(value);
-      console.log(value);
-      //this.currStore = value;
-      this.getGeoLocation(value);
-    }
+  selectItem(value) {
+    debugger;
+    this.select.emit(value);
+    console.log(value);
+    //this.currStore = value;
+    this.getGeoLocation(value);
+  }
 
-    setItemAmount(productId: number, amount: number) {
-      this.basketService.setItemAmount(productId, amount);
-    }
+  setItemAmount(productId: number, amount: number) {
+    this.basketService.setItemAmount(productId, amount);
+  }
 
   saveBasket() {
     this.basket.basketItems = this.basketItems;
@@ -123,39 +175,38 @@ export class BasketPageComponent implements OnInit {
     this.markers = new Marker();
     this.markers.lat = this.lat;
     this.markers.lng = this.lng;
-      this.basket = new Basket();
-      this.getAllStores();
-      this.select = new EventEmitter();
+    this.basket = new Basket();
+    this.getAllStores();
+    this.select = new EventEmitter();
 
-      this.route.params.subscribe(params => {
-        let id: number = +params['id'];
-        if (id) {
-          this.getBasket(id);
-        }
-      })
-    }
+    this.route.params.subscribe(params => {
+      let id: number = +params['id'];
+      if (id) {
+        this.getBasket(id);
+      }
+    })
+  }
 
-    getAllStores() {
-      this.basketHandleService.getAllStores().subscribe(
-        (data) => {
-          this.stores = Store.toStore(data)
-        }
-      )
-    }
-    
-    getBasket(basketId: number): any {
-      this.basketHandleService.getBasket(basketId).subscribe(
-        (data) => {
-          this.basket = data[0];
-          if (this.basket) {
-            this.basketItems = this.basket.basketItems;
-            localStorage.setItem("basket", JSON.stringify(this.basketItems));
+  getAllStores() {
+    this.basketHandleService.getAllStores().subscribe(
+      (data) => {
+        this.stores = Store.toStore(data)
+      }
+    )
+  }
 
-          } else
-          {
-            this.router.navigateByUrl('/page-404');
-          }
+  getBasket(basketId: number): any {
+    this.basketHandleService.getBasket(basketId).subscribe(
+      (data) => {
+        this.basket = data[0];
+        if (this.basket) {
+          this.basketItems = this.basket.basketItems;
+          localStorage.setItem("basket", JSON.stringify(this.basketItems));
+
+        } else {
+          this.router.navigateByUrl('/page-404');
         }
-      );
-    }
+      }
+    );
+  }
 }
