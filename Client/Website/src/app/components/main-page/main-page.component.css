@@ -340,7 +340,7 @@ a {
   text-decoration: none;
   color: inherit;
   background-color: inherit;
-  text-align: center;
+  text-align: right;
   cursor: pointer;
   white-space: nowrap
 }
@@ -1216,11 +1216,7 @@ a {
   font-size: 18px !important
 }
 
-.w3-xlarge {
-  font-size: 24px !important
-}
-
-.w3-xxlarge {
+w3-teal .w3-xxlarge {
   font-size: 36px !important
 }
 
@@ -1743,4 +1739,71 @@ a {
 
 .w3-border-pale-blue, .w3-hover-border-pale-blue:hover {
   border-color: #e7ffff !important
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*  for the new style !!!!!*/
+.sidenav {
+  height: 100%;
+  width: 0;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  right: 0;
+  background-color: #111;
+  overflow-x: hidden;
+  transition: 0.2s;
+  padding-top: 60px;
+}
+
+  .sidenav div {
+    padding: 8px 8px 8px 32px;
+    text-decoration: none;
+    font-size: 25px;
+    color: #818181;
+    display: block;
+    transition: 0.3s;
+  }
+
+    .sidenav div:hover {
+      color: #f1f1f1;
+    }
+
+  .sidenav .closebtn {
+    position: absolute;
+    top: 0;
+    right: 25px;
+    font-size: 36px;
+    margin-left: 50px;
+  }
+
+@media screen and (max-height: 450px) {
+  .sidenav {
+    padding-top: 15px;
+  }
+
+    .sidenav a {
+      font-size: 18px;
+    }
+}
+
+
+.teal, .w3-hover-teal:hover {
+  color: #fff !important;
+  background-color: #000 !important
 }
