@@ -52,6 +52,7 @@ export class UserLoginComponent implements OnInit {
 
         }
         else {
+          alert('פרטי המשתמש שגויים');
           this.isCurrentDetails = "פרטי המשתמש שגויים";
           this.errorConnecting = true;
         }
