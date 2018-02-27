@@ -1765,7 +1765,7 @@ w3-teal .w3-xxlarge {
   z-index: 1;
   top: 0;
   right: 0;
-  background-color: #111;
+  background-color: rgba(0, 0, 0, 0.66);
   overflow-x: hidden;
   transition: 0.2s;
   padding-top: 60px;
@@ -1797,7 +1797,7 @@ w3-teal .w3-xxlarge {
     padding-top: 15px;
   }
 
-    .sidenav a {
+    .sidenav div {
       font-size: 18px;
     }
 }
@@ -1805,5 +1805,5 @@ w3-teal .w3-xxlarge {
 
 .teal, .w3-hover-teal:hover {
   color: #fff !important;
-  background-color: #000 !important
+  background-color: rgba(0, 0, 0, 0.80) !important
 }

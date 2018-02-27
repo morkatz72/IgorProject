@@ -1,12 +1,4 @@
-<script>
-function openNav() {
-    document.getElementById("mySidenav").style.width = "250px";
-}
 
-function closeNav() {
-    document.getElementById("mySidenav").style.width = "0";
-}
-</script>
 
 <div id="mySidenav" class="sidenav">
   <a href="javascript:void(0)" class="closebtn" (click)="closeNav()">&times;</a>
@@ -79,15 +71,6 @@ function closeNav() {
     </div>
 
     <div *ngIf="userName()">
-      <!--
-      <div class="col-md-2  col-md-offset-1" style="margin-top:10px">
-        <form name="form" #f="ngForm">
-          <div class="form-group">
-            <input type="number" class="form-control" placeholder="הקש מוצר" name="a" [(ngModel)]="productId" #a="ngModel" />
-          </div>
-        </form>
-      </div>
-      -->
       <div class="col-md-2">
         <div class="box">
           <h2>היסטוריית מחירים על מוצר</h2>
