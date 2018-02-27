@@ -203,8 +203,12 @@ export class BasketPageComponent implements OnInit {
       (data) => {
         this.basket = data[0];
         if (this.basket) {
+          debugger;
           this.basketItems = this.basket.basketItems;
+          this.currentStreetName = this.basket.streetName
           localStorage.setItem("basket", JSON.stringify(this.basketItems));
+          debugger;
+          this.getGeoLocation(this.currentStreetName);
 
         } else {
           this.router.navigateByUrl('/page-404');

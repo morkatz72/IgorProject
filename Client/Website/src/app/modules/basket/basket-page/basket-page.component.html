@@ -104,7 +104,7 @@
           <div>
             <!--[selected]="currCategory.id == currentCategory-->
             <select (change)="selectItem($event.target.value)" class="form-control">
-              <option *ngFor="let currStore of stores"  value="{{currStore.Address}} {{currStore.City}}">{{currStore.Storename}}</option>
+              <option *ngFor="let currStore of stores" [selected]="currStore.Address + ' '+ currStore.City== currentStreetName"  value="{{currStore.Address}} {{currStore.City}}">{{currStore.Storename}}</option>
             </select>
           </div>
         </div>
