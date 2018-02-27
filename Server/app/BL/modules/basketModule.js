@@ -182,6 +182,7 @@ exports.updateBasket = function (req, res) {
     console.log("data = " + data)
 
     dbUtils.updateBasket(data, function (err, data) {
+        res.send(true);
     });
 }
 

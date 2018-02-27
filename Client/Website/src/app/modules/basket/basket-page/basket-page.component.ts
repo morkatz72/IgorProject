@@ -27,7 +27,7 @@ export class BasketPageComponent implements OnInit {
   lat: number = 32.678418;
   lng: number = 35.409007;
   zoom: number = 4;
-
+  public currentStreetName: string;
   public markers: Marker
   public currStore: Store;
   select: EventEmitter<string>;
@@ -146,6 +146,7 @@ export class BasketPageComponent implements OnInit {
     console.log(value);
     //this.currStore = value;
     this.getGeoLocation(value);
+    this.currentStreetName = value;
   }
 
   setItemAmount(productId: number, amount: number) {
@@ -155,19 +156,20 @@ export class BasketPageComponent implements OnInit {
   saveBasket() {
     this.basket.basketItems = this.basketItems;
     this.basket.totalPrice = this.getTotalPrice();
+    this.basket.streetName = this.currentStreetName;
+
     if (!this.basket.id) {
       this.basket.id = 0;
     }
     if (this.basket.id == 0) {
       this.basketHandleService.saveBasket(this.basket).subscribe((results) => {
         debugger;
-        alert('הסל נשמר בהצלחה');
-        this.basket.basketId = 6;
+        alert('סל מספר ' + results + ' נשמר בהצלחה');
       })
     }
     else {
-      alert("עלייך לעדכן את הסל")
       this.basketHandleService.updateBasket(this.basket).subscribe((results) => {
+        alert("סל " + this.basket.id + " נשמר עודכן ")
       })
     }
   }
@@ -176,6 +178,7 @@ export class BasketPageComponent implements OnInit {
     this.markers.lat = this.lat;
     this.markers.lng = this.lng;
     this.basket = new Basket();
+    this.basket.id = 0;
     this.getAllStores();
     this.select = new EventEmitter();
 
