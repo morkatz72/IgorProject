@@ -6,7 +6,6 @@ import { Router } from '@angular/router';
 import { Headers, Http, Response, RequestOptions, RequestOptionsArgs } from '@angular/http';
 import * as $ from 'jquery';
 import { FormControl } from '@angular/forms';
-import { FbServiceService } from './fb-service.service';
 import { Event, User } from './data-model';
 import { HttpHeaders } from '@angular/common/http';
 import { HttpService } from '../../services/httpService/http.service';
