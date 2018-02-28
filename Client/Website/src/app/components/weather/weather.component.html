@@ -1,3 +1,13 @@
-<p>
-  weather works!
-</p>
+
+
+
+<div id="app" *ngIf="weatherData">
+  <div>
+    <div>
+      עיר: {{weatherData.name}}
+    </div>
+    <div>
+      רוחות: זווית {{weatherData.wind.deg}} וגם מהירות {{weatherData.wind.speed}}
+    </div>
+  </div>
+</div>
