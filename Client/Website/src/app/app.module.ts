@@ -15,6 +15,7 @@ import { FormsModule } from '@angular/forms';
 import { FacebookApiComponent } from './components/facebook-api/facebook-api.component';
 import { FacebookModule } from 'ngx-facebook';
 import { WeatherComponent } from './components/weather/weather.component';
+import { SocketsComponent } from './components/sockets/sockets.component';
 
 //import { AgmCoreModule } from '@agm/core';
 
@@ -40,7 +41,8 @@ import { WeatherComponent } from './components/weather/weather.component';
     MainPageComponent,
     ErrorPageComponent,
     FacebookApiComponent,
-    WeatherComponent
+    WeatherComponent,
+    SocketsComponent
   ],
   providers: [HttpService, MainService],
   bootstrap: [AppComponent],
