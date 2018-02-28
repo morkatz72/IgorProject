@@ -32,6 +32,7 @@
         <th class="title-right">יצרן</th>
         <th class="title-right">הצג פרטים</th>
         <th class="title-right">הוסף מוצר לסל</th>
+        <th class="title-right">עדכן או מחק מוצר</th>
       </tr>
 
       <tr *ngFor="let currProduct of productPaging | category:currCategory | name:name">
@@ -44,6 +45,8 @@
         <td class="title-right">{{currProduct.company}}</td>
         <td class="title-right"><button class="btn btn-primary" (click)="showDetails(currProduct.id)">הצג פרטים</button></td>
         <td class="title-right"><button class="btn btn-primary" (click)="addToBasket(currProduct)">הוסף לסל</button></td>
+        <td class="title-right"><button class="btn btn-primary" (click)="updateOrDelete(currProduct.id)">עריכת מוצר</button></td>
+
       </tr>
     </table>
   </div>

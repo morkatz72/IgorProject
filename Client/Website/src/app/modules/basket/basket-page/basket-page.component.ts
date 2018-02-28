@@ -27,11 +27,12 @@ export class BasketPageComponent implements OnInit {
   lat: number = 32.678418;
   lng: number = 35.409007;
   zoom: number = 4;
-
+  public currentStreetName: string;
   public markers: Marker
   public currStore: Store;
   select: EventEmitter<string>;
   stores: Store[];
+  public bAfterBasketLoaded = false;
 
 
   basket: Basket;
@@ -95,6 +96,11 @@ export class BasketPageComponent implements OnInit {
     // here $event will be of type google.maps.Map 
     // and you can put your logic here to get lat lng for marker. I have just put a sample code. You can refactor it the way you want.
     this.map = $event;
+
+    if (this.bAfterBasketLoaded) {
+      this.getGeoLocation(this.currentStreetName);
+    }
+
   }
 
   getGeoLocation(address: string) {
@@ -105,24 +111,6 @@ export class BasketPageComponent implements OnInit {
     };
 
     service.textSearch(request, this.callback.bind(this));
-
-
-    //let geocoder = new google.maps.Geocoder();
-    //debugger;
-
-    //geocoder.geocode({ 'address': address }, function (results, status) {
-    //  if (status == google.maps.GeocoderStatus.OK) {
-    //    //var latlng = google.maps.location.LatLng();
-
-    //    this.lng = results[0].geometry.location.lng()
-    //    this.lat = results[0].geometry.location.lat()
-
-    //    this.changeMarker(this.lat, this.lng);
-    //  }
-    //  else {
-    //    alert('Geocode was not successful for the following reason: ' + status);
-    //  }
-    //});
   }
 
   private setCurrentPosition() {
@@ -141,11 +129,10 @@ export class BasketPageComponent implements OnInit {
   }
 
   selectItem(value) {
-    debugger;
     this.select.emit(value);
-    console.log(value);
-    //this.currStore = value;
+    console.log(value); 
     this.getGeoLocation(value);
+    this.currentStreetName = value;
   }
 
   setItemAmount(productId: number, amount: number) {
@@ -155,19 +142,19 @@ export class BasketPageComponent implements OnInit {
   saveBasket() {
     this.basket.basketItems = this.basketItems;
     this.basket.totalPrice = this.getTotalPrice();
+    this.basket.streetName = this.currentStreetName;
+
     if (!this.basket.id) {
       this.basket.id = 0;
     }
     if (this.basket.id == 0) {
       this.basketHandleService.saveBasket(this.basket).subscribe((results) => {
-        debugger;
-        alert('הסל נשמר בהצלחה');
-        this.basket.basketId = 6;
+        alert('סל מספר ' + results + ' נשמר בהצלחה');
       })
     }
     else {
-      alert("עלייך לעדכן את הסל")
       this.basketHandleService.updateBasket(this.basket).subscribe((results) => {
+        alert("סל " + this.basket.id + " נשמר עודכן ")
       })
     }
   }
@@ -176,6 +163,7 @@ export class BasketPageComponent implements OnInit {
     this.markers.lat = this.lat;
     this.markers.lng = this.lng;
     this.basket = new Basket();
+    this.basket.id = 0;
     this.getAllStores();
     this.select = new EventEmitter();
 
@@ -201,7 +189,10 @@ export class BasketPageComponent implements OnInit {
         this.basket = data[0];
         if (this.basket) {
           this.basketItems = this.basket.basketItems;
+          this.currentStreetName = this.basket.streetName
           localStorage.setItem("basket", JSON.stringify(this.basketItems));
+
+          this.bAfterBasketLoaded = true;
 
         } else {
           this.router.navigateByUrl('/page-404');

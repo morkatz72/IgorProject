@@ -181,7 +181,8 @@ exports.updateBasket = function (data, callback) {
     var filterQuery = { 'id': data.id }
     var updateQuery = {
         "basketItems": data.basketItems,
-        "totalPrice": data.totalPrice
+        "totalPrice": data.totalPrice,
+        "streetName": data.streetName
     };
     var options = {
         upsert: true

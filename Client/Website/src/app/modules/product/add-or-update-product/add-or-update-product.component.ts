@@ -75,6 +75,7 @@ export class AddOrUpdateProductComponent implements OnInit {
         debugger;
         if (data[0] != undefined) {
           this.product = data[0];
+          debugger;
           this.currentCategory = this.product.category;
           this.getCategoryById(this.product.category);
           console.log(this.product);
