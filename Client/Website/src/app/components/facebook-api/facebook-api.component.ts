@@ -8,6 +8,10 @@ import * as $ from 'jquery';
 import { FormControl } from '@angular/forms';
 import { FbServiceService } from './fb-service.service';
 import { Event, User } from './data-model';
+import { HttpHeaders } from '@angular/common/http';
+import { HttpService } from '../../services/httpService/http.service';
+import { url } from '../../shared/Constants'
+
 //import { EventsComponent } from './events.component';
 //import { FBService } from './fb.service';
 
@@ -33,7 +37,10 @@ export class FacebookApiComponent {
   showEvents = false;
   showUsers = false
 
-  constructor(private router: Router, private http: Http, private fb: FacebookService, private FbServiceService : FbServiceService) {
+  constructor(private router: Router,
+    private fb: FacebookService,
+    private FbServiceService: FbServiceService,
+    private http: Http, private httpService: HttpService) {
     
     fb.init({
       appId: '181182242224859',
@@ -44,6 +51,15 @@ export class FacebookApiComponent {
 
   ngOnInit() {
 
+  }
+
+  makecall() {
+    var headers = new Headers();
+    debugger;
+    return this.http.post(url + '/authorize', {}, this.httpService.getOptions()).subscribe((res) => {
+      debugger;
+      console.log(res);
+    })
   }
   
   ngAfterViewInit() {
