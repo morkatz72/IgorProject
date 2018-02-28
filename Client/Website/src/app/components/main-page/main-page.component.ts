@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Renderer2, OnInit, Inject } from '@angular/core';
+import { DOCUMENT } from '@angular/platform-browser';
 import { Router } from '@angular/router';
 
 
@@ -11,9 +12,32 @@ export class MainPageComponent implements OnInit {
 
   public productId: string;
 
-  constructor(private router: Router) { }
+  constructor(private router: Router, private _renderer2: Renderer2, @Inject(DOCUMENT) private _document) { }
 
   ngOnInit() {
+    let script = this._renderer2.createElement('script');
+    script.type = "text/javascript";
+    script.text = `
+    var canvas = document.getElementById("welcomeCanvas");
+    var x = canvas.width;
+    var y = canvas.height;
+
+    var ctx = canvas.getContext('2d');
+    ctx.textAlign = "right"
+    ctx.font = "50px Segoe UI";
+    ctx.shadowColor = "rgb(190, 190, 190)";
+    ctx.shadowOffsetX = 10;
+    ctx.shadowOffsetY = 10
+    ctx.shadowBlur = 10;
+
+    var gradient = ctx.createLinearGradient(x, y, x-150, y-100);
+    gradient.addColorStop(0, "rgb(97, 250, 97)");
+    gradient.addColorStop(1, "rgb(110, 129, 255)");
+    ctx.fillStyle = gradient;
+    ctx.fillText("ברוך הבא", x, y / 2);
+        `;
+
+    this._renderer2.appendChild(this._document.body, script);
   }
 
   openNav() {

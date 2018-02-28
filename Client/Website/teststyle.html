@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html dir="rtl">
 <head>
   <meta charset="utf-8" />
@@ -103,7 +103,7 @@
 
       });
     });
-                          // popper.options.modifiers.arrow.element = arrow;
+    // popper.options.modifiers.arrow.element = arrow;
   </script>
 </head>
 <body>
@@ -384,5 +384,28 @@
     </span>
   </div>
 
+  <canvas id="welcomeCanvas" width="300" height="60" dir="ltr" style="text-align: left;">
+    Your browser does not support the HTML5 canvas tag.
+  </canvas>
+
+  <script>
+    var canvas = document.getElementById("welcomeCanvas");
+    var x = canvas.width;
+    var y = canvas.height;
+
+    var ctx = canvas.getContext('2d');
+    ctx.textAlign = "right"
+    ctx.font = "50px Segoe UI";
+    ctx.shadowColor = "rgb(190, 190, 190)";
+    ctx.shadowOffsetX = 10;
+    ctx.shadowOffsetY = 10
+    ctx.shadowBlur = 10;
+
+    var gradient = ctx.createLinearGradient(x, y, x-150, y-100);
+    gradient.addColorStop(0, "rgb(97, 250, 97)");
+    gradient.addColorStop(1, "rgb(110, 129, 255)");
+    ctx.fillStyle = gradient;
+    ctx.fillText("ברוך הבא", x, y / 2);
+  </script>
 </body>
 </html>

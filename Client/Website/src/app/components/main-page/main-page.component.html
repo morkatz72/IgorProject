@@ -15,104 +15,118 @@
     <div class="w3-button" (click)="facebookView()">טוויטר חדשות</div>
     <div class="w3-button" (click)="weatherView()">מזג אוויר</div>
     <div class="w3-button" (click)="logOff()">התנתקות</div>
-  </div>  
+  </div>
 </div>
 
 <div class="teal">
   <span style="font-size:30px;cursor:pointer" (click)="openNav()" class="teal w3-button">&#9776; open</span>
 </div>
-  <!--
-    <div class="w3-sidebar w3-bar-block w3-border-right" style="display:none" id="mySidebar">
-      <button (click)="w3_close()" class="w3-bar-item w3-large">סגור תפריט&times;</button>
-      <div class="w3-bar-item w3-button" (click)="setMainPage()">דף ראשי</div>
-      <div *ngIf="userName()">
-        <div *ngIf="getUserStatus() == 2">
-          <div class="w3-bar-item w3-button" (click)="addProductView()">הוספת מוצר</div>
-          <div class="w3-bar-item w3-button" (click)="managerView()">ממשק מנהל</div>
-        </div>
-        <div class="w3-bar-item w3-button" (click)="productListView()">רשימת מוצרים</div>
-        <div class="w3-bar-item w3-button" (click)="cheapestProduct()">המוצר הזול</div>
-        <div class="w3-bar-item w3-button" (click)="preferredProduct()">המוצר המומלץ</div>
-        <div class="w3-bar-item w3-button" (click)="basketView()">הסל שלי</div>
-        <div class="w3-bar-item w3-button" (click)="logOff()">התנתקות</div>
-    </div>
-  </div>
-      -->
-  <div *ngIf="!userName()">
-    <nav>
-      <a routerLink="/login" routerLinkActive="active">התחבר</a>
-      <a routerLink="/register" routerLinkActive="active">הירשם</a>
-    </nav>
-  </div>
-
-  <div *ngIf="userName()" style="text-shadow: 2px 2px #c73514;">
-    <h3> ברוך הבא {{userName()}} </h3>
-  </div>
-
-
-  <div *ngIf="router.url === '/'">
-    <div class="col-md-11 col-md-offset-1 row">
-      <h2 style="text-shadow: 2px 2px #FF0000;">
-        <p>
-          ברוך הבא לאתר המוצרים והסלים
-          באתר הנל תוכל למצוא מגוון מאוד
-        </p>
-        <p>
-          רחב של מוצרים וכמו כן לבנות סל
-          בהתאם לצרכים שלך
-        </p>
-      </h2>
-    </div>
-    <div *ngIf="!userName()">
-      <div class="col-md-2 col-md-offset-1 row">
-        <div (click)="loginView()" class="box"><h2>התחבר לאתר</h2>   </div>
-      </div>
-      <div class="col-md-2">
-        <div (click)="registerView()" class="box"><h2>הירשם לאתר</h2>   </div>
-      </div>
-    </div>
-
+<!--
+  <div class="w3-sidebar w3-bar-block w3-border-right" style="display:none" id="mySidebar">
+    <button (click)="w3_close()" class="w3-bar-item w3-large">סגור תפריט&times;</button>
+    <div class="w3-bar-item w3-button" (click)="setMainPage()">דף ראשי</div>
     <div *ngIf="userName()">
-      <div class="col-md-2">
-        <div class="box">
-          <h2>היסטוריית מחירים על מוצר</h2>
-          <div style="margin:10px 10px 10px 10px">
-            <form name="form" #f="ngForm">
-              <div class="form-group">
-                <input type="number" class="form-control" placeholder="הקש מוצר" name="a" [(ngModel)]="productId" #a="ngModel" />
-              </div>
-            </form>
-          </div>
-          <button class="btn btn-primary" (click)="HistoryOneView()">לחץ</button>
-
-        </div>
-
+      <div *ngIf="getUserStatus() == 2">
+        <div class="w3-bar-item w3-button" (click)="addProductView()">הוספת מוצר</div>
+        <div class="w3-bar-item w3-button" (click)="managerView()">ממשק מנהל</div>
       </div>
+      <div class="w3-bar-item w3-button" (click)="productListView()">רשימת מוצרים</div>
+      <div class="w3-bar-item w3-button" (click)="cheapestProduct()">המוצר הזול</div>
+      <div class="w3-bar-item w3-button" (click)="preferredProduct()">המוצר המומלץ</div>
+      <div class="w3-bar-item w3-button" (click)="basketView()">הסל שלי</div>
+      <div class="w3-bar-item w3-button" (click)="logOff()">התנתקות</div>
+  </div>
+</div>
+    -->
+<div *ngIf="!userName()">
+  <nav>
+    <a routerLink="/login" routerLinkActive="active">התחבר</a>
+    <a routerLink="/register" routerLinkActive="active">הירשם</a>
+  </nav>
+</div>
 
-      <div class="row">
-        <div class="col-md-2">
-          <div (click)="addProductView()" class="box"><h2>הוספת מוצר</h2>   </div>
-        </div>
-        <div class="col-md-2">
-          <div (click)="productListView()" class="box"><h2>רשימת מוצרים</h2>   </div>
-        </div>
 
-        <div class="col-md-2">
-          <div (click)="basketView()" class="box"><h2>הסל שלי</h2>   </div>
-        </div>
+<canvas id="welcomeCanvas" width="300" height="60" dir="rtl">
+  Your browser does not support the HTML5 canvas tag.
+</canvas>
 
-        <div class="col-md-2">
-          <div (click)="barChart()" class="box"><h2>הצגת גרף מחירים ומוצרים</h2>   </div>
-        </div>
-      </div>
-      <div class="row" style="margin:5px 5px 5px 5px">
-        <div class="col-md-2">
-          <div (click)="cheapestProduct()" class="box"><h2>המוצר הזול לפי קטגוריה</h2>   </div>
-        </div>
-        <div class="col-md-2">
-          <div (click)="preferredProduct()" class="box"><h2>המוצר המומלץ לפי קטגוריה</h2>   </div>
-        </div>
-      </div>
+<div *ngIf="userName()" style="text-shadow: 2px 2px #c73514;">
+  <h3> {{userName()}} </h3>
+</div>
+
+
+<video width="320" height="240"  controls="controls">
+  <source src="../../../assets/videos/supermarket1.mp4" type="video/mp4" />
+</video>
+<video width="320" height="240" muted autoplay>
+  <source src="/assets/videos/supermarket1.mp4" type="video/mp4">
+  Your browser does not support the video tag.
+</video>
+<video width="320" height="240" controls="controls">
+  <source src="assets/videos/supermarket1.mp4" type="video/mp4" />
+</video>
+<div *ngIf="router.url === '/'">
+  <div class="col-md-11 col-md-offset-1 row">
+    <h2 style="text-shadow: 2px 2px #FF0000;">
+      <p>
+        ברוך הבא לאתר המוצרים והסלים
+        באתר הנל תוכל למצוא מגוון מאוד
+      </p>
+      <p>
+        רחב של מוצרים וכמו כן לבנות סל
+        בהתאם לצרכים שלך
+      </p>
+    </h2>
+  </div>
+  <div *ngIf="!userName()">
+    <div class="col-md-2 col-md-offset-1 row">
+      <div (click)="loginView()" class="box"><h2>התחבר לאתר</h2>   </div>
+    </div>
+    <div class="col-md-2">
+      <div (click)="registerView()" class="box"><h2>הירשם לאתר</h2>   </div>
     </div>
   </div>
 
+  <div *ngIf="userName()">
+    <div class="col-md-2">
+      <div class="box">
+        <h2>היסטוריית מחירים על מוצר</h2>
+        <div style="margin:10px 10px 10px 10px">
+          <form name="form" #f="ngForm">
+            <div class="form-group">
+              <input type="number" class="form-control" placeholder="הקש מוצר" name="a" [(ngModel)]="productId" #a="ngModel" />
+            </div>
+          </form>
+        </div>
+        <button class="btn btn-primary" (click)="HistoryOneView()">לחץ</button>
+
+      </div>
+
+    </div>
+
+    <div class="row">
+      <div class="col-md-2">
+        <div (click)="addProductView()" class="box"><h2>הוספת מוצר</h2>   </div>
+      </div>
+      <div class="col-md-2">
+        <div (click)="productListView()" class="box"><h2>רשימת מוצרים</h2>   </div>
+      </div>
+
+      <div class="col-md-2">
+        <div (click)="basketView()" class="box"><h2>הסל שלי</h2>   </div>
+      </div>
+
+      <div class="col-md-2">
+        <div (click)="barChart()" class="box"><h2>הצגת גרף מחירים ומוצרים</h2>   </div>
+      </div>
+    </div>
+    <div class="row" style="margin:5px 5px 5px 5px">
+      <div class="col-md-2">
+        <div (click)="cheapestProduct()" class="box"><h2>המוצר הזול לפי קטגוריה</h2>   </div>
+      </div>
+      <div class="col-md-2">
+        <div (click)="preferredProduct()" class="box"><h2>המוצר המומלץ לפי קטגוריה</h2>   </div>
+      </div>
+    </div>
+  </div>
+</div>
