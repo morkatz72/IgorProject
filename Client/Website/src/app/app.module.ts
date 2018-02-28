@@ -14,6 +14,7 @@ import { ErrorPageComponent } from './components/error-page/error-page.component
 import { FormsModule } from '@angular/forms';
 import { FacebookApiComponent } from './components/facebook-api/facebook-api.component';
 import { FacebookModule } from 'ngx-facebook';
+import { WeatherComponent } from './components/weather/weather.component';
 
 //import { AgmCoreModule } from '@agm/core';
 
@@ -38,7 +39,8 @@ import { FacebookModule } from 'ngx-facebook';
     AppComponent,
     MainPageComponent,
     ErrorPageComponent,
-    FacebookApiComponent
+    FacebookApiComponent,
+    WeatherComponent
   ],
   providers: [HttpService, MainService],
   bootstrap: [AppComponent],

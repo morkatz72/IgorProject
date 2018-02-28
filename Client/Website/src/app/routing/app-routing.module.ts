@@ -24,6 +24,7 @@ import { PriceHistoryChartWithD3jsComponent } from '../modules/product/price-his
 import { BarChartProuctPriceComponent} from '../modules/product/bar-chart-prouct-price/bar-chart-prouct-price.component';
 import { FacebookApiComponent } from '../components/facebook-api/facebook-api.component'
 import { PreferredProductComponent } from '../modules/product/preferred-product/preferred-product.component';
+import { WeatherComponent } from '../components/weather/weather.component';
 
 export const routes: Routes = [
 
@@ -47,6 +48,7 @@ export const routes: Routes = [
   { path: 'history-two-chart-bar', component: BarChartProuctPriceComponent },
   { path: 'manager-page', component: ManagerPageComponent },
   { path: 'facebook-api', component: FacebookApiComponent },
+  { path: 'weather', component: WeatherComponent },
   { path: 'preferred-product', component: PreferredProductComponent }
 ];
 

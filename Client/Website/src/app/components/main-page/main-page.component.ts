@@ -43,6 +43,11 @@ export class MainPageComponent implements OnInit {
     this.router.navigate(['/register'])
   }
 
+  weatherView() {
+    this.closeNav();
+    this.router.navigate(['/weather'])
+  }
+
   productListView() {
     this.closeNav();
     this.router.navigate(['/product-list'])
