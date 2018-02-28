@@ -1,35 +1,12 @@
 
-
 <!--
-<div style="background-color:white;margin-left:10%">
-  <div id="fb-root"></div>
-
-  <div class="fb-comment-embed"
-       data-href="https://www.facebook.com/zuck/posts/10102735452532991?comment_id=1070233703036185"
-       data-width="500"></div>
-  <fb-comments></fb-comments>
-
-
-</div>
-
-
-
-
-<h2>Extract Statistics</h2>
-<input class="form-control" name="url" type="text" placeholder="Enter Facebook URL">
-<button class="btn btn-success" (click)="getLatestEvents()">Get Latest Events</button>
-<button class="btn btn-success" (click)="getUsers()">Get Top Users</button>
+<button class="waves-effect waves-light btn" (click)="getIsraelTweets()">GetTweets</button>
     -->
-
-<!--
-<events-list *ngIf="showEvents" [latestEvents]="latestEvents"></events-list>
-<users-list *ngIf="showUsers" [mostActive]="mostActive"></users-list>
-    -->
-
-
-<button class="waves-effect waves-light btn" (click)="makecall()">Authorize</button>
-
-
+<ul>
+  <li *ngFor="let tweet of israelTweets">
+    {{ tweet.text }}
+  </li>
+</ul>
 <script>
 
 </script>

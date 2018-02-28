@@ -1,4 +1,6 @@
 ﻿var mongodb = require('mongodb');
+var request = require('request');
+
 var ObjectID = mongodb.ObjectID;
 
 var dbUtils = null;
@@ -24,17 +26,17 @@ exports.login = function (req, res) {
 
 exports.register = function (req, res) {
     var data = req.body.data;
-    dbUtils.register(data, function (err, data) { res.send(true)});
+    dbUtils.register(data, function (err, data) { res.send(true) });
 }
 
-exports.getCategories = function(req, res) {
-    dbUtils.getCategories(function(err, data) { res.send(data); });
+exports.getCategories = function (req, res) {
+    dbUtils.getCategories(function (err, data) { res.send(data); });
 }
 
 exports.getProductDetails = function (req, res) {
     var id = req.params.id;
     dbUtils.getProductDetails(id, function (err, data) {
-        
+
         console.log("product-details: " + data)
 
         var dataToSend = data;
@@ -109,7 +111,7 @@ exports.addCommentToProduct = function (req, res) {
     var comment = req.body.data.comment;
     var grade = req.body.data.grade;
     debugger;
-    dbUtils.addCommentToProduct(productId, comment, grade , function (err, data) {
+    dbUtils.addCommentToProduct(productId, comment, grade, function (err, data) {
         res.send(true);
     })
 }
@@ -117,7 +119,7 @@ exports.addCommentToProduct = function (req, res) {
 
 exports.getCheapestProductByCategory = function (req, res) {
     var id = req.params.id;
-    dbUtils.getCheapestProductByCategory(id, function(err, data) {
+    dbUtils.getCheapestProductByCategory(id, function (err, data) {
         res.send(data);
     })
 }
@@ -131,7 +133,7 @@ exports.saveBasket = function (req, res) {
             dbUtils.saveBasket(details, function (err, data) {
                 res.send(JSON.stringify(details.id));
             });
-       });
+        });
     })
 }
 
@@ -148,9 +150,9 @@ exports.getUserByUserName = function (req, res) {
     dbUtils.getUserByUserName(userName, function (err, data) {
         res.send(data);
     })
-} 
+}
 
-exports.removeUser = function(req, res) {
+exports.removeUser = function (req, res) {
     var data = req.body.data;
 
     dbUtils.removeUser(data, function (err, data) {
@@ -195,12 +197,16 @@ exports.getAllStores = function (req, res) {
     });
 }
 
+var twitterSettings = {
+    consumerkey: 'm5wDu8TeKAEiW743bR2dE8QJw',
+    consumersecret: 'uh6QbbWQXJ84PgLnEKMZam6adMu0Im1HnocEjlS0jCaDuhP0Q7',
+    bearertoken: ''
+};
+
 exports.authorizeTwitter = function (req, res) {
     console.log("twitter web api");
-    consumerkey = 'm5wDu8TeKAEiW743bR2dE8QJw';
-    consumerSecret = 'uh6QbbWQXJ84PgLnEKMZam6adMu0Im1HnocEjlS0jCaDuhP0Q7';
 
-    var header = consumerkey + ':' + consumerSecret;
+    var header = twitterSettings.consumerkey + ':' + twitterSettings.consumersecret;
     var encheader = new Buffer(header).toString('base64');
     var finalheader = 'Basic ' + encheader;
 
@@ -211,10 +217,26 @@ exports.authorizeTwitter = function (req, res) {
         if (error)
             console.log(error);
         else {
-            config.bearertoken = JSON.parse(body).access_token;
+            twitterSettings.bearertoken = JSON.parse(body).access_token;
 
-            res.json({ success: true, data: config.bearertoken });
+            res.json({ success: true, data: twitterSettings.bearertoken });
         }
 
     })
+}
+
+exports.getIsraelTweets = function (req, res) {
+
+    var searchquery = req.body.query;
+    var encsearchquery = encodeURIComponent(searchquery);
+    var bearerheader = 'Bearer ' + twitterSettings.bearertoken;
+    request.get('https://api.twitter.com/1.1/statuses/user_timeline.json?screen_name=Israel&count=10' + encsearchquery +
+        '&result_type=recent', { headers: { Authorization: bearerheader } }, function (error, body, response) {
+            if (error) {
+                console.log(error);
+            }
+            else {
+                res.json({ success: true, data: JSON.parse(body.body) });
+            }
+        });
 }
