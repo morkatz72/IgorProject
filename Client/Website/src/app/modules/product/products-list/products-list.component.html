@@ -20,7 +20,7 @@
         <h5 class="form-control">ממחיר </h5>
         <input type="text" class="form-control" name="bigPrice" [(ngModel)]="bigPrice" />
         <h5 class="form-control">עד מחיר </h5>
-        <input type="text" class="form-control" name="smallPrice" [(ngModel)]="smallPrice" />
+        <input type="text" class="form-control" name="price" [(ngModel)]="price" />
       </div>
     </div>
   </div>
@@ -40,7 +40,7 @@
         <th class="title-right">עדכן או מחק מוצר</th>
       </tr>
 
-      <tr *ngFor="let currProduct of productPaging | category:currCategory | name:name | smallerThen : smaller">
+      <tr *ngFor="let currProduct of productPaging | category:currCategory | name:name | biggerThen:bigPrice | smallerThen:price">
         <td class="title-right">{{currProduct.id}}</td>
         <td class="title-right">{{currProduct.name}}</td>
         <td class="title-right">{{currProduct.price}}</td>
