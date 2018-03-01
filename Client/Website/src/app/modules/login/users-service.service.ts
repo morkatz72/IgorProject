@@ -90,16 +90,9 @@ export class UsersServiceService {
     this.router.navigate(['/'])
   }
 
-  getUsers(): Observable<User[]> {
-    // add authorization header with jwt token
-    let headers = new Headers({ 'Authorization': 'Bearer ' + this.token });
-    let options = new RequestOptions({ headers: headers });
-
-    // get users from api
-    return this.http.get('/api/users', options).map((response: Response) => response.json());
-  }
-
   userName() {
     return localStorage.getItem('currentUser');
   }
+
+
 }
