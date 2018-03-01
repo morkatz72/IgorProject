@@ -114,7 +114,7 @@
         <div (click)="barChart()" class="box"><h2>הצגת גרף מחירים ומוצרים</h2>   </div>
       </div>
     </div>
-    <div class="row" style="margin-top:10px">
+    <div class="row" *ngIf="userName()" style="margin-top:10px">
       <div class="col-md-2">
         <div (click)="cheapestProduct()" class="box"><h2>המוצר הזול לפי קטגוריה</h2>   </div>
       </div>

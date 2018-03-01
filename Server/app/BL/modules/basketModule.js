@@ -1,5 +1,6 @@
 ﻿var mongodb = require('mongodb');
 var request = require('request');
+var jwt = require('jsonwebtoken');
 
 var ObjectID = mongodb.ObjectID;
 
@@ -23,6 +24,25 @@ exports.login = function (req, res) {
         res.send((data && Object.keys(data).length !== 0));
     })
 }
+
+
+exports.loginWithAuthenticate = function (req, res) {
+    var email = req.body.email;
+    var password = req.body.password;
+    dbUtils.loginWithAuthenticate(email, password, function (err, data) {
+        if (data && data.length != 0) {
+            data.token = jwt.sign({ sub: data._id }, 'darksecret')
+            res.send(data);
+        }
+        else
+        {
+            res.send(false);
+        }
+    })
+}
+
+
+
 
 exports.register = function (req, res) {
     var data = req.body.data;
