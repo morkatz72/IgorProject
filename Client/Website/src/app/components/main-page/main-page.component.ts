@@ -96,6 +96,11 @@ export class MainPageComponent implements OnInit {
     return localStorage.getItem('currentUser');
   }
 
+  getDisplayUserName() {
+    let displayValue = JSON.parse(localStorage.getItem('currentUser')).userName;
+    return displayValue;
+  }
+
   getUserStatus() {
     return localStorage.getItem('userType');
   }
