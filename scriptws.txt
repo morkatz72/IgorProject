@@ -16,29 +16,6 @@ db.category.insert({_id:9,id:9, name:"ùúééä"})
 db.category.insert({_id:10,id:10, name:"îåâæ"})
 
 
-
-db.product.aggregate([
-	{ '$sort': { 'price': 1 }},
-	{ "$group" : {
-		"_id" : "$category",
-		"value": { $min: "$price" },
-		"_productId" : { $first: '$id' }
-	}},
-	{ "$match" : { "_id" :1 }}
-])
-
-db.product.aggregate([
-            { '$sort': { 'price': 1 } },
-            {
-                "$group": {
-                    "_id": "$category",
-                    "value": { $min: "$price" },
-                    "_productId": { $first: '$id' }
-                }
-            },
-            { "$match": { "_id": 1 } }
-        ])
-
 db.product.insert({
 	id: 1,
 	name: 'îéì÷é',
@@ -152,8 +129,6 @@ db.product.insert({
 	company: 'ùèøàåñ'
 })
 
-
-db.counters.findAndModify({query: { _id: "productId" },update: { $inc: { seq: 1 } },new: true,upsert: true})
 
 
 
