@@ -14,7 +14,8 @@ export class UserLoginComponent implements OnInit {
   model: any = {};
   isCurrentDetails: string;
   
-  constructor(private userService: UsersServiceService, private router: Router) {
+  constructor(private userService: UsersServiceService,
+              private router: Router) {
     this.errorConnecting = false; 
   }
 
@@ -25,6 +26,38 @@ export class UserLoginComponent implements OnInit {
     return localStorage.getItem('currentUser');
   }
 
+  onSubmit(userloginForm: any, event: Event) {
+    event.preventDefault();
+    debugger;
+    this.userService.loginWithAuthenticate(this.model.userName, this.model.password).subscribe(
+      (result) => {
+        debugger;
+        if (result) {
+          if (result === true) {
+            this.userService.getUserTypeByUserName(this.model.userName).subscribe(
+              (userData) => {
+                if (userData != null) {
+                  if (userData[0].userType) {
+                    localStorage.setItem('userType', userData[0].userType.toString());
+                    this.router.navigate(['/']);
+                  }
+                }
+              }
+            )
+          }
+        }
+        else {
+          // login failed
+          alert('פרטי המשתמש שגויים');
+          this.isCurrentDetails = "פרטי המשתמש שגויים";
+          this.errorConnecting = true;
+        }
+      }
+    )
+  }
+
+
+  /*
   onSubmit(userloginForm:any, event:Event) {
     event.preventDefault();
 
@@ -61,5 +94,5 @@ export class UserLoginComponent implements OnInit {
       console.log('error:' + err);
       this.errorConnecting = true;
     });
-  }
+  }*/
 }

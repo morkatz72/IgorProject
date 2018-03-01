@@ -4,6 +4,8 @@ var mongodb = require('../../../node_modules/mongodb');
 var ObjectID = mongodb.ObjectID;
 var mongoClient = mongodb.MongoClient;
 var bodyParser = require('body-parser');
+var jwt = require('jsonwebtoken');
+
 var consts = null;
 
 var collections = ['users', 'category','product', 'counters', 'basket', 'store'];
@@ -39,6 +41,21 @@ exports.getUsers = function (callback) {
 
 exports.login = function (email, password, callback) {
     db.users.find({ "email": email, "password": password }).toArray(callback);
+}
+
+exports.loginWithAuthenticate = function (email, password, callback) {
+    console.log("bbbbbbbbbbbbbbbbbbbb")
+    db.users.findOne(
+        {
+            "email": email,
+            "password": password
+        },
+        {
+            projection:
+            {
+                "userName": 1
+            }
+        }, callback);
 }
 
 exports.register = function (data, callback) {

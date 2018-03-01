@@ -6,6 +6,7 @@
     app.get('/getUsers', basketModule.getUsers);
     // app.get('/login/:email/:password', basketModule.login);
     app.post('/login', basketModule.login);
+    app.post('/loginWithAuthenticate', basketModule.loginWithAuthenticate);
     app.post('/register', basketModule.register);
     app.post('/saveProduct', basketModule.saveProduct);
     app.post('/updateProdct', basketModule.updateProduct);
