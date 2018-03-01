@@ -1,21 +1,26 @@
 
 <div *ngIf="userName()">
   <div class="col-md-12">
-    <div class="col-md-2">
       <h3>
         פלטר לפי:
       </h3>
-      <div class="form-group">
-        <label for="categoryLabel">קטגוריה: </label>
-        <div>
-          <select (change)="selectItem($event.target.value)" class="form-control">
-            <option *ngFor="let currCategory of categories" value={{currCategory.id}}>{{currCategory.name}}</option>
-          </select>
-        </div>
+    <div class="form-group">
+      <div class="form-inline">
+        <h5 class="form-control">קטגוריה:   </h5>
+        <select (change)="selectItem($event.target.value)" class="form-control">
+          <option *ngFor="let currCategory of categories" value={{currCategory.id}}>{{currCategory.name}}</option>
+        </select>
       </div>
-      <div class="form-group">
-        <label for="priceLabel">שם: </label>
+      <div class="form-inline" style="margin-top:20px">
+        <h5 class="form-control">שם: </h5>
         <input type="text" class="form-control" name="name" [(ngModel)]="name" />
+      </div>
+
+      <div class="form-inline" style="margin-top:20px">
+        <h5 class="form-control">ממחיר </h5>
+        <input type="text" class="form-control" name="bigPrice" [(ngModel)]="bigPrice" />
+        <h5 class="form-control">עד מחיר </h5>
+        <input type="text" class="form-control" name="smallPrice" [(ngModel)]="smallPrice" />
       </div>
     </div>
   </div>
@@ -35,7 +40,7 @@
         <th class="title-right">עדכן או מחק מוצר</th>
       </tr>
 
-      <tr *ngFor="let currProduct of productPaging | category:currCategory | name:name">
+      <tr *ngFor="let currProduct of productPaging | category:currCategory | name:name | smallerThen : smaller">
         <td class="title-right">{{currProduct.id}}</td>
         <td class="title-right">{{currProduct.name}}</td>
         <td class="title-right">{{currProduct.price}}</td>

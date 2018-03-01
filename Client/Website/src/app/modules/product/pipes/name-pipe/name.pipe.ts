@@ -4,7 +4,7 @@ import { Pipe, PipeTransform } from '@angular/core';
   name: 'name'
 })
 export class NamePipe implements PipeTransform {
-
+  
   transform(items: any, args?: any): any {
     if (args == "") {
       return items;

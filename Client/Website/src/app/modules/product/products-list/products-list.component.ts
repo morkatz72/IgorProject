@@ -4,7 +4,8 @@ import { Product } from '../../../shared/entities/Product';
 import { Category } from '../../../shared/entities/Category';
 import { EventEmitter } from '@angular/core';
 import { Pipe, PipeTransform } from '@angular/core';
-import { CategoryPipe} from '../pipes/category-pipe/category.pipe';
+import { CategoryPipe } from '../pipes/category-pipe/category.pipe';
+import { SmallerThenPipe } from '../pipes/smaller-then/smaller-then.pipe';
 import { Router } from "@angular/router";
 import { BasketItemModule } from "../../basket/basket-item.module";
 
@@ -26,6 +27,8 @@ export class ProductsListComponent implements OnInit {
   public currCategory: number;
   public categories: Category[];
   select: EventEmitter<string>;
+  public bigger: string;
+  public smaller: string;
 
 
 

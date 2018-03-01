@@ -1,16 +1,16 @@
 import { Pipe, PipeTransform } from '@angular/core';
 
 @Pipe({
-  name: 'price'
+  name: 'smallerThen'
 })
-export class PricePipe implements PipeTransform {
+export class SmallerThenPipe implements PipeTransform {
 
   transform(items: any, args?: any): any {
     debugger;
     if (args == undefined || args == "") {
       return items;
     }
-    return items.filter(item => item.price > +args);
+    return items.filter(item => item.price <= +args);
   }
 
 }
