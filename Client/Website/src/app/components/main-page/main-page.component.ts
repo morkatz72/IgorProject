@@ -1,6 +1,7 @@
 import { Component, Renderer2, OnInit, Inject, ViewChild, ElementRef } from '@angular/core';
 import { DOCUMENT } from '@angular/platform-browser';
 import { Router } from '@angular/router';
+import { UsersServiceService} from '../../modules/login/users-service.service';
 
 
 @Component({
@@ -13,7 +14,10 @@ export class MainPageComponent implements OnInit {
   public productId: string;
   @ViewChild('supermarketVideo') supermarketVideo: ElementRef; 
 
-  constructor(private router: Router, private _renderer2: Renderer2, @Inject(DOCUMENT) private _document) { }
+  constructor(private router: Router,
+    private _renderer2: Renderer2,
+    @Inject(DOCUMENT) private _document,
+    private usersServiceService: UsersServiceService) { }
 
   ngOnInit() {
     let script = this._renderer2.createElement('script');
@@ -103,8 +107,7 @@ export class MainPageComponent implements OnInit {
 
   logOff() {
     this.closeNav();
-    localStorage.removeItem('currentUser');
-    this.router.navigate(['/'])
+    this.usersServiceService.logout();
   }
 
   HistoryOneView() {

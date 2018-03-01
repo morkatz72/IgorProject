@@ -7,6 +7,8 @@ import { Observable } from 'rxjs/Observable';
 import 'rxjs/Rx';
 import { HttpService } from '../../services/httpService/http.service';
 import { url } from '../../shared/Constants'
+import { Router } from '@angular/router';
+
 
 
 @Injectable()
@@ -14,7 +16,7 @@ export class UsersServiceService {
 
   public token: string;
 
-  constructor(private http: Http, private httpService: HttpService) {
+  constructor(private http: Http, private httpService: HttpService, private router: Router) {
     // set token if saved in local storage
     var currentUser = JSON.parse(localStorage.getItem('currentUser'));
     this.token = currentUser && currentUser.token;
@@ -85,6 +87,7 @@ export class UsersServiceService {
     // clear token remove user from local storage to log user out
     this.token = null;
     localStorage.removeItem('currentUser');
+    this.router.navigate(['/'])
   }
 
   getUsers(): Observable<User[]> {
@@ -98,14 +101,5 @@ export class UsersServiceService {
 
   userName() {
     return localStorage.getItem('currentUser');
-  }
-
-  private jwt() {
-    // create authorization header with jwt token
-    let currentUser = JSON.parse(localStorage.getItem('currentUser'));
-    if (currentUser && currentUser.token) {
-      let headers = new Headers({ 'Authorization': 'Bearer ' + currentUser.token });
-      return new RequestOptions({ headers: headers });
-    }
   }
 }
