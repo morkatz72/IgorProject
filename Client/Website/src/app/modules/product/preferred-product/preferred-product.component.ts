@@ -37,6 +37,7 @@ export class PreferredProductComponent implements OnInit {
   getCategoryToProductsToGrades() {
     this.productService.getProducts().subscribe(
       (data) => {
+        debugger;
         this.products = Product.toProductWithComments(data);
         this.products.forEach(currProduct => {
 
