@@ -1,5 +1,5 @@
 
-import { EeUserType}from '../enums/eusertype';
+import { EeUserType}from '../enums/eUserType';
 
 export class User {
   id: number;

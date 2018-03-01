@@ -1,4 +1,4 @@
-import { Component, Renderer2, OnInit, Inject } from '@angular/core';
+import { Component, Renderer2, OnInit, Inject, ViewChild, ElementRef } from '@angular/core';
 import { DOCUMENT } from '@angular/platform-browser';
 import { Router } from '@angular/router';
 
@@ -11,6 +11,7 @@ import { Router } from '@angular/router';
 export class MainPageComponent implements OnInit {
 
   public productId: string;
+  @ViewChild('supermarketVideo') supermarketVideo: ElementRef; 
 
   constructor(private router: Router, private _renderer2: Renderer2, @Inject(DOCUMENT) private _document) { }
 
@@ -38,6 +39,11 @@ export class MainPageComponent implements OnInit {
         `;
 
     this._renderer2.appendChild(this._document.body, script);
+  }
+
+  ngAfterViewInit() {
+    console.log(this.supermarketVideo.nativeElement);
+    this.supermarketVideo.nativeElement.muted = true;
   }
 
   openNav() {
