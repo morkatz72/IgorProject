@@ -31,6 +31,8 @@ export class ProductsListComponent implements OnInit {
   select: EventEmitter<string>;
   public bigger: string;
   public smaller: string;
+  public productsGroups: Product[][];
+  public hoverIndex: number = null;
 
   constructor(private productService: ProductService, private router: Router) { }
 
