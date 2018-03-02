@@ -1,6 +1,4 @@
-
-
-<div id="mySidenav" class="sidenav">
+<!--<div id="mySidenav" class="sidenav">
   <a href="javascript:void(0)" class="closebtn" (click)="closeNav()">&times;</a>
   <div *ngIf="userName()">
     <div *ngIf="getUserStatus() == 2">
@@ -15,12 +13,11 @@
     <div class="w3-button" (click)="facebookView()">טוויטר חדשות</div>
     <div class="w3-button" (click)="weatherView()">מזג אוויר</div>
     <div class="w3-button" (click)="logOff()">התנתקות</div>
-  </div>
-</div>
-
-<div class="teal">
+   </div>
+</div>-->
+<!--<div class="teal">
   <span style="font-size:30px;cursor:pointer" (click)="openNav()" class="teal w3-button">&#9776; open</span>
-</div>
+</div>-->
 <!--
   <div class="w3-sidebar w3-bar-block w3-border-right" style="display:none" id="mySidebar">
     <button (click)="w3_close()" class="w3-bar-item w3-large">סגור תפריט&times;</button>
@@ -38,66 +35,259 @@
   </div>
 </div>
     -->
-<div *ngIf="!userName()">
-  <nav>
-    <a routerLink="/login" routerLinkActive="active">התחבר</a>
-    <a routerLink="/register" routerLinkActive="active">הירשם</a>
-  </nav>
+
+<div class="container">
+  <canvas id="welcomeCanvas" width="400" height="60" dir="rtl" (click)="setMainPage()" style="vertical-align: bottom;">
+    Your browser does not support the HTML5 canvas tag.
+  </canvas>
+  <button type="button" class="btn btn-info" (click)="basketView()"><i class="fas fa-shopping-cart"></i>הסל שלי ({{getAmountInBasket()}})</button>
+  <button type="button" class="btn btn-warning" (click)="cheapestProduct()"><i class="fas fa-chart-bar"></i>סטטיסטיקות</button>
+  <button type="button" class="btn btn-danger" (click)="managerView()"><i class="fas fa-wrench"></i>ממשק ניהול</button>
+  <button type="button" class="btn btn-danger" (click)="logOff()"><i class="fas fa-power-off"></i>התנתקות</button>
+
 </div>
 
+<nav class="navbar navbar-expand category-navigation">
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNavDropdown">
+    <ul class="navbar-nav">
 
-<canvas id="welcomeCanvas" width="300" height="60" dir="rtl">
-  Your browser does not support the HTML5 canvas tag.
-</canvas>
+      <li class="nav-item active">
+        <a class="nav-link" href="#">
+          <div class="nav-text-container">
+            <span>
+              <i class="icon milk"></i>
+            </span>
+            <!--<img src="https://image.freepik.com/free-icon/small-truck_318-73242.jpg" style="float:right" />-->
+            <!--<span style="float:right">sdasd</span>-->
+            <span>
+              חלב וביצים
+            </span>
+          </div>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">
+          <div class="nav-text-container">
+            <span><i class="icon bread"></i></span>
+            <span> דברי מאפה</span>
+          </div>
+        </a>
+      </li>
+      <li class="nav-item">
 
-<div *ngIf="userName()" style="text-shadow: 2px 2px #c73514;">
-  <h3> {{getDisplayUserName()}} </h3>
-</div>
-<!--
-<video width="320" height="240" autoplay muted loop #supermarketVideo>
-  <source src="/assets/videos/supermarket1.mp4" type="video/mp4">
-  <source src="/assets/videos/supermarket1.ogg" type="video/ogg">
-  Your browser does not support the video tag.
-</video>-->
+        <a class="nav-link" href="#">
+          <div class="nav-text-container">
+            <span> <i class="icon tomato"></i></span>
+            <span>  פירות וירקות</span>
+          </div>
+        </a>
+      </li>
+      <li class="nav-item">
 
-<div *ngIf="router.url === '/'">
-  <div class="col-md-11 col-md-offset-1 row">
-    <h2 style="text-shadow: 2px 2px #FF0000;">
-      <p>
-        ברוך הבא לאתר המוצרים והסלים
-        באתר הנל תוכל למצוא מגוון מאוד
-      </p>
-      <p>
-        רחב של מוצרים וכמו כן לבנות סל
-        בהתאם לצרכים שלך
-      </p>
-    </h2>
-  </div>
-  <div *ngIf="!userName()" class="row">
-    <div class="col-md-2">
-      <div (click)="loginView()" class="box"><h2>התחבר לאתר</h2>   </div>
-    </div>
-    <div class="col-md-2">
-      <div (click)="registerView()" class="box"><h2>הירשם לאתר</h2>   </div>
-    </div>
-  </div>
+        <a class="nav-link" href="#">
+          <div class="nav-text-container">
+            <span>  <i class="icon fish"></i></span>
+            <span>  בשר ודגים</span>
+          </div>
+        </a>
 
-  <div *ngIf="userName()" class="row">
-    <div class="col-md-2">
-      <div class="box">
-        <h2>היסטוריית מחירים על מוצר</h2>
-        <div style="margin:10px 10px 10px 10px">
-          <form name="form" #f="ngForm">
-            <div class="form-group">
-              <input type="number" class="form-control" placeholder="הקש מוצר" name="a" [(ngModel)]="productId" #a="ngModel" />
+      </li>
+      <li class="nav-item">
+
+        <a class="nav-link" href="#">
+          <div class="nav-text-container">
+            <span>   <i class="icon candy"></i></span>
+            <span>  חטיפים וממתקים</span>
+          </div>
+        </a>
+
+      </li>
+      <li class="nav-item">
+
+        <a class="nav-link" href="#">
+          <div class="nav-text-container">
+            <span><i class="icon wheat"></i></span>
+            <span>דגנים וקטניות</span>
+          </div>
+        </a>
+
+      </li>
+      <li class="nav-item">
+
+        <a class="nav-link" href="#">
+          <div class="nav-text-container">
+            <span>  <i class="icon cheese"></i></span>
+            <span>  מעדניה וקפואים</span>
+          </div>
+        </a>
+
+      </li>
+      <li class="nav-item">
+
+        <a class="nav-link" href="#">
+          <div class="nav-text-container">
+            <span>  <i class="icon can"></i></span>
+            <span>  שימורים, בישול ואפיה</span>
+          </div>
+        </a>
+
+      </li>
+      <li class="nav-item">
+
+        <a class="nav-link" href="#">
+          <div class="nav-text-container">
+            <span>  <i class="icon toilet-paper"></i></span>
+            <span>  נייר וניקיון</span>
+          </div>
+        </a>
+
+      </li>
+      <li class="nav-item">
+
+        <a class="nav-link" href="#">
+          <div class="nav-text-container">
+            <span>  <i class="icon house"></i></span>
+            <span>  בית ובעלי חיים</span>
+          </div>
+        </a>
+
+      </li>
+      <li class="nav-item">
+
+        <a class="nav-link" href="#">
+          <div class="nav-text-container">
+            <span>  <i class="icon leaf"></i></span>
+            <span>  בריאות ואורגני</span>
+          </div>
+        </a>
+
+      </li>
+      <li class="nav-item">
+
+        <a class="nav-link" href="#">
+          <div class="nav-text-container">
+            <span>   <i class="icon baby-bottle"></i></span>
+            <span>   טיפוח ותינוקות</span>
+          </div>
+        </a>
+
+      </li>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Dropdown link
+        </a>
+        <!--<div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+          <a class="dropdown-item" href="#">Action</a>
+          <a class="dropdown-item" href="#">Another action</a>
+          <a class="dropdown-item" href="#">Something else here</a>
+        </div>-->
+        <div class="dropdown-menu dropdown-menu-right">
+          <!--<span x-arrow>arrow</span>-->
+          <div class="card-columns subcategory-cards">
+            <div class="card">
+              <div class="card-body">
+                <h6 class="card-title">sdasdsadasda</h6>
+                <p class="card-text">sdasdsadasda</p>
+              </div>
             </div>
-          </form>
+            <div class="card">
+              <div class="card-body">
+                <h6 class="card-title">sdasdsadasda</h6>
+                <p class="card-text">sdasdsadasda</p>
+              </div>
+            </div>
+            <div class="card">
+              <div class="card-body">
+                <h6 class="card-title">sdasdsadasda</h6>
+                <p class="card-text">sdasdsadasda</p>
+              </div>
+            </div>
+            <div class="card">
+              <div class="card-body">
+                <h6 class="card-title">sdasdsadasda</h6>
+                <p class="card-text">sdasdsadasda</p>
+                <p class="card-text">sdasdsadasda</p>
+                <p class="card-text">sdasdsadasda</p>
+
+              </div>
+            </div>
+            <div class="card">
+              <div class="card-body">
+                <h6 class="card-title">sdasdsadasda</h6>
+                <p class="card-text">sdasdsadasda</p>
+              </div>
+            </div>
+            <div class="card">
+              <div class="card-body">
+                <h6 class="card-title">sdasdsadasda</h6>
+                <p class="card-text">sdasdsadasda</p>
+              </div>
+            </div>
+          </div>
         </div>
-        <button class="btn btn-primary" (click)="HistoryOneView()">לחץ</button>
+      </li>
+    </ul>
+  </div>
+</nav>
+<div class="container">
+  <div *ngIf="!userName()">
+    <nav>
+      <a routerLink="/login" routerLinkActive="active">התחבר</a>
+      <a routerLink="/register" routerLinkActive="active">הירשם</a>
+    </nav>
+  </div>
+
+  <div *ngIf="userName()" style="text-shadow: 2px 2px #c73514;">
+    <h3> {{getDisplayUserName()}} </h3>
+  </div>
+  <!--
+  <video width="320" height="240" autoplay muted loop #supermarketVideo>
+    <source src="/assets/videos/supermarket1.mp4" type="video/mp4">
+    <source src="/assets/videos/supermarket1.ogg" type="video/ogg">
+    Your browser does not support the video tag.
+  </video>-->
+
+  <div *ngIf="router.url === '/'">
+    <div class="col-md-11 col-md-offset-1 row">
+      <h2 style="text-shadow: 2px 2px #FF0000;">
+        <p>
+          ברוך הבא לאתר המוצרים והסלים
+          באתר הנל תוכל למצוא מגוון מאוד
+        </p>
+        <p>
+          רחב של מוצרים וכמו כן לבנות סל
+          בהתאם לצרכים שלך
+        </p>
+      </h2>
+    </div>
+    <div *ngIf="!userName()" class="row">
+      <div class="col-md-2">
+        <div (click)="loginView()" class="box"><h2>התחבר לאתר</h2>   </div>
+      </div>
+      <div class="col-md-2">
+        <div (click)="registerView()" class="box"><h2>הירשם לאתר</h2>   </div>
+      </div>
+    </div>
+
+    <div *ngIf="userName()" class="row">
+      <div class="col-md-2">
+        <div class="box">
+          <h2>היסטוריית מחירים על מוצר</h2>
+          <div style="margin:10px 10px 10px 10px">
+            <form name="form" #f="ngForm">
+              <div class="form-group">
+                <input type="number" class="form-control" placeholder="הקש מוצר" name="a" [(ngModel)]="productId" #a="ngModel" />
+              </div>
+            </form>
+          </div>
+          <button class="btn btn-primary" (click)="HistoryOneView()">לחץ</button>
+
+        </div>
 
       </div>
-
-    </div>
 
       <div class="col-md-2">
         <div (click)="addProductView()" class="box"><h2>הוספת מוצר</h2>   </div>
@@ -121,5 +311,6 @@
       <div class="col-md-2">
         <div (click)="preferredProduct()" class="box"><h2>המוצר המומלץ לפי קטגוריה</h2>   </div>
       </div>
+    </div>
   </div>
 </div>

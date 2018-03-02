@@ -1813,3 +1813,7 @@ w3-teal .w3-xxlarge {
   background-color: rgba(0, 0, 0, 0.80) !important*/
   background-color: rgba(139, 43, 11, 0.79) !important
 }
+
+#welcomeCanvas:hover {
+  cursor:pointer; 
+}

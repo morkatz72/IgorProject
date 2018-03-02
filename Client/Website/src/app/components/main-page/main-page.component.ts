@@ -2,6 +2,9 @@ import { Component, Renderer2, OnInit, Inject, ViewChild, ElementRef } from '@an
 import { DOCUMENT } from '@angular/platform-browser';
 import { Router } from '@angular/router';
 import { UsersServiceService} from '../../modules/login/users-service.service';
+import { BasketItemModule } from '../../modules/basket/basket-item.module';
+import { BasketModule } from '../../modules/basket/basket.module';
+import { BasketService } from '../../services/basketService/basket-service.service';
 
 
 @Component({
@@ -12,6 +15,7 @@ import { UsersServiceService} from '../../modules/login/users-service.service';
 export class MainPageComponent implements OnInit {
 
   public productId: string;
+
   @ViewChild('supermarketVideo') supermarketVideo: ElementRef; 
 
   constructor(private router: Router,
@@ -39,7 +43,7 @@ export class MainPageComponent implements OnInit {
     gradient.addColorStop(0, "rgb(97, 250, 97)");
     gradient.addColorStop(1, "rgb(110, 129, 255)");
     ctx.fillStyle = gradient;
-    ctx.fillText("ברוך הבא", x, y / 2);
+    ctx.fillText("מערכת הסל שלי", x, y - 14);
         `;
 
     this._renderer2.appendChild(this._document.body, script);
@@ -55,7 +59,7 @@ export class MainPageComponent implements OnInit {
   }
 
   closeNav() {
-    document.getElementById("mySidenav").style.width = "0";
+    //document.getElementById("mySidenav").style.width = "0";
   }
 
   w3_open() {
@@ -143,5 +147,9 @@ export class MainPageComponent implements OnInit {
   preferredProduct() {
     this.closeNav();
     this.router.navigate(['/preferred-product'])
+  }
+
+  getAmountInBasket(): number {
+    return BasketService.getAllAmount();
   }
 }

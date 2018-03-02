@@ -1,4 +1,4 @@
-table {
+/*table {
   font-family: arial, sans-serif;
   border-collapse: collapse;
   width: 100%;
@@ -16,4 +16,19 @@ tr:nth-child(even) {
 
 .title-right {
   text-align: right;
+}*/
+
+.card .showControl {
+  visibility: visible;
+}
+
+.card .hideControl {
+  visibility: hidden;
+}
+
+.card .item-amount-input {
+  width: 60px;
+  height: 30px;
+  display: inline-block;
+  text-align:center;
 }

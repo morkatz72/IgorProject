@@ -7,7 +7,9 @@ import { Pipe, PipeTransform } from '@angular/core';
 import { CategoryPipe} from '../pipes/category-pipe/category.pipe';
 import { Router } from "@angular/router";
 import { BasketItemModule } from "../../basket/basket-item.module";
-
+import * as _ from "lodash";
+import { BasketModule } from '../../basket/basket.module';
+import { BasketService } from '../../../services/basketService/basket-service.service';
 
 @Component({
   selector: 'app-products-list',
@@ -26,8 +28,8 @@ export class ProductsListComponent implements OnInit {
   public currCategory: number;
   public categories: Category[];
   select: EventEmitter<string>;
-
-
+  public productsGroups: Product[][];
+  public hoverIndex: number = null;
 
   constructor(private productService: ProductService, private router: Router) { }
 
@@ -42,9 +44,11 @@ export class ProductsListComponent implements OnInit {
   getProducts(): any {
     this.productService.getProducts().subscribe(
       (data) => {
-
         debugger;
         this.products = Product.toProduct(data);
+        
+        this.productsGroups = _.chunk(Product.toProduct(data), 3);
+
         console.log(this.products);
       }
     );
@@ -100,16 +104,32 @@ export class ProductsListComponent implements OnInit {
     this.router.navigate(['/add-or-update-product/' + productID]);
   }
 
-  addToBasket(product: Product) {
-    //this.module.addToBaket(product);
-    debugger;
-    let tmpBasket: BasketItemModule[] = JSON.parse(localStorage.getItem("basket"));
-    let index = tmpBasket.map((i) => i.id).indexOf(product.id)
-    if (index != -1)
-      tmpBasket[index].amount += 1;
-    else
-      tmpBasket.push(new BasketItemModule(product.id, product.name, "", product.price, 1));
+  addToBasket(product: Product, input: any) {
+    //BasketService.setItemAmountStable(product, +(input.value || 0) + 1);
+    BasketService.addItem(product);
+  }
 
-    localStorage.setItem("basket", JSON.stringify(tmpBasket));
+  removeFromBasket(productID: number, input: any) {
+    BasketService.removeItemByID(productID);
+  }
+
+  deleteFromBasket(product: Product, input: any) {
+    BasketService.setItemAmountStable(product, 0);
+  }
+
+  setItemAmount(productID: number, event: any) {
+    BasketService.setItemAmount(productID, event.data);
+  }
+
+  getItemAmount(productID: number): any {
+    return BasketService.getItemAmount(productID);
+  }
+
+  enterCard(i) {
+    this.hoverIndex = i;
+  }
+
+  leaveCard(i) {
+    this.hoverIndex = null;
   }
 }
