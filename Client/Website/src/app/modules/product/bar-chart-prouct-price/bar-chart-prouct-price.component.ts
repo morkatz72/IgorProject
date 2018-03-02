@@ -75,7 +75,7 @@ export class BarChartProuctPriceComponent implements OnInit {
   }
 
   private initSvg() {
-    this.svg = d3.select("svg");
+    this.svg = d3.select(".bar-chart-product-price");
     this.width = +this.svg.attr("width") - this.margin.left - this.margin.right;
     this.height = +this.svg.attr("height") - this.margin.top - this.margin.bottom;
     this.g = this.svg.append("g")

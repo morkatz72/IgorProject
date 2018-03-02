@@ -108,7 +108,7 @@ export class PriceHistoryChartWithD3jsComponent implements OnInit {
   }
 
   private initSvg() {
-    this.svg = d3.select("svg")
+    this.svg = d3.select(".price-history-chart-with-d3js")
       .append("g")
       .attr("transform", "translate(" + this.margin.left + "," + this.margin.top + ")");
   }
