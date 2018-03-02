@@ -19,6 +19,8 @@ import { PriceHistoryChartWithD3jsComponent } from './price-history-chart-with-d
 import { BarChartProuctPriceComponent } from './bar-chart-prouct-price/bar-chart-prouct-price.component';
 import { PreferredProductComponent } from './preferred-product/preferred-product.component';
 import { ProductDetailsPreviewComponent } from './product-details-preview/product-details-preview.component';
+import { BiggerThenPipe } from './pipes/bigger-then/bigger-then.pipe';
+import { SmallerThenPipe } from './pipes/smaller-then/smaller-then.pipe';
 
 
 
@@ -38,7 +40,9 @@ import { ProductDetailsPreviewComponent } from './product-details-preview/produc
     PriceHistoryChartWithD3jsComponent,
     BarChartProuctPriceComponent,
     PreferredProductComponent,
-    ProductDetailsPreviewComponent],
+    ProductDetailsPreviewComponent,
+    BiggerThenPipe,
+    SmallerThenPipe],
   imports: [
     CommonModule,
     FormsModule

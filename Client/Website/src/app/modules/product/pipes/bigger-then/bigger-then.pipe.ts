@@ -1,9 +1,9 @@
 import { Pipe, PipeTransform } from '@angular/core';
 
 @Pipe({
-  name: 'price'
+  name: 'biggerThen'
 })
-export class PricePipe implements PipeTransform {
+export class BiggerThenPipe implements PipeTransform {
 
   transform(items: any, args?: any): any {
     debugger;
