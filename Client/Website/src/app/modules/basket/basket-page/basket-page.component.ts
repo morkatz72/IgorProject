@@ -21,7 +21,7 @@ import { } from 'googlemaps';
   styleUrls: ['./basket-page.component.css']
 })
 export class BasketPageComponent implements OnInit {
-  basketItems: BasketItemModule[] = this.basketService.getBasket();
+  basketItems: BasketItemModule[] = BasketService.getBasket();
 
   title: string = 'My first AGM project';
   lat: number = 32.678418;
@@ -56,7 +56,7 @@ export class BasketPageComponent implements OnInit {
     }
   }
 
-  constructor(private basketService: BasketService,
+  constructor(
     private basketHandleService: BasketHandleService,
     private router: Router,
     private route: ActivatedRoute,
@@ -64,8 +64,8 @@ export class BasketPageComponent implements OnInit {
 
 
   removeItem(index: number) {
-    this.basketService.removeItemIndex(index);
-    this.basketItems = this.basketService.getBasket()
+    BasketService.removeItemIndex(index);
+    this.basketItems = BasketService.getBasket()
   }
 
   callback(results, status) {
@@ -124,8 +124,8 @@ export class BasketPageComponent implements OnInit {
   }
 
   emptyBasket() {
-    this.basketService.setBasket([]);
-    this.basketItems = this.basketService.getBasket()
+    BasketService.setBasket([]);
+    this.basketItems = BasketService.getBasket()
   }
 
   selectItem(value) {
@@ -136,7 +136,7 @@ export class BasketPageComponent implements OnInit {
   }
 
   setItemAmount(productId: number, amount: number) {
-    this.basketService.setItemAmount(productId, amount);
+    BasketService.setItemAmount(productId, amount);
   }
 
   saveBasket() {
