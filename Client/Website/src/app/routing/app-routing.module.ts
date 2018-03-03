@@ -49,7 +49,7 @@ export const routes: Routes = [
   { path: 'facebook-api', component: FacebookApiComponent },
   { path: 'weather', component: WeatherComponent },
   { path: 'preferred-product', component: PreferredProductComponent },
-  { path: 'product-list-filter', component: ProductsListFilterComponent }
+  { path: 'product-list-filter', component: ProductsListFilterComponent },
   { path: 'statistics', component: StatisticsMainPageComponent }
 ];
 
