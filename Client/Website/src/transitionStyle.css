@@ -18,11 +18,6 @@
     transform: rotate(360deg);
   }
 
-
-
-
-
-
 Transition1 {
   width: 100px;
   height: 100px;
@@ -1805,3 +1800,78 @@ w3-teal .w3-xxlarge {
   background-color: rgba(0, 0, 0, 0.80) !important*/
   background-color: rgba(139, 43, 11, 0.79) !important
 }
+
+
+/* graphs */
+.price-history-chart-with-d3js path {
+  stroke: steelblue;
+  stroke-width: 2;
+  fill: none;
+}
+
+.price-history-chart-with-d3js .axis path,
+.price-history-chart-with-d3js .axis line {
+  fill: none;
+  stroke: grey;
+  stroke-width: 1;
+  shape-rendering: crispEdges;
+}
+
+
+.price-history-chart-with-d3js .bar {
+  fill: steelblue;
+}
+
+  .price-history-chart-with-d3js .bar:hover {
+    fill: brown;
+  }
+
+.price-history-chart-with-d3js .axis-title {
+  fill: none;
+  stroke: black;
+  stroke-width: 0.5px;
+}
+
+
+.price-history-chart-with-d3js path {
+  stroke: steelblue;
+  stroke-width: 2;
+  fill: none;
+}
+
+.price-history-chart-with-d3js .axis path,
+.price-history-chart-with-d3js .axis line {
+  fill: none;
+  stroke: grey;
+  stroke-width: 1;
+  shape-rendering: crispEdges;
+}
+
+.bar-chart-product-price .bar {
+  fill: steelblue;
+}
+
+  .bar-chart-product-price .bar:hover {
+    fill: brown;
+  }
+
+.bar-chart-product-price .axis-title {
+  fill: none;
+  stroke: black;
+  stroke-width: 0.5px;
+}
+
+.bar-chart-product-price path {
+  stroke: steelblue;
+  stroke-width: 2;
+  fill: none;
+}
+
+.bar-chart-product-price .axis path,
+.bar-chart-product-price .axis line {
+  fill: none;
+  stroke: grey;
+  stroke-width: 1;
+  shape-rendering: crispEdges;
+}
+

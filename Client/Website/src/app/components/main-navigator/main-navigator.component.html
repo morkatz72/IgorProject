@@ -43,9 +43,9 @@
         Your browser does not support the HTML5 canvas tag.
       </canvas>
       <button type="button" class="btn btn-info" (click)="basketView()"><i class="fas fa-shopping-cart"></i>הסל שלי ({{getAmountInBasket()}})</button>
-      <button type="button" class="btn btn-warning" (click)="cheapestProduct()"><i class="fas fa-chart-bar"></i>סטטיסטיקות</button>
-      <button type="button" class="btn btn-info" (click)="facebookView()"><i class="fas fa-twitter"></i>טוויטר</button>
-      <button type="button" class="btn btn-info" (click)="weatherView()"><i class="fa fa-amazon"></i>מזג אוויר</button>
+      <button type="button" class="btn btn-warning" routerLink="/statistics"><i class="fas fa-chart-bar"></i>סטטיסטיקות</button>
+      <button type="button" class="btn btn-info" (click)="facebookView()"><i class="fab fa-twitter"></i>טוויטר</button>
+      <button type="button" class="btn btn-info" (click)="weatherView()"><i class="fas fa-sun"></i>מזג אוויר</button>
     </div>
     <div class="col-md-4 d-flex align-items-end">
       <div class="ml-auto" *ngIf="!userName()">

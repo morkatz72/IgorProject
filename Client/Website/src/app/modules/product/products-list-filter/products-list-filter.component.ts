@@ -79,4 +79,8 @@ export class ProductsListFilterComponent implements OnInit {
   showDetails(productID: number) {
     this.router.navigate(['/product-details/' + productID]);
   }
+
+  updateOrDelete(productID: number) {
+    this.router.navigate(['/add-or-update-product/' + productID]);
+  }
 }
