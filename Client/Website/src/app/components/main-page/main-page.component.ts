@@ -152,4 +152,9 @@ export class MainPageComponent implements OnInit {
   getAmountInBasket(): number {
     return BasketService.getAllAmount();
   }
+
+  getProductsByCategory(id) {
+    this.closeNav();
+    this.router.navigate(['/product-list/' + id])
+  }
 }
