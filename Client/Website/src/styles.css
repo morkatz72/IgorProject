@@ -1,4 +1,4 @@
-﻿/*@import "node_modules/bootstrap/scss/variables";*/
+/*@import "node_modules/bootstrap/scss/variables";*/
 body {
   background: url("https://thenypost.files.wordpress.com/2018/01/grocery-store.jpg") no-repeat center center fixed;
   -webkit-background-size: cover;
@@ -541,3 +541,33 @@ i.water-bottle {
         border-color: #ec7523;
       }*/
 
+
+
+path {
+  stroke: steelblue;
+  stroke-width: 2;
+  fill: none;
+}
+
+.axis path,
+.axis line {
+  fill: none;
+  stroke: grey;
+  stroke-width: 1;
+  shape-rendering: crispEdges;
+}
+
+
+.bar {
+  fill: steelblue;
+}
+
+  .bar:hover {
+    fill: brown;
+  }
+
+.axis-title {
+  fill: none;
+  stroke: black;
+  stroke-width: 0.5px;
+}
