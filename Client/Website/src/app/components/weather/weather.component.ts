@@ -24,7 +24,6 @@ export class WeatherComponent implements OnInit {
 
 
   ngOnInit() {
-    debugger;
     this.getWeather();
   }
 
