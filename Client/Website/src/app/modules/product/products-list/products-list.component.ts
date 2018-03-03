@@ -11,6 +11,7 @@ import { BasketItemModule } from "../../basket/basket-item.module";
 import * as _ from "lodash";
 import { BasketModule } from '../../basket/basket.module';
 import { BasketService } from '../../../services/basketService/basket-service.service';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-products-list',
@@ -28,13 +29,14 @@ export class ProductsListComponent implements OnInit {
   public productPaging: Product[];
   public currCategory: number;
   public categories: Category[];
+  public productsByCategory: Product[];
   select: EventEmitter<string>;
   public bigger: string;
   public smaller: string;
   public productsGroups: Product[][];
   public hoverIndex: number = null;
 
-  constructor(private productService: ProductService, private router: Router) { }
+  constructor(private productService: ProductService, private router: Router, private route: ActivatedRoute) { }
 
   ngOnInit() {
     this.getProducts();
@@ -49,10 +51,22 @@ export class ProductsListComponent implements OnInit {
       (data) => {
         debugger;
         this.products = Product.toProduct(data);
-        
+        this.productsByCategory = Product.toProduct(data);
         this.productsGroups = _.chunk(Product.toProduct(data), 3);
 
         console.log(this.products);
+        this.route.params.subscribe(params => {
+          let id: number = +params['id'];
+          if (id) {
+            debugger;
+            this.productsByCategory = new Array<Product>();
+            for (var i = 0; i < this.products.length; i++) {
+              if (this.products[i].category == id) {
+                this.productsByCategory.push(this.products[i]);
+              }
+            }
+          }
+        })
       }
     );
   }

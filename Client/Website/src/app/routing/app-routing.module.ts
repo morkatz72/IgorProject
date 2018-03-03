@@ -34,6 +34,7 @@ export const routes: Routes = [
   { path: 'add-or-update-product/:id', component: AddOrUpdateProductComponent },
   { path: 'delete-product', component: DeleteProductComponent },
   { path: 'product-list', component: ProductsListComponent },
+  { path: 'product-list/:id', component: ProductsListComponent },
   { path: 'main-page', component: MainPageComponent },
   { path: 'advertisement', component: AdvertisementComponent },
   { path: 'basket', component: BasketPageComponent },
