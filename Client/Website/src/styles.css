@@ -119,6 +119,8 @@ i.water-bottle {
       border-top: solid 8px #e3482c;
       border-left: solid 8px transparent;
       border-right: solid 8px transparent; }
+    .category-navigation .nav-item:first-child a {
+      cursor: pointer; }
   .category-navigation .nav-item:nth-child(2) {
     text-align: center;
     vertical-align: central; }
@@ -152,6 +154,8 @@ i.water-bottle {
       border-top: solid 8px #ec7523;
       border-left: solid 8px transparent;
       border-right: solid 8px transparent; }
+    .category-navigation .nav-item:nth-child(2) a {
+      cursor: pointer; }
   .category-navigation .nav-item:nth-child(3) {
     text-align: center;
     vertical-align: central; }
@@ -185,6 +189,8 @@ i.water-bottle {
       border-top: solid 8px #ffed1b;
       border-left: solid 8px transparent;
       border-right: solid 8px transparent; }
+    .category-navigation .nav-item:nth-child(3) a {
+      cursor: pointer; }
   .category-navigation .nav-item:nth-child(4) {
     text-align: center;
     vertical-align: central; }
@@ -218,6 +224,8 @@ i.water-bottle {
       border-top: solid 8px #c9db53;
       border-left: solid 8px transparent;
       border-right: solid 8px transparent; }
+    .category-navigation .nav-item:nth-child(4) a {
+      cursor: pointer; }
   .category-navigation .nav-item:nth-child(5) {
     text-align: center;
     vertical-align: central; }
@@ -251,6 +259,8 @@ i.water-bottle {
       border-top: solid 8px #8fc23f;
       border-left: solid 8px transparent;
       border-right: solid 8px transparent; }
+    .category-navigation .nav-item:nth-child(5) a {
+      cursor: pointer; }
   .category-navigation .nav-item:nth-child(6) {
     text-align: center;
     vertical-align: central; }
@@ -284,6 +294,8 @@ i.water-bottle {
       border-top: solid 8px #1f8b95;
       border-left: solid 8px transparent;
       border-right: solid 8px transparent; }
+    .category-navigation .nav-item:nth-child(6) a {
+      cursor: pointer; }
   .category-navigation .nav-item:nth-child(7) {
     text-align: center;
     vertical-align: central; }
@@ -317,6 +329,8 @@ i.water-bottle {
       border-top: solid 8px #ea676c;
       border-left: solid 8px transparent;
       border-right: solid 8px transparent; }
+    .category-navigation .nav-item:nth-child(7) a {
+      cursor: pointer; }
   .category-navigation .nav-item:nth-child(8) {
     text-align: center;
     vertical-align: central; }
@@ -350,6 +364,8 @@ i.water-bottle {
       border-top: solid 8px #dc1c4b;
       border-left: solid 8px transparent;
       border-right: solid 8px transparent; }
+    .category-navigation .nav-item:nth-child(8) a {
+      cursor: pointer; }
   .category-navigation .nav-item:nth-child(9) {
     text-align: center;
     vertical-align: central; }
@@ -383,6 +399,8 @@ i.water-bottle {
       border-top: solid 8px #6f1e49;
       border-left: solid 8px transparent;
       border-right: solid 8px transparent; }
+    .category-navigation .nav-item:nth-child(9) a {
+      cursor: pointer; }
   .category-navigation .nav-item:nth-child(10) {
     text-align: center;
     vertical-align: central; }
@@ -416,6 +434,8 @@ i.water-bottle {
       border-top: solid 8px #66342d;
       border-left: solid 8px transparent;
       border-right: solid 8px transparent; }
+    .category-navigation .nav-item:nth-child(10) a {
+      cursor: pointer; }
   .category-navigation .nav-item:nth-child(11) {
     text-align: center;
     vertical-align: central; }
@@ -449,6 +469,8 @@ i.water-bottle {
       border-top: solid 8px #133340;
       border-left: solid 8px transparent;
       border-right: solid 8px transparent; }
+    .category-navigation .nav-item:nth-child(11) a {
+      cursor: pointer; }
   .category-navigation .nav-item:nth-child(12) {
     text-align: center;
     vertical-align: central; }
@@ -482,6 +504,8 @@ i.water-bottle {
       border-top: solid 8px #d0ad9a;
       border-left: solid 8px transparent;
       border-right: solid 8px transparent; }
+    .category-navigation .nav-item:nth-child(12) a {
+      cursor: pointer; }
   .category-navigation .nav-item:nth-child(13) {
     text-align: center;
     vertical-align: central; }
@@ -515,6 +539,8 @@ i.water-bottle {
       border-top: solid 8px #7d8e9e;
       border-left: solid 8px transparent;
       border-right: solid 8px transparent; }
+    .category-navigation .nav-item:nth-child(13) a {
+      cursor: pointer; }
   .category-navigation .nav-item:last-child {
     border-left: 0; }
   .category-navigation .nav-item .dropdown {

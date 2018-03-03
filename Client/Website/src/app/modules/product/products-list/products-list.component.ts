@@ -20,36 +20,21 @@ import { ActivatedRoute } from '@angular/router';
 })
 
 export class ProductsListComponent implements OnInit {
-  loading = false;
-  total = 0;
-  page = 1;
-  limit = 50;
-  public name:string;
   public products: Product[];
-  public productPaging: Product[];
-  public currCategory: number;
-  public categories: Category[];
   public productsByCategory: Product[];
-  select: EventEmitter<string>;
-  public bigger: string;
-  public smaller: string;
   public productsGroups: Product[][];
+
   public hoverIndex: number = null;
 
   constructor(private productService: ProductService, private router: Router, private route: ActivatedRoute) { }
 
   ngOnInit() {
     this.getProducts();
-    this.getProductsPaging();
-    this.getCategories();
-    this.select = new EventEmitter();
-    this.name = "";
   }
 
   getProducts(): any {
     this.productService.getProducts().subscribe(
       (data) => {
-        debugger;
         this.products = Product.toProduct(data);
         this.productsByCategory = Product.toProduct(data);
         this.productsGroups = _.chunk(Product.toProduct(data), 3);
@@ -69,52 +54,6 @@ export class ProductsListComponent implements OnInit {
         })
       }
     );
-  }
-
-  getProductsPaging(): void {
-    this.loading = true;
-    this.productService.getProductsPaging(this.page, this.limit).subscribe(products => {
-      this.productPaging = Product.toProduct(products);
-      console.log(products);
-      this.total = this.products.length - 1;
-      this.loading = false;
-    });
-  }
-
-  selectItem(value) {
-    this.select.emit(value);
-    this.currCategory = value;
-    console.log(this.currCategory);
-  }
-
-  getCategories() {
-    this.productService.getCategories().subscribe((results) => {
-      this.categories = Category.toCategories(results);
-      console.log(this.categories);
-    })
-  }
-
-  goToPage(n: number): void {
-    this.page = n;
-    this.getProductsPaging();
-  }
-
-  onNext(): void {
-    this.page++;
-    this.getProductsPaging();
-  }
-
-  onPrev(): void {
-    this.page--;
-    this.getProductsPaging();
-  }
-
-  userName() {
-    return localStorage.getItem('currentUser');
-  }
-
-  showDetails(productID: number) {
-      this.router.navigate(['/product-details/' + productID]);
   }
 
   updateOrDelete(productID: number) {
@@ -149,4 +88,12 @@ export class ProductsListComponent implements OnInit {
   leaveCard(i) {
     this.hoverIndex = null;
   }
+
+  userName() {
+    return localStorage.getItem('currentUser');
+  }
+
+  showDetails(productID: number) {
+    this.router.navigate(['/product-details/' + productID]);
+  } 
 }

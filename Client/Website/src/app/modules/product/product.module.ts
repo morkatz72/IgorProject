@@ -20,6 +20,8 @@ import { PreferredProductComponent } from './preferred-product/preferred-product
 import { ProductDetailsPreviewComponent } from './product-details-preview/product-details-preview.component';
 import { BiggerThenPipe } from './pipes/bigger-then/bigger-then.pipe';
 import { SmallerThenPipe } from './pipes/smaller-then/smaller-then.pipe';
+import { ProductsListFilterComponent } from './products-list-filter/products-list-filter.component';
+import { StatisticsMainPageComponent } from './statistics-main-page/statistics-main-page.component';
 
 
 
@@ -40,7 +42,9 @@ import { SmallerThenPipe } from './pipes/smaller-then/smaller-then.pipe';
     PreferredProductComponent,
     ProductDetailsPreviewComponent,
     BiggerThenPipe,
-    SmallerThenPipe],
+    SmallerThenPipe,
+    ProductsListFilterComponent,
+    StatisticsMainPageComponent],
   imports: [
     CommonModule,
     FormsModule

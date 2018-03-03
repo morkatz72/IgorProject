@@ -154,6 +154,10 @@ i.water-bottle {
         border-left: solid 8px transparent;
         border-right: solid 8px transparent;
       }
+
+      a {
+        cursor: pointer;
+      }
     }
 
     &:nth-child(n) {
