@@ -1,7 +1,7 @@
-/* קוד לצאט - צד קליינט 
+
 
 import { Component, OnInit } from '@angular/core';
-import { io } from "socket.io";
+//import { io } from "socket.io";
 
 
 @Component({
@@ -17,7 +17,7 @@ export class SocketsComponent implements OnInit {
   ngOnInit() { }
 
   };
-
+/*
   var express = require('express')
     , app = express()
     , http = require('http')
@@ -56,8 +56,8 @@ export class SocketsComponent implements OnInit {
       socket.broadcast.emit('updatechat', 'SERVER', socket.username + ' has disconnected');
    });
   });
-
-
-
-
 */
+
+
+
+
