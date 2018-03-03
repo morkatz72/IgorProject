@@ -36,27 +36,38 @@
 </div>
     -->
 
-<div class="container">
-  <canvas id="welcomeCanvas" width="400" height="60" dir="rtl" (click)="setMainPage()" style="vertical-align: bottom;">
-    Your browser does not support the HTML5 canvas tag.
-  </canvas>
-  <button type="button" class="btn btn-info" (click)="basketView()"><i class="fas fa-shopping-cart"></i>הסל שלי ({{getAmountInBasket()}})</button>
-  <button type="button" class="btn btn-warning" (click)="cheapestProduct()"><i class="fas fa-chart-bar"></i>סטטיסטיקות</button>
-  <button type="button" class="btn btn-info" (click)="facebookView()"><i class="fas fa-twitter"></i>טוויטר</button>
-  <button type="button" class="btn btn-info" (click)="weatherView()"><i class="fa fa-amazon"></i>מזג אוויר</button>
-  <button type="button" class="btn btn-danger" (click)="managerView()"><i class="fas fa-wrench"></i>ממשק ניהול</button>
-  <button type="button" class="btn btn-danger" (click)="logOff()"><i class="fas fa-power-off"></i>התנתקות</button>
-
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-9">
+      <canvas id="welcomeCanvas" width="400" height="60" dir="rtl" (click)="setMainPage()" style="vertical-align: bottom;">
+        Your browser does not support the HTML5 canvas tag.
+      </canvas>
+      <button type="button" class="btn btn-info" (click)="basketView()"><i class="fas fa-shopping-cart"></i>הסל שלי ({{getAmountInBasket()}})</button>
+      <button type="button" class="btn btn-warning" (click)="cheapestProduct()"><i class="fas fa-chart-bar"></i>סטטיסטיקות</button>
+      <button type="button" class="btn btn-info" (click)="facebookView()"><i class="fas fa-twitter"></i>טוויטר</button>
+      <button type="button" class="btn btn-info" (click)="weatherView()"><i class="fa fa-amazon"></i>מזג אוויר</button>
+    </div>
+    <div class="col-md-3 d-flex align-items-end">
+      <div class="ml-auto">
+        <button type="button" class="btn btn-info" routerLink="/login"><i class="fas fa-shopping-cart"></i>התחבר</button>
+        <button type="button" class="btn btn-info" routerLink="/register"><i class="fas fa-shopping-cart"></i>הירשם</button>
+      </div>
+      <span *ngIf="userName()">
+</span>
+        <!--<button type="button" class="btn btn-danger" (click)="managerView()"><i class="fas fa-wrench"></i>ממשק ניהול</button>-->
+        <!--שלום, {{getDisplayUserName()}}-->
+        <!--<button type="button" class="btn btn-danger" (click)="logOff()"><i class="fas fa-power-off"></i>התנתקות</button>-->
+       
+    </div>
+  </div>
 </div>
-
 <nav class="navbar navbar-expand category-navigation">
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
   <div class="collapse navbar-collapse" id="navbarNavDropdown">
     <ul class="navbar-nav">
-
-      <li class="nav-item active">
+      <li class="nav-item">
         <a class="nav-link" href="#">
           <div class="nav-text-container">
             <span>
@@ -177,17 +188,21 @@
         </a>
 
       </li>
-      <li class="nav-item dropdown">
+
+      <li class="nav-item">
+        <a class="nav-link" (click)="productListView()">
+          <div class="nav-text-container">
+            <span>
+              כל המוצרים
+            </span>
+          </div>
+        </a>
+      </li>
+      <!--<li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           Dropdown link
         </a>
-        <!--<div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-          <a class="dropdown-item" href="#">Action</a>
-          <a class="dropdown-item" href="#">Another action</a>
-          <a class="dropdown-item" href="#">Something else here</a>
-        </div>-->
         <div class="dropdown-menu dropdown-menu-right">
-          <!--<span x-arrow>arrow</span>-->
           <div class="card-columns subcategory-cards">
             <div class="card">
               <div class="card-body">
@@ -230,21 +245,11 @@
             </div>
           </div>
         </div>
-      </li>
+      </li>-->
     </ul>
   </div>
 </nav>
 <div class="container">
-  <div *ngIf="!userName()">
-    <nav>
-      <a routerLink="/login" routerLinkActive="active">התחבר</a>
-      <a routerLink="/register" routerLinkActive="active">הירשם</a>
-    </nav>
-  </div>
-
-  <div *ngIf="userName()" style="text-shadow: 2px 2px #c73514;">
-    <h3> {{getDisplayUserName()}} </h3>
-  </div>
   <!--
   <video width="320" height="240" autoplay muted loop #supermarketVideo>
     <source src="/assets/videos/supermarket1.mp4" type="video/mp4">
