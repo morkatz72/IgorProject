@@ -94,5 +94,7 @@ export class UsersServiceService {
     return localStorage.getItem('currentUser');
   }
 
-
+  getUserStatus() {
+    return localStorage.getItem('userType');
+  }
 }

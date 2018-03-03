@@ -1,65 +1,66 @@
-<div class="col-md-4 col-md-offset-1" *ngIf="productDetails">
 
+<div class="container" *ngIf="productDetails">
+  <form id="contact" name="form" (ngSubmit)="f.form.valid && onSubmit(f,$event)" #f="ngForm" novalidate>
+    <h3>פרטי מוצר</h3>
 
-    <h2>פריטים בסיסיים עבור מוצר</h2>
+    <fieldset class="row">
+      שם מוצר:
+      <input tabindex="1" name="name" type="text" [(ngModel)]="productDetails.name" #name="ngModel" disabled/>
+    </fieldset>
 
-  <form name="form" #f="ngForm" novalidate>
-    <div class="form-group">
-      <label for="nameProductLabel">שם המוצר: </label>
-      <label for="nameProductValue">{{productDetails.name}}</label>
+      <fieldset class="row">
+        מחיר:
+        <input tabindex="2" name="price" type="text" [(ngModel)]="productDetails.price" #price="ngModel" disabled />
+      </fieldset>
+
+    <fieldset class="row">
+      קטגוריה:
+      <input tabindex="3" name="categoryValue" type="text" [(ngModel)]="productDetails.categoryValue" #categoryValue="ngModel" disabled />
+    </fieldset>
+
+    <fieldset class="row">
+      קלוריות:
+      <input tabindex="4" name="calories" type="text" [(ngModel)]="productDetails.calories" #calories="ngModel" disabled />
+    </fieldset>
+
+    <fieldset class="row">
+      מדינת יצור:
+      <input tabindex="5" name="createCountry" type="text" [(ngModel)]="productDetails.createCountry" #createCountry="ngModel" disabled />
+    </fieldset>
+
+    <fieldset class="row">
+      יצרן:
+      <input tabindex="6" name="company" type="text" [(ngModel)]="productDetails.company" #company="ngModel" disabled />
+    </fieldset>
+
+    <div *ngIf="productDetails.comments">
+      <fieldset class="row">
+        רשימת תגובות
+        <ul>
+          <li *ngFor="let currComment of productDetails.comments" style="margin-left:50px">
+            תגובה: {{ currComment.comment }} עם ציון {{ currComment.grade}}
+          </li>
+        </ul>
+      </fieldset>
     </div>
 
-    <div class="form-group">
-      <label for="priceLabel">מחיר: </label>
-      <label for="priceValue">{{productDetails.price}}</label>
-    </div>
+    <fieldset class="row">
+      תגובה על מוצר:
+      <textarea name="comment" [(ngModel)]="comm" #comment="ngModel"></textarea>
+    </fieldset>
 
-    <div class="form-group">
-      <label for="categoryLabel">קטגוריה: </label>
-      <label for="categoryValue">{{productDetails.categoryValue}}</label>
-    </div>
-
-    <div class="form-group">
-      <label for="caloriesLabel">קלוריות: </label>
-      <label for="caloriesValue">{{productDetails.calories}}</label>
-    </div>
-
-    <div class="form-group">
-      <label for="countryLabel">מדינת יצור: </label>
-      <label for="countryValue">{{productDetails.createCountry}}</label>
-    </div>
-
-    <div class="form-group">
-      <label for="companyLabel">יצרן: </label>
-      <label for="companyValue">{{productDetails.company}}</label>
-    </div>
-
-
-    <div class="form-group" *ngIf="productDetails.comments">
-      <label>הצגת רשימת תגובות על מוצר:</label>
-      <ul> 
-        <li *ngFor="let currComment of productDetails.comments"> 
-          תגובה: {{ currComment.comment }} עם ציון {{ currComment.grade}}
-        </li>
-      </ul>
-    </div>
-
-    <div class="form-group">
-      <label>תגובה על מוצר:</label>
-      <textarea class="form-control"  name="comment" [(ngModel)]="comm" #comment="ngModel"></textarea>
-    </div>
-
-    <div class="form-group">
-      <label for="categoryLabel">ציון </label>
+    <fieldset class="row">
+      ציון:
       <div>
         <select (change)="SelectedGrade($event.target.value)" class="form-control">
           <option *ngFor="let currGrade of grades" value={{currGrade}}>{{currGrade}}</option>
         </select>
       </div>
-    </div>
+     </fieldset>
 
-    <button class="btn btn-primary" (click)="addComment()">הוסף תגובה</button>
-    <button class="btn btn-primary" (click)="addToBasket(productDetails)">הוסף לסל</button>
-
+    <fieldset style="margin-top:5%">
+      <button style="margin-top:5%" class="button-style" (click)="addComment()">הוסף תגובה</button>
+      <button style="margin-top:5%" class="button-style" (click)="addToBasket(productDetails)">הוסף לסל</button>
+    </fieldset>
   </form>
 </div>

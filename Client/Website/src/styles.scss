@@ -14,7 +14,7 @@ $nav-color-9: #6f1e49;
 $nav-color-10: #66342d;
 $nav-color-11: #133340;
 $nav-color-12: #d0ad9a;
-$nav-color-13: #d0ad9a;
+$nav-color-13: #7d8e9e;
 
 body {
   background: url("https://thenypost.files.wordpress.com/2018/01/grocery-store.jpg") no-repeat center center fixed;
@@ -154,11 +154,15 @@ i.water-bottle {
         border-left: solid 8px transparent;
         border-right: solid 8px transparent;
       }
+
+      a {
+        cursor: pointer;
+      }
     }
 
     &:nth-child(n) {
       font-weight: bold;
-      font-size: 14px;
+      font-size: 12px;
       border-left: 0.1px solid;
       background-color: white;
       border-color: lightgray;

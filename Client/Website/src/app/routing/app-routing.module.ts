@@ -7,7 +7,6 @@ import { UserLoginComponent } from '../modules/login/user-login-component/user-l
 import { RegisterUserComponent } from '../modules/login/register-user/register-user.component';
 import { ManagerPageComponent } from '../modules/login/manager-page/manager-page.component';
 
-
 import { ProductDetailsComponent } from '../modules/product/product-details/product-details.component';
 import { AddOrUpdateProductComponent } from '../modules/product/add-or-update-product/add-or-update-product.component';
 import { DeleteProductComponent } from '../modules/product/delete-product/delete-product.component';
@@ -24,9 +23,11 @@ import { BarChartProuctPriceComponent} from '../modules/product/bar-chart-prouct
 import { FacebookApiComponent } from '../components/facebook-api/facebook-api.component'
 import { PreferredProductComponent } from '../modules/product/preferred-product/preferred-product.component';
 import { WeatherComponent } from '../components/weather/weather.component';
+import { ProductsListFilterComponent } from '../modules/product/products-list-filter/products-list-filter.component';
+import { StatisticsMainPageComponent } from '../modules/product/statistics-main-page/statistics-main-page.component';
 
 export const routes: Routes = [
-
+  { path: '', component: MainPageComponent },
   { path: 'login', component: UserLoginComponent },
   { path: 'register', component: RegisterUserComponent },
   { path: 'product-details/:id', component: ProductDetailsComponent },
@@ -34,6 +35,7 @@ export const routes: Routes = [
   { path: 'add-or-update-product/:id', component: AddOrUpdateProductComponent },
   { path: 'delete-product', component: DeleteProductComponent },
   { path: 'product-list', component: ProductsListComponent },
+  { path: 'product-list/:id', component: ProductsListComponent },
   { path: 'main-page', component: MainPageComponent },
   { path: 'advertisement', component: AdvertisementComponent },
   { path: 'basket', component: BasketPageComponent },
@@ -46,7 +48,9 @@ export const routes: Routes = [
   { path: 'manager-page', component: ManagerPageComponent },
   { path: 'facebook-api', component: FacebookApiComponent },
   { path: 'weather', component: WeatherComponent },
-  { path: 'preferred-product', component: PreferredProductComponent }
+  { path: 'preferred-product', component: PreferredProductComponent },
+  { path: 'product-list-filter', component: ProductsListFilterComponent },
+  { path: 'statistics', component: StatisticsMainPageComponent }
 ];
 
 @NgModule({
