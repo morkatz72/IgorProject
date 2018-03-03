@@ -38,7 +38,7 @@
 
 <div class="container-fluid">
   <div class="row">
-    <div class="col-md-9">
+    <div class="col-md-8">
       <canvas id="welcomeCanvas" width="400" height="60" dir="rtl" (click)="setMainPage()" style="vertical-align: bottom;">
         Your browser does not support the HTML5 canvas tag.
       </canvas>
@@ -47,17 +47,16 @@
       <button type="button" class="btn btn-info" (click)="facebookView()"><i class="fas fa-twitter"></i>טוויטר</button>
       <button type="button" class="btn btn-info" (click)="weatherView()"><i class="fa fa-amazon"></i>מזג אוויר</button>
     </div>
-    <div class="col-md-3 d-flex align-items-end">
-      <div class="ml-auto">
+    <div class="col-md-4 d-flex align-items-end">
+      <div class="ml-auto" *ngIf="!userName()">
         <button type="button" class="btn btn-info" routerLink="/login"><i class="fas fa-shopping-cart"></i>התחבר</button>
         <button type="button" class="btn btn-info" routerLink="/register"><i class="fas fa-shopping-cart"></i>הירשם</button>
       </div>
-      <span *ngIf="userName()">
-</span>
-        <!--<button type="button" class="btn btn-danger" (click)="managerView()"><i class="fas fa-wrench"></i>ממשק ניהול</button>-->
-        <!--שלום, {{getDisplayUserName()}}-->
-        <!--<button type="button" class="btn btn-danger" (click)="logOff()"><i class="fas fa-power-off"></i>התנתקות</button>-->
-       
+      <div class="ml-auto" *ngIf="userName()">
+        שלום, {{getDisplayUserName()}}
+        <button type="button" class="btn btn-danger" (click)="managerView()"><i class="fas fa-wrench"></i>ממשק ניהול</button>
+        <button type="button" class="btn btn-danger" (click)="logOff()"><i class="fas fa-power-off"></i>התנתקות</button>
+      </div>
     </div>
   </div>
 </div>
