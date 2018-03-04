@@ -16,7 +16,6 @@ import { AdvertisementComponent} from '../modules/advertising/advertisement/adve
 import { AppComponent } from '../app.component'
 import { BasketPageComponent } from '../modules/basket/basket-page/basket-page.component';
 import { CheapestProdctByCategoryComponent } from '../modules/product/cheapest-prodct-by-category/cheapest-prodct-by-category.component';
-import { ProductStunningGraphComponent } from '../modules/product/product-stunning-graph/product-stunning-graph.component';
 import { ErrorPageComponent } from '../components/error-page/error-page.component'
 import { PriceHistoryChartWithD3jsComponent } from '../modules/product/price-history-chart-with-d3js/price-history-chart-with-d3js.component';
 import { BarChartProuctPriceComponent} from '../modules/product/bar-chart-prouct-price/bar-chart-prouct-price.component';
@@ -25,6 +24,7 @@ import { PreferredProductComponent } from '../modules/product/preferred-product/
 import { WeatherComponent } from '../components/weather/weather.component';
 import { ProductsListFilterComponent } from '../modules/product/products-list-filter/products-list-filter.component';
 import { StatisticsMainPageComponent } from '../modules/product/statistics-main-page/statistics-main-page.component';
+import { AboutDataComponent } from '../components/about-data/about-data.component';
 
 export const routes: Routes = [
   { path: '', component: MainPageComponent },
@@ -41,7 +41,6 @@ export const routes: Routes = [
   { path: 'basket', component: BasketPageComponent },
   { path: 'basket/:id', component: BasketPageComponent },
   { path: 'cheapest-product', component: CheapestProdctByCategoryComponent },
-  { path: 'history-two', component: ProductStunningGraphComponent },
   { path: 'page-404', component: ErrorPageComponent },
   { path: 'history-one-d3js/:id', component: PriceHistoryChartWithD3jsComponent },
   { path: 'history-two-chart-bar', component: BarChartProuctPriceComponent },
@@ -50,7 +49,8 @@ export const routes: Routes = [
   { path: 'weather', component: WeatherComponent },
   { path: 'preferred-product', component: PreferredProductComponent },
   { path: 'product-list-filter', component: ProductsListFilterComponent },
-  { path: 'statistics', component: StatisticsMainPageComponent }
+  { path: 'statistics', component: StatisticsMainPageComponent },
+  { path: 'about-data', component: AboutDataComponent }
 ];
 
 @NgModule({

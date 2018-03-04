@@ -17,7 +17,8 @@ import { FacebookModule } from 'ngx-facebook';
 import { WeatherComponent } from './components/weather/weather.component';
 import { SocketsComponent } from './components/sockets/sockets.component';
 import { AuthGuardService } from './shared/services/AuthGuard/auth-guard.service';
-import { MainNavigatorComponent } from './components/main-navigator/main-navigator.component'
+import { MainNavigatorComponent } from './components/main-navigator/main-navigator.component';
+import { AboutDataComponent } from './components/about-data/about-data.component'
 
 //import { AgmCoreModule } from '@agm/core';
 
@@ -45,7 +46,8 @@ import { MainNavigatorComponent } from './components/main-navigator/main-navigat
     FacebookApiComponent,
     WeatherComponent,
     SocketsComponent,
-    MainNavigatorComponent
+    MainNavigatorComponent,
+    AboutDataComponent
   ],
   providers: [HttpService, MainService, AuthGuardService],
   bootstrap: [AppComponent],
