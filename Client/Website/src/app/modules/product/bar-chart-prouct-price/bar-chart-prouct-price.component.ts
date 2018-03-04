@@ -50,7 +50,7 @@ export class BarChartProuctPriceComponent implements OnInit {
 
 
         for (var i = 0; i < this.products.length; i++) {
-          this.data.push({ "name": this.products[i].name + i, "price": this.products[i].price })
+          this.data.push({ "name": this.products[i].name + " - " + i, "price": this.products[i].price })
 
           if (this.maxPrice < this.products[i].price) { this.maxPrice = this.products[i].price }
           if (this.minPrice > this.products[i].price) { this.minPrice = this.products[i].price }
