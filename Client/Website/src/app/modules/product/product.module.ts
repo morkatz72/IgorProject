@@ -13,7 +13,6 @@ import { CategoryPipe } from './pipes/category-pipe/category.pipe';
 import { PricePipe } from './pipes/price-pipe/price.pipe';
 import { NamePipe } from './pipes/name-pipe/name.pipe';
 import { CheapestProdctByCategoryComponent } from './cheapest-prodct-by-category/cheapest-prodct-by-category.component';
-import { ProductStunningGraphComponent } from './product-stunning-graph/product-stunning-graph.component';
 import { PriceHistoryChartWithD3jsComponent } from './price-history-chart-with-d3js/price-history-chart-with-d3js.component';
 import { BarChartProuctPriceComponent } from './bar-chart-prouct-price/bar-chart-prouct-price.component';
 import { PreferredProductComponent } from './preferred-product/preferred-product.component';
@@ -36,7 +35,6 @@ import { StatisticsMainPageComponent } from './statistics-main-page/statistics-m
     PricePipe,
     NamePipe,
     CheapestProdctByCategoryComponent,
-    ProductStunningGraphComponent,
     PriceHistoryChartWithD3jsComponent,
     BarChartProuctPriceComponent,
     PreferredProductComponent,

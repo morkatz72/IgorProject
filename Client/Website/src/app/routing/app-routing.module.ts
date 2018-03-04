@@ -16,7 +16,6 @@ import { AdvertisementComponent} from '../modules/advertising/advertisement/adve
 import { AppComponent } from '../app.component'
 import { BasketPageComponent } from '../modules/basket/basket-page/basket-page.component';
 import { CheapestProdctByCategoryComponent } from '../modules/product/cheapest-prodct-by-category/cheapest-prodct-by-category.component';
-import { ProductStunningGraphComponent } from '../modules/product/product-stunning-graph/product-stunning-graph.component';
 import { ErrorPageComponent } from '../components/error-page/error-page.component'
 import { PriceHistoryChartWithD3jsComponent } from '../modules/product/price-history-chart-with-d3js/price-history-chart-with-d3js.component';
 import { BarChartProuctPriceComponent} from '../modules/product/bar-chart-prouct-price/bar-chart-prouct-price.component';
@@ -41,7 +40,6 @@ export const routes: Routes = [
   { path: 'basket', component: BasketPageComponent },
   { path: 'basket/:id', component: BasketPageComponent },
   { path: 'cheapest-product', component: CheapestProdctByCategoryComponent },
-  { path: 'history-two', component: ProductStunningGraphComponent },
   { path: 'page-404', component: ErrorPageComponent },
   { path: 'history-one-d3js/:id', component: PriceHistoryChartWithD3jsComponent },
   { path: 'history-two-chart-bar', component: BarChartProuctPriceComponent },
