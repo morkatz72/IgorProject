@@ -42,11 +42,13 @@ dbUtils.setupDB(MONGO_URL, consts, route, function (p_db) {
 
     var listener = io.listen(server);
     listener.sockets.on('connection', (socket) => {
-        console.log('new connection made');
-
         // send event to the client
         socket.emit('WelcomeEvent', {
             msg: 'ברוך הבא לאתר המוצרים שלנו, במסך הבא תראה אודות עבור האתר.'
+        });
+
+        socket.on('GetUsernameFromClient', (data) => {
+            console.log(data.msg);
         });
     })
 })
