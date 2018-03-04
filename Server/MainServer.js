@@ -8,6 +8,7 @@ var consts = require('./config/consts.js');
 var dbUtils = require('./app/BL/DAL/database.js');
 var basketModule = require('./app/BL/modules/basketModule.js');
 var db = {};
+var io = require('socket.io')(http);
 
 // consts
 var MONGO_URL = 'mongodb://localhost:27017';
@@ -38,4 +39,31 @@ dbUtils.setupDB(MONGO_URL, consts, route, function (p_db) {
     server.listen(8080, null, null, function () {
         console.log("Express server listening on port 8080");
     });
+
+    var listener = io.listen(server);
+    listener.sockets.on('connection', (socket) => {
+        console.log('new connection made');
+
+        // receive message from the client
+        socket.on('event1', (data) => {
+            console.log(data.msg);
+        });
+
+        // send event to the client
+        socket.emit('event2', {
+            msg: 'Server to client, do you read me? Over.'
+        });
+
+        // receive message from the client
+        socket.on('event3', (data) => {
+            console.log(data.msg);
+
+            // send event to the client
+            socket.emit('event4', {
+                msg: 'Loud and clear :)'
+            });
+        });
+    })
 })
+
+
