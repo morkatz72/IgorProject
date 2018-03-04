@@ -9,9 +9,8 @@ import * as io from 'socket.io-client';
 })
 export class AboutDataComponent implements OnInit {
 
-  messageText: string;
-  messages: Array<any>;
   socket: SocketIOClient.Socket;
+  messageSocket: string;
 
   constructor() {
     debugger;
@@ -19,23 +18,8 @@ export class AboutDataComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.messages = new Array();
-
-    this.socket.on('message-received', (msg: any) => {
-      this.messages.push(msg);
-      console.log(msg);
-      console.log(this.messages);
-    });
-
-    this.socket.on('event2', (data: any) => {
-      console.log(data.msg);
-      this.socket.emit('event3', {
-        msg: 'Yes, its working for me!!'
-      });
-    });
-    this.socket.on('event4', (data: any) => {
-      console.log(data.msg);
+    this.socket.on('WelcomeEvent', (data: any) => {
+      this.messageSocket = data.msg;
     });
   }
-
 }
