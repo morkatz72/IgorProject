@@ -30,7 +30,6 @@ export class WeatherComponent implements OnInit {
 
   getWeather() {
     return this.http.get(this.urlWeather).subscribe((res) => {
-      debugger;
       this.weatherData = res.json();
       this.weathers = this.weatherData.weather;
     });

@@ -45,7 +45,6 @@ export class ManagerPageComponent implements OnInit {
   isDeleteUser(data: string) {
     this.userService.removeUser(data).subscribe(
       (data) => {
-        debugger;
         this.getUsers();
       }
     );
@@ -54,14 +53,12 @@ export class ManagerPageComponent implements OnInit {
   isResetPassword(data: string) {
     this.userService.resetPassword(data).subscribe(
       (data) => {
-        debugger;
         this.getUsers();
       }
     );
   }
 
   isChangeAdmin(e: any, data: string) {
-    debugger;
     let statusValue = (e.target.checked == true ? 2 : 1);
     this.userService.changeUserTypeStatus(data, statusValue).subscribe(
       (data) => {

@@ -29,7 +29,6 @@ export class ProductDetailsPreviewComponent implements OnInit {
   getProductDetails(productId: number): any {
     this.productService.getProductDetails(productId).subscribe(
       (data) => {
-        debugger;
         if (data) {
           this.productDetails = data[0];
           if (this.productDetails) {
@@ -57,7 +56,7 @@ export class ProductDetailsPreviewComponent implements OnInit {
   }
 
   ngOnChanges(changes: SimpleChanges) {
-    debugger;
+    ;
     this.getProductDetails(changes.productIdToShow.currentValue);
   }
 

@@ -33,4 +33,16 @@ tr:nth-child(even) {
   text-align:center;
 }
 
+.card .feature-title {
+  color: #cacaca;
+}
 
+.card .feature-list {
+  list-style: none;
+  padding-right: 20px;
+}
+
+.card-title {
+  text-align: center;
+  font-size: 25px;
+}

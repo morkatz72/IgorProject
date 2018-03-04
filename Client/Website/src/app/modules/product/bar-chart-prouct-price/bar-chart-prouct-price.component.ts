@@ -64,8 +64,6 @@ export class BarChartProuctPriceComponent implements OnInit {
           this.data[i]["normalizePrice"] = (firstParams * secondParams) * 0.01;
         }
 
-        debugger;
-
         this.initSvg();
         this.initAxis();
         this.drawAxis();

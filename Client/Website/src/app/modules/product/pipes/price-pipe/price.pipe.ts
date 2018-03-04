@@ -6,7 +6,6 @@ import { Pipe, PipeTransform } from '@angular/core';
 export class PricePipe implements PipeTransform {
 
   transform(items: any, args?: any): any {
-    debugger;
     if (args == undefined || args == "") {
       return items;
     }

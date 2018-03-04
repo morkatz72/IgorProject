@@ -45,7 +45,7 @@ export class BasketPageComponent implements OnInit {
   }
 
   mapClicked($event: any) {
-    debugger;
+    ;
     this.changeMarker($event.coords.lat, $event.coords.lng);
   }
 

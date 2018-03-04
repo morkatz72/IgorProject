@@ -28,10 +28,8 @@ export class UserLoginComponent implements OnInit {
 
   onSubmit(userloginForm: any, event: Event) {
     event.preventDefault();
-    debugger;
     this.userService.loginWithAuthenticate(this.model.userName, this.model.password).subscribe(
       (result) => {
-        debugger;
         if (result) {
           if (result === true) {
             this.userService.getUserTypeByUserName(this.model.userName).subscribe(
@@ -71,7 +69,7 @@ export class UserLoginComponent implements OnInit {
           this.errorConnecting = false;
           alert('התחברת לאתר בהצלחה');
           localStorage.setItem('currentUser', this.model.userName);
-          debugger;
+          ;
 
           this.userService.getUserTypeByUserName(this.model.userName).subscribe(
             (userData) => {

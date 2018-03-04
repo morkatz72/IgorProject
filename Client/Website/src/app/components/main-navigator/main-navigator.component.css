@@ -1,3 +1,6 @@
 #welcomeCanvas:hover {
   cursor: pointer;
 }
+.nav-item {
+  cursor: pointer;
+}

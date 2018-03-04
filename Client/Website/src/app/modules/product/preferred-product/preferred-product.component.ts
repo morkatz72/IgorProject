@@ -37,7 +37,6 @@ export class PreferredProductComponent implements OnInit {
   getCategoryToProductsToGrades() {
     this.productService.getProducts().subscribe(
       (data) => {
-        debugger;
         this.products = Product.toProductWithComments(data);
         this.products.forEach(currProduct => {
 
@@ -64,7 +63,7 @@ export class PreferredProductComponent implements OnInit {
           }
 
         });
-        debugger;
+        ;
 
       }
     );
@@ -94,7 +93,7 @@ export class PreferredProductComponent implements OnInit {
   }
 
   getPreferredProduct() {
-    debugger;
+    ;
     let choosenProductId = 0;
     let max = 0;
     if (this.categoryToProduct.find(x => x.category == this.category)) {

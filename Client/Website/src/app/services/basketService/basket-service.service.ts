@@ -18,7 +18,7 @@ export class BasketService {
     let tmpBasket: BasketItemModule[] = JSON.parse(localStorage.getItem("basket"));
     let index = tmpBasket.map((i) => i.id).indexOf(product.id)
     if (index != -1)
-      tmpBasket[index].amount += 1;
+      tmpBasket[index].amount = +tmpBasket[index].amount + 1;
     else
       tmpBasket.push(new BasketItemModule(product.id, product.name, "", product.price, 1));
 

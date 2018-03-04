@@ -37,7 +37,6 @@ export class FacebookApiComponent {
     return this.http.post(url + '/authorize', {}, this.httpService.getOptions()).subscribe((res) => {
       this.httpService.http.get(url + '/getIsraelTweets').subscribe(
         (data) => {
-          debugger;
           this.israelTweets = data.json().data
         }
       );

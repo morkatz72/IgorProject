@@ -74,7 +74,6 @@ export class ProductDetailsComponent implements OnInit {
         this.commentToSave.prodctId = this.productDetails.id;
         this.commentToSave.comment = this.comm;
         this.commentToSave.grade = this.currGrade;
-        debugger;
         this.productService.addCommentToProduct(this.commentToSave).subscribe(
           (data) => {
             this.getProductDetails(this.id);

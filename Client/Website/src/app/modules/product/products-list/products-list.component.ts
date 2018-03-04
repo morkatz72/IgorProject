@@ -43,7 +43,6 @@ export class ProductsListComponent implements OnInit {
         this.route.params.subscribe(params => {
           let id: number = +params['id'];
           if (id) {
-            debugger;
             this.productsByCategory = new Array<Product>();
             for (var i = 0; i < this.products.length; i++) {
               if (this.products[i].category == id) {
@@ -73,8 +72,8 @@ export class ProductsListComponent implements OnInit {
     BasketService.setItemAmountStable(product, 0);
   }
 
-  setItemAmount(productID: number, event: any) {
-    BasketService.setItemAmount(productID, event.data);
+  setItemAmount(product: Product, event: any) {
+    BasketService.setItemAmountStable(product, +event.data);
   }
 
   getItemAmount(productID: number): any {
@@ -95,5 +94,9 @@ export class ProductsListComponent implements OnInit {
 
   showDetails(productID: number) {
     this.router.navigate(['/product-details/' + productID]);
-  } 
+  }
+
+  getProdutImage(productID: number): string {
+    return "assets/img/product/" + productID + ".jpg";
+  }
 }

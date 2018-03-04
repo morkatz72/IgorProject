@@ -57,7 +57,6 @@ export class AddOrUpdateProductComponent implements OnInit {
   }
 
   onSubmit(f: any, event: Event) {
-    debugger;
     if (this.actionCode == 1) {
       this.saveProduct();
     }
@@ -72,10 +71,10 @@ export class AddOrUpdateProductComponent implements OnInit {
   getProductDetails(productId: number): any {
     this.productService.getProductDetails(productId).subscribe(
       (data) => {
-        debugger;
+        ;
         if (data[0] != undefined) {
           this.product = data[0];
-          debugger;
+          ;
           this.currentCategory = this.product.category;
           this.getCategoryById(this.product.category);
           console.log(this.product);
@@ -97,7 +96,7 @@ export class AddOrUpdateProductComponent implements OnInit {
   getCategoryById(categoryId: number): any {
     this.productService.getCategory(categoryId).subscribe(
       (data) => {
-        debugger;
+        ;
         this.CategoryValue = data[0];
         this.product.categoryValue = this.CategoryValue.name;
         console.log(data);
@@ -106,7 +105,7 @@ export class AddOrUpdateProductComponent implements OnInit {
   }
 
   saveProduct() {
-    debugger;
+    ;
       this.product.calories = +this.product.calories;
       this.product.price = +this.product.price;
       this.productService.saveProduct(this.product).subscribe((results) => {
