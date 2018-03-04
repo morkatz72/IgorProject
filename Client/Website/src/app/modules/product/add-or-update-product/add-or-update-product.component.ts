@@ -17,7 +17,7 @@ import { AfterViewInit } from '@angular/core';
 export class AddOrUpdateProductComponent implements OnInit {
   public product: Product;
   public categories: Category[];
-  public currentCategory: number = 1;
+  public currentCategory: number = 0;
   // 1 = addss
   // 2 = updates
   // 3 = delete
@@ -46,6 +46,7 @@ export class AddOrUpdateProductComponent implements OnInit {
   selectItem(value) {
     this.select.emit(value);
     console.log(value);
+    this.currentCategory = +value;
     this.product.category = +value;
   }
 
