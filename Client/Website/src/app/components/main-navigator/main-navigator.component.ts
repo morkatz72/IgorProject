@@ -74,6 +74,10 @@ export class MainNavigatorComponent implements OnInit {
     return localStorage.getItem('currentUser');
   }
 
+  aboutView() {
+    this.router.navigate(['/about-data'])
+  }
+
   getDisplayUserName() {
     let displayValue = JSON.parse(localStorage.getItem('currentUser')).userName;
     return displayValue;
