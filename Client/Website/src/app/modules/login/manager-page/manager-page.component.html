@@ -1,4 +1,4 @@
-<div style="background-color:white">
+<div style="background-color:white" *ngIf="checkManager()">
 <table style="width:100%">
   <tr>
     <th class="title-right">שם משתמש</th>
@@ -27,4 +27,9 @@
 
   </tr>
 </table>
+</div>
+
+
+<div *ngIf="!checkManager()">
+  <h1>אין לך הרשאות להגיע לדף זה </h1>
 </div>

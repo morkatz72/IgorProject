@@ -55,7 +55,8 @@
       </div>
       <div class="ml-auto" *ngIf="userName()">
         שלום, {{getDisplayUserName()}}
-        <button type="button" class="btn btn-danger" (click)="managerView()"><i class="fas fa-wrench"></i>ממשק ניהול</button>
+        <div>
+        <button *ngIf="checkManager()" type="button" class="btn btn-danger" (click)="managerView()"><i class="fas fa-wrench"></i>ממשק ניהול</button>
         <button type="button" class="btn btn-danger" (click)="logOff()"><i class="fas fa-power-off"></i>התנתקות</button>
       </div>
     </div>

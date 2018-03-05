@@ -19,10 +19,6 @@ export class ManagerPageComponent implements OnInit {
     this.getUsers();
   }
 
-  userName() {
-    return localStorage.getItem('currentUser');
-  }
-
   getUsers(): any {
     this.userService.getAllUsers().subscribe(
       (data) => {
@@ -65,5 +61,17 @@ export class ManagerPageComponent implements OnInit {
 
       }
     )
+  }
+
+  userName() {
+    return this.userService.userName();
+  }
+
+  userType() {
+    return this.userService.getUserStatus();
+  }
+
+  checkManager() {
+    return this.userName() != null && this.userType() == "2";
   }
 }
