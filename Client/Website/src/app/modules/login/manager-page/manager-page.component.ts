@@ -24,6 +24,9 @@ export class ManagerPageComponent implements OnInit {
       (data) => {
         this.users = User.toUser(data);
         console.log(this.users);
+        debugger;
+        let userToRemove = this.users.findIndex(x => x.userName == this.getDisplayUserName());
+        this.users.splice(userToRemove, 1);
 
         for (var i = 0; i < this.users.length; i++) {
           if (this.users[i].userType == 2) {
@@ -65,6 +68,11 @@ export class ManagerPageComponent implements OnInit {
 
   userName() {
     return this.userService.userName();
+  }
+
+  getDisplayUserName() {
+    let displayValue = JSON.parse(localStorage.getItem('currentUser')).userName;
+    return displayValue;
   }
 
   userType() {
