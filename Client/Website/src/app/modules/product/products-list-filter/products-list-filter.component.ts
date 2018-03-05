@@ -14,7 +14,7 @@ export class ProductsListFilterComponent implements OnInit {
   loading = false; W
   total = 0;
   page = 1;
-  limit = 50;
+  limit = 10000;
   public name: string;
   public products: Product[];
   public productPaging: Product[];
@@ -43,7 +43,7 @@ export class ProductsListFilterComponent implements OnInit {
     this.productService.getProductsPaging(this.page, this.limit).subscribe(products => {
       this.productPaging = Product.toProduct(products);
       console.log(products);
-      this.total = this.products.length - 1;
+      this.getCategories();
       this.loading = false;
     });
   }
@@ -51,13 +51,17 @@ export class ProductsListFilterComponent implements OnInit {
   selectItem(value) {
     this.select.emit(value);
     this.currCategory = value;
-    console.log(this.currCategory);
   }
 
   getCategories() {
     this.productService.getCategories().subscribe((results) => {
       this.categories = Category.toCategories(results);
-      console.log(this.categories);
+
+      for (var i = 0; i < this.productPaging.length; i++) {
+        debugger;
+        let currValue = this.categories.find(x => +x.id == this.productPaging[i].category).name
+        this.productPaging[i].categoryValue = currValue;
+      }
     })
   }
 
