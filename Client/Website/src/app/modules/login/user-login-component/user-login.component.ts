@@ -23,7 +23,7 @@ export class UserLoginComponent implements OnInit {
   }
 
   userName() {
-    return localStorage.getItem('currentUser');
+    return this.userService.userName();
   }
 
   onSubmit(userloginForm: any, event: Event) {

@@ -26,7 +26,7 @@ export class RegisterUserComponent implements OnInit {
   }
 
   userName() {
-    return localStorage.getItem('currentUser');
+    return this.userService.userName();
   }
 
   onSubmit(f: any, event: Event) {
