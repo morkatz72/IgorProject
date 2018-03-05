@@ -1,7 +1,7 @@
 
 
 
-<div class="container" *ngIf="userName()">
+<div class="container" *ngIf="checkManager()">
   <form id="contact" name="form" (ngSubmit)="f.form.valid && onSubmit(f,$event)" #f="ngForm" novalidate>
     <h3>הוספת מוצר חדש</h3>
     <h4>פרטים בסיסיים</h4>
@@ -45,3 +45,6 @@
   </form>
 </div>
 
+<div *ngIf="!checkManager()">
+  <h1>אין לך הרשאות להגיע לדף זה </h1>
+</div>

@@ -6,6 +6,7 @@ import { EventEmitter } from '@angular/core';
 import { Router } from '@angular/router';
 import { ActivatedRoute } from '@angular/router';
 import { AfterViewInit } from '@angular/core';
+import { UsersServiceService } from '../../login/users-service.service';
 
 
 
@@ -26,7 +27,10 @@ export class AddOrUpdateProductComponent implements OnInit {
   public CategoryValue: any;
   public isNeedToRouter: boolean = false;
   public buttonText: string = "הוסף מוצר";
-  constructor(private productService: ProductService, private router: Router, private route: ActivatedRoute) { }
+  constructor(private productService: ProductService,
+    private router: Router,
+    private route: ActivatedRoute,
+    private usersService: UsersServiceService) { }
 
   ngOnInit() {
     this.product = new Product();
@@ -133,6 +137,14 @@ export class AddOrUpdateProductComponent implements OnInit {
   }
 
   userName() {
-    return localStorage.getItem('currentUser');
+    return this.usersService.userName();
+  }
+
+  userType() {
+    return this.usersService.getUserStatus();
+  }
+
+  checkManager() {
+    return this.userName() != null && this.userType() == "2";
   }
 }
