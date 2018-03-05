@@ -12,6 +12,7 @@ import * as _ from "lodash";
 import { BasketModule } from '../../basket/basket.module';
 import { BasketService } from '../../../services/basketService/basket-service.service';
 import { ActivatedRoute } from '@angular/router';
+import { UsersServiceService } from '../../login/users-service.service';
 
 @Component({
   selector: 'app-products-list',
@@ -26,7 +27,10 @@ export class ProductsListComponent implements OnInit {
 
   public hoverIndex: number = null;
 
-  constructor(private productService: ProductService, private router: Router, private route: ActivatedRoute) { }
+  constructor(private productService: ProductService,
+    private router: Router,
+    private route: ActivatedRoute,
+    private usersServiceService: UsersServiceService) { }
 
   ngOnInit() {
     this.getProducts();
@@ -89,7 +93,15 @@ export class ProductsListComponent implements OnInit {
   }
 
   userName() {
-    return localStorage.getItem('currentUser');
+    return this.usersServiceService.userName();
+  }
+
+  userType() {
+    return this.usersServiceService.getUserStatus();
+  }
+
+  checkManager() {
+    return this.userName() != null && this.userType() == "2";
   }
 
   showDetails(productID: number) {

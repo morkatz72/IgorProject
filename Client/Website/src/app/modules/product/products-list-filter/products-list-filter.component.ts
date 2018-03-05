@@ -3,6 +3,7 @@ import { Product } from '../../../shared/entities/Product';
 import { Category } from '../../../shared/entities/Category';
 import { ProductService } from '../product.service';
 import { Router, ActivatedRoute } from '@angular/router';
+import { UsersServiceService } from '../../login/users-service.service';
 
 @Component({
   selector: 'app-products-list-filter',
@@ -23,7 +24,10 @@ export class ProductsListFilterComponent implements OnInit {
   public bigger: string;
   public smaller: string;
 
-  constructor(private productService: ProductService, private router: Router, private route: ActivatedRoute) { }
+  constructor(private productService: ProductService,
+    private router: Router,
+    private route: ActivatedRoute,
+    private usersServiceService:UsersServiceService) { }
 
   ngOnInit() {
     this.select = new EventEmitter();
@@ -72,15 +76,23 @@ export class ProductsListFilterComponent implements OnInit {
     this.getProductsPaging();
   }
 
-  userName() {
-    return localStorage.getItem('currentUser');
-  }
-
   showDetails(productID: number) {
     this.router.navigate(['/product-details/' + productID]);
   }
 
   updateOrDelete(productID: number) {
     this.router.navigate(['/add-or-update-product/' + productID]);
+  }
+
+  userName() {
+    return this.usersServiceService.userName();
+  }
+
+  userType() {
+    return this.usersServiceService.getUserStatus();
+  }
+
+  checkManager() {
+    return this.userName() != null && this.userType() == "2";
   }
 }
