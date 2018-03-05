@@ -57,6 +57,7 @@
         שלום, {{getDisplayUserName()}}
         <div>
         <button *ngIf="checkManager()" type="button" class="btn btn-danger" (click)="managerView()"><i class="fas fa-wrench"></i>ממשק ניהול</button>
+        <button *ngIf="checkManager()" type="button" class="btn btn-info" (click)="addProductView()"><i class="fas fa-sun"></i>הוספת מוצר</button>
         <button type="button" class="btn btn-danger" (click)="logOff()"><i class="fas fa-power-off"></i>התנתקות</button>
       </div>
     </div>
