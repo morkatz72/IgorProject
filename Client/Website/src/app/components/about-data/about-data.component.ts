@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import * as io from 'socket.io-client';
+
 
 @Component({
   selector: 'app-about-data',
@@ -7,9 +9,28 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AboutDataComponent implements OnInit {
 
-  constructor() { }
+  socket: SocketIOClient.Socket;
+  messageSocket: string;
 
-  ngOnInit() {
+  constructor() {
+    this.socket = io.connect('http://localhost:8080', { transports: ['websocket', 'polling', 'flashsocket'] });
   }
 
+  ngOnInit() {
+    this.socket.on('WelcomeEvent', (data: any) => {
+      this.messageSocket = data.msg;
+
+      this.socket.emit('GetUsernameFromClient', {
+        msg: this.getDisplayUserName()
+      });
+    });
+  }
+
+  getDisplayUserName() {
+    let displayValue = "guest";
+    if (localStorage.getItem('currentUser')) {
+      displayValue = JSON.parse(localStorage.getItem('currentUser')).userName;
+    }
+    return displayValue;
+  }
 }

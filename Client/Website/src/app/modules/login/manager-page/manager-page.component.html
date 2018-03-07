@@ -1,4 +1,4 @@
-<div style="background-color:white">
+<div style="background-color:white" *ngIf="checkManager()">
 <table style="width:100%">
   <tr>
     <th class="title-right">שם משתמש</th>
@@ -24,7 +24,11 @@
     <td class="title-right"><button class="btn btn-primary" (click)="isDeleteUser(currUser.userName)">מחק משתמש</button></td>
     <td class="title-right"><label><input type="checkbox" [checked]="currUser.isManagerChecked" (change)="isChangeAdmin($event, currUser.userName)">מנהל/ לא מנהל</label></td>
     <td class="title-right"><button class="btn btn-primary" (click)="isResetPassword(currUser.userName)">אפס סיסמא</button></td>
-
   </tr>
 </table>
+</div>
+
+
+<div *ngIf="!checkManager()">
+  <h1>אין לך הרשאות להגיע לדף זה </h1>
 </div>

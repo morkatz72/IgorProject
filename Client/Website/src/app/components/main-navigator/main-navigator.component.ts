@@ -70,10 +70,6 @@ export class MainNavigatorComponent implements OnInit {
     this.router.navigate(['/basket'])
   }
 
-  userName() {
-    return localStorage.getItem('currentUser');
-  }
-
   aboutView() {
     this.router.navigate(['/about-data'])
   }
@@ -132,6 +128,18 @@ export class MainNavigatorComponent implements OnInit {
   getProductsByCategory(id) {
 
     this.router.navigate(['/product-list/' + id])
+  }
+
+  userName() {
+    return this.usersServiceService.userName();
+  }
+
+  userType() {
+    return this.usersServiceService.getUserStatus();
+  }
+
+  checkManager() {
+    return this.userName() != null && this.userType() == "2";
   }
 }
 

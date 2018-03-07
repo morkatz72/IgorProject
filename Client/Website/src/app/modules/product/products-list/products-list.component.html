@@ -101,7 +101,7 @@
 
         </div>-->
         <div class="align-self-center">
-          <button type="button" class="btn btn-link" (click)="updateOrDelete(product.id)">
+          <button type="button" class="btn btn-link" (click)="updateOrDelete(product.id)" *ngIf="checkManager()">
             <i class="fas fa-wrench"></i>
           </button>
           <button type="button" class="btn btn-link" (click)="deleteFromBasket(product, 0)">
