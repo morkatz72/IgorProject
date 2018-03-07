@@ -117,4 +117,14 @@ export class BasketService {
 
     localStorage.setItem("basket", JSON.stringify(tmpBasket));
   }
+
+  static isBasketEmpty() {
+    if (BasketService.getBasket() == null)
+      return true;
+
+    if (typeof BasketService.getBasket() === 'undefined' || BasketService.getBasket().length == 0)
+      return true;
+
+    return false;
+  }
 }

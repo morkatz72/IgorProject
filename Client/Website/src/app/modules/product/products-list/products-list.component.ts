@@ -73,7 +73,8 @@ export class ProductsListComponent implements OnInit {
   }
 
   setItemAmount(product: Product, event: any) {
-    BasketService.setItemAmountStable(product, +event.data);
+    debugger;
+    BasketService.setItemAmountStable(product, +event.target.value);
   }
 
   getItemAmount(productID: number): any {

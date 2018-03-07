@@ -26,7 +26,7 @@ export class BasketPageComponent implements OnInit {
   title: string = 'My first AGM project';
   lat: number = 32.678418;
   lng: number = 35.409007;
-  zoom: number = 4;
+  zoom: number = 15;
   public currentStreetName: string;
   public markers: Marker
   public currStore: Store;
@@ -45,7 +45,6 @@ export class BasketPageComponent implements OnInit {
   }
 
   mapClicked($event: any) {
-    ;
     this.changeMarker($event.coords.lat, $event.coords.lng);
   }
 
@@ -87,7 +86,7 @@ export class BasketPageComponent implements OnInit {
       //set latitude, longitude and zoom
       this.lat = place.geometry.location.lat();
       this.lng = place.geometry.location.lng();
-      this.zoom = 12;
+      this.zoom = 15;
     });
   }
 
@@ -130,7 +129,6 @@ export class BasketPageComponent implements OnInit {
 
   selectItem(value) {
     this.select.emit(value);
-    console.log(value); 
     this.getGeoLocation(value);
     this.currentStreetName = value;
   }
@@ -198,6 +196,10 @@ export class BasketPageComponent implements OnInit {
           this.router.navigateByUrl('/page-404');
         }
       }
-    );
+    )
+  }
+
+  isBasketEmpty(): boolean {
+    return BasketService.isBasketEmpty()
   }
 }
